@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
-    //public Gun gun;
+    public Gun gun;
 
     Vector2 moveDirection;
     Vector2 mousePosition;
@@ -31,15 +31,11 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal"); 
         float moveY = Input.GetAxisRaw("Vertical"); 
 
-        /*
+        
         if(Input.GetMouseButtonDown(0)){
             gun.Fire();
         }
 
-        if(Input.GetMouseButtonDown(1)){
-            gun.FireBig();
-        }
-        */
 
         if(Input.GetKeyDown(KeyCode.Space) && canDash){
             StartCoroutine(Dash());
