@@ -378,8 +378,8 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 1026070220}
   dashSpeed: 15
-  dashDuration: 1
-  dashCoolDown: 1
+  dashDuration: 0.25
+  dashCoolDown: 0.4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
