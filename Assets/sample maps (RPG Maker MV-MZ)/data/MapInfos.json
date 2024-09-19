@@ -1,0 +1,18 @@
+[
+null,
+{"id":1,"expanded":true,"name":"ranch house, barn, coop","order":1,"parentId":0,"scrollX":528,"scrollY":736.5},
+{"id":2,"expanded":false,"name":"saloon","order":5,"parentId":0,"scrollX":608,"scrollY":592.5},
+{"id":3,"expanded":false,"name":"church","order":4,"parentId":0,"scrollX":536,"scrollY":455.5},
+{"id":4,"expanded":false,"name":"stable","order":8,"parentId":0,"scrollX":536,"scrollY":455.5},
+{"id":5,"expanded":false,"name":"hotel","order":3,"parentId":0,"scrollX":528,"scrollY":1136.5},
+{"id":6,"expanded":false,"name":"doctor","order":13,"parentId":0,"scrollX":536,"scrollY":455.5},
+{"id":7,"expanded":false,"name":"barber","order":6,"parentId":0,"scrollX":536,"scrollY":455.5},
+{"id":8,"expanded":false,"name":"post office","order":14,"parentId":0,"scrollX":536,"scrollY":455.5},
+{"id":9,"expanded":false,"name":"sheriff","order":7,"parentId":0,"scrollX":536,"scrollY":455.5},
+{"id":10,"expanded":false,"name":"store","order":9,"parentId":0,"scrollX":536,"scrollY":455.5},
+{"id":11,"expanded":false,"name":"town w/cemetery","order":10,"parentId":0,"scrollX":1205,"scrollY":648},
+null,
+{"id":13,"expanded":false,"name":"ranch house, barn, coop int","order":2,"parentId":1,"scrollX":528,"scrollY":512.5},
+{"id":14,"expanded":false,"name":"school","order":11,"parentId":0,"scrollX":536,"scrollY":455.5},
+{"id":15,"expanded":false,"name":"bank","order":12,"parentId":0,"scrollX":528,"scrollY":504.5}
+]
