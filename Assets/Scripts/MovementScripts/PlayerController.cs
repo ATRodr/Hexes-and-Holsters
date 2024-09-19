@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
+    public Rigidbody2D weapon;
     public Gun gun;
 
     Vector2 moveDirection;
@@ -50,11 +51,11 @@ public class PlayerController : MonoBehaviour
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         
         if(isDash){
-            rb.rotation = aimAngle;
+            weapon.rotation = aimAngle;
             return;
         }
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-        rb.rotation = aimAngle;
+        weapon.rotation = aimAngle;
 
     }
 
