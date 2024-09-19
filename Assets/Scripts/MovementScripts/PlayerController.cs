@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public Rigidbody2D rb;
-    //public Gun gun;
-
+    public Rigidbody2D rb; 
+    public GameObject[] sides;
+    
+    public Gun gun;
     Vector2 moveDirection;
-    Vector2 mousePosition;
 
     [Header("Dash Settings")]
     [SerializeField] float dashSpeed = 15f;
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     bool canDash;
 
     private void Start(){
+        rb = gameObject.GetComponent<Rigidbody2D>();
         canDash = true;
     }
 
@@ -31,22 +32,16 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal"); 
         float moveY = Input.GetAxisRaw("Vertical"); 
 
-        /*
         if(Input.GetMouseButtonDown(0)){
             gun.Fire();
         }
-
-        if(Input.GetMouseButtonDown(1)){
-            gun.FireBig();
-        }
-        */
 
         if(Input.GetKeyDown(KeyCode.Space) && canDash){
             StartCoroutine(Dash());
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
     }
 
     private void FixedUpdate(){
@@ -54,15 +49,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-        Vector2 aimDirection = mousePosition - rb.position;
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = aimAngle;
+
     }
 
     private IEnumerator Dash(){
         canDash = false;
         isDash = true;
         rb.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
+        
         yield return new WaitForSeconds(dashDuration);
         isDash = false;
         yield return new WaitForSeconds(dashCoolDown);
