@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5789044887711760996}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4462254770117221359}
   - component: {fileID: 5438492585130797438}
   - component: {fileID: 5693010259324516039}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Ranged Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
