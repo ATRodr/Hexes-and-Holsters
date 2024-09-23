@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4462254770117221359}
   - component: {fileID: 5438492585130797438}
   - component: {fileID: 5693010259324516039}
+  - component: {fileID: -2939293966753401475}
   m_Layer: 1
   m_Name: Ranged Enemy
   m_TagString: Untagged
@@ -212,5 +213,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98044bdb517694649b66c83ce6e6039b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireRate: 0.5
   bullet: {fileID: 6756061119310239216, guid: db5d6e746abef4d7d9f6427aff4d260b, type: 3}
   bulletPos: {fileID: 5789044887711760996}
+--- !u!50 &-2939293966753401475
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854199788946430562}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

@@ -1,10 +1,11 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FireAtPlayer : MonoBehaviour
 {
+    [SerializeField] private float fireRate;
     public GameObject bullet;
     public Transform bulletPos;
     private float timer;
@@ -18,8 +19,14 @@ public class FireAtPlayer : MonoBehaviour
 
     void Update()
     {
+        Vector3 difference = transform.position - player.transform.position;
+        difference.Normalize();
+        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+        
+
         timer += Time.deltaTime;
-        if (timer >= 2)
+        if (timer >= 1/fireRate)
         {
             RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, distance:Mathf.Infinity, layerMask:1);
             if (ray.collider != null)
