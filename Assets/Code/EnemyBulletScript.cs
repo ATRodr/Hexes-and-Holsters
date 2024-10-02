@@ -16,7 +16,7 @@ public class EnemyBulletScript : MonoBehaviour
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
     }
     private void onCollisionEnter2D(Collision2D collision){
-        Destroy(gameObject);
+        Destroy(this);
         //Check if hitting enemy
         //Do damage
     }
