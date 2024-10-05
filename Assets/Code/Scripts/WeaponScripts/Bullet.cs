@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public void onCollisionEnter2D(){
-        Destroy(gameObject, 2f);
-        //Check if hitting enemy
-        //Do damage
-        Console.WriteLine("Bullet hit something");
+    
+    private void OnCollisionEnter2D(Collision2D collision){
+
+        if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent)){
+            enemyComponent.TakeDamage(1, gameObject);
+        }
+        Destroy(gameObject);
+       
+        
     }
 }
