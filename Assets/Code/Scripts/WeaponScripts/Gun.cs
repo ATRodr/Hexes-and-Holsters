@@ -9,8 +9,10 @@ public class Gun : MonoBehaviour
     public float fireForce = 30f;
 
     public void Fire(){
+        
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
+        Destroy(bullet, .4f);
     }
 
 }
