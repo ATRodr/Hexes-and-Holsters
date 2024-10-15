@@ -22,6 +22,13 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(target.position);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);
+        }
+    }
     public void TakeDamage(float damageAmt, GameObject Bullet){
         health -= damageAmt;
         Destroy(Bullet);
@@ -30,4 +37,5 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
