@@ -12,18 +12,13 @@ namespace Code.Scripts.SkillTreeSystem
         // Start is called before the first frame update
 
         // unlockable abilities
-        private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel;
+        private int chainLightning, destructiveWave, dynamiteDash, goldenGun;
         private int skillPoints;
-
-        public int ChainLightningLevel => chainLightningLevel;
-        public int DestructiveWaveLevel => destructiveWaveLevel;
-        public int DynamiteDashLevel => dynamiteDashLevel;
-        public int GoldenGunLevel => goldenGunLevel;
         
-        public bool ChainLightning => chainLightningLevel > 0;
-        public bool DestructiveWave => destructiveWaveLevel > 0;
-        public bool DynamiteDash => dynamiteDashLevel > 0;
-        public bool GoldenGun => goldenGunLevel > 0;
+        public int ChainLightning => chainLightning;
+        public int DestructiveWave => destructiveWave;
+        public int DynamiteDash => dynamiteDash;
+        public int GoldenGun => goldenGun;
         
         public int SkillPoints => skillPoints;
 
@@ -34,10 +29,10 @@ namespace Code.Scripts.SkillTreeSystem
         private void Awake()
         {
             skillPoints = 10;
-            chainLightningLevel = 0;
-            destructiveWaveLevel = 0;
-            dynamiteDashLevel = 0;
-            goldenGunLevel = 0;
+            chainLightning = 0;
+            destructiveWave = 0;
+            dynamiteDash = 0;
+            goldenGun = 0;
         }
         
         public void GainSkillPoint()
@@ -64,19 +59,19 @@ namespace Code.Scripts.SkillTreeSystem
         {
             foreach (UpgradeData data in skill.UpgradeData)
             {
-                switch (data.statType)
+                switch (data.StatType)
                 {
-                    case StatType.chainLightningLevel:
-                        ModifyStat(ref chainLightningLevel, data);
+                    case StatTypes.chainLightning:
+                        ModifyStat(ref chainLightning, data);
                         break;
-                    case StatType.destructiveWaveLevel:
-                        ModifyStat(ref destructiveWaveLevel, data);
+                    case StatTypes.destructiveWave:
+                        ModifyStat(ref destructiveWave, data);
                         break;
-                    case StatType.dynamiteDashLevel:
-                        ModifyStat(ref dynamiteDashLevel, data);
+                    case StatTypes.dynamiteDash:
+                        ModifyStat(ref dynamiteDash, data);
                         break;
-                    case StatType.goldenGunLevel:
-                        ModifyStat(ref goldenGunLevel, data);
+                    case StatTypes.goldenGun:
+                        ModifyStat(ref goldenGun, data);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

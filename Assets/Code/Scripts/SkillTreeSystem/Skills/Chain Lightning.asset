@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Chain Lightning
   m_EditorClassIdentifier: 
   UpgradeData:
-  - statType: 0
+  - StatType: 0
     SkillIncreaseAmount: 1
     IsPercentage: 0
   IsAbility: 1
   SkillName: Chain Lightning
-  SkillDescription: Cast a bolt of lightning that arcs toward a target then leap
-    to as many as three other targets
+  SkillDescription: 
   SkillIcon: {fileID: 0}
   SkillPrerequisites: []
   SkillTier: 1

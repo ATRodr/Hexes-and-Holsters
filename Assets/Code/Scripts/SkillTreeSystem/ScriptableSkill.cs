@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+
 namespace Code.Scripts.SkillTreeSystem
 {
     [CreateAssetMenu(fileName = "New Skill", menuName = "Skill System/New Skill", order = 0)]
@@ -24,16 +25,16 @@ namespace Code.Scripts.SkillTreeSystem
     [System.Serializable]
     public class UpgradeData
     {
-        public StatType statType;
+        public StatTypes StatType;
         public int SkillIncreaseAmount;
         public bool IsPercentage;
     }
 
-    public enum StatType
+    public enum StatTypes
     {
-        chainLightningLevel, 
-        destructiveWaveLevel, 
-        dynamiteDashLevel, 
-        goldenGunLevel
+        chainLightning, 
+        destructiveWave, 
+        dynamiteDash, 
+        goldenGun
     }
 }

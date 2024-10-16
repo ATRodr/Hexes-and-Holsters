@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9883c07e2afa543b2a3f48095272bd, type: 3}
   m_Name: Dynamite Dash
   m_EditorClassIdentifier: 
-  UpgradeData: []
-  IsAbility: 0
+  UpgradeData:
+  - StatType: 0
+    SkillIncreaseAmount: 1
+    IsPercentage: 0
+  IsAbility: 1
   SkillName: Dynamite Dash
-  SkillDescription: Leave a stick of TNT where you stand and dash leaving behind
-    an explosive surprise
+  SkillDescription: 
   SkillIcon: {fileID: 0}
   SkillPrerequisites: []
   SkillTier: 1

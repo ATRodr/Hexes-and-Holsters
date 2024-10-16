@@ -22,6 +22,10 @@ public class UIStatPanel : MonoBehaviour
     void Start()
     {
         uiManager.PlayerSkillManager.OnSkillPointsChanged += PopulateLabelText;
+        if (uiManager.PlayerSkillManager == null)
+        {
+            Debug.LogError("UIStatPanel: PlayerSkillManager not found!");
+        }
         GatherLabelReferences();
         PopulateLabelText();
     }
@@ -38,10 +42,9 @@ public class UIStatPanel : MonoBehaviour
     private void PopulateLabelText()
     {
         skillPointsLabel.text = "Skill Points: " + uiManager.PlayerSkillManager.SkillPoints.ToString();
-
-        chainLightningLabel.text = "Chain Lightning: " + (uiManager.PlayerSkillManager.ChainLightning ? uiManager.PlayerSkillManager.ChainLightningLevel : "Locked");
-        destructiveWaveLabel.text = "Destructive Wave: " + (uiManager.PlayerSkillManager.DestructiveWave ? uiManager.PlayerSkillManager.DestructiveWaveLevel : "Locked");
-        dynamiteDashLabel.text = "Dynamite Dash: " + (uiManager.PlayerSkillManager.DynamiteDash ? uiManager.PlayerSkillManager.DynamiteDashLevel : "Locked");
-        goldenGunLabel.text = "Golden Gun: " + (uiManager.PlayerSkillManager.GoldenGun ? uiManager.PlayerSkillManager.GoldenGunLevel : "Locked");
+        chainLightningLabel.text = "Chain Lightning: " + (uiManager.PlayerSkillManager.ChainLightning > 0 ? "Level " + uiManager.PlayerSkillManager.ChainLightning.ToString() : "Locked");
+        destructiveWaveLabel.text = "Destructive Wave: " + (uiManager.PlayerSkillManager.DestructiveWave > 0 ? "Level " + uiManager.PlayerSkillManager.DestructiveWave.ToString() : "Locked");
+        dynamiteDashLabel.text = "Dynamite Dash: " + (uiManager.PlayerSkillManager.DynamiteDash > 0? "Level " + uiManager.PlayerSkillManager.DynamiteDash.ToString() : "Locked");
+        goldenGunLabel.text = "Golden Gun: " + (uiManager.PlayerSkillManager.GoldenGun > 0 ? "Level " + uiManager.PlayerSkillManager.GoldenGun.ToString() : "Locked");
     }
 }
