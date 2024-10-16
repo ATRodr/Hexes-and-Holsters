@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
         
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
-        Destroy(bullet, .4f);
+        Destroy(bullet, 5f);
     }
 
 }

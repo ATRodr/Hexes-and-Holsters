@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     void start()
     {
         Debug.Log("Destroy");
-        Destroy(gameObject, .4f);
+        Destroy(gameObject, 15f);
     }
     private void OnCollisionEnter2D(Collision2D collision){
 

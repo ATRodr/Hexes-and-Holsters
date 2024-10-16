@@ -14,8 +14,13 @@ public class EnemyBulletScript : MonoBehaviour
 
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+
+        Destroy(gameObject, 2f);
     }
     private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth playerComponent)){
+            playerComponent.TakeDamage(1);
+        }
         Destroy(gameObject);
         
     }
