@@ -13,8 +13,15 @@ namespace Code.Scripts.SkillTreeSystem
         public List<ScriptableSkill> SkillPrerequisites = new List<ScriptableSkill>();
         public int SkillTier;
         public int Cost;
+
+        private void OnValidate()
+        {
+            if (SkillName == "") SkillName = name;
+        }
     }
 
+
+    [System.Serializable]
     public class UpgradeData
     {
         public StatType statType;
@@ -27,6 +34,6 @@ namespace Code.Scripts.SkillTreeSystem
         chainLightningLevel, 
         destructiveWaveLevel, 
         dynamiteDashLevel, 
-        goldenGunLevel;
+        goldenGunLevel
     }
 }

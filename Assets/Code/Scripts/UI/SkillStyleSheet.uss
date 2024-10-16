@@ -1,0 +1,26 @@
+.SkillPanel {
+    flex-grow: 0;
+    background-color: rgba(47, 47, 47, 0.18);
+    width: 20%;
+}
+
+.HeaderLabel {
+    -unity-font: url("project://database/Assets/PointedlyMad.ttf?fileID=12800000&guid=8ce9b364d895741aeb8fc8a5cb5a2407&type=3#PointedlyMad");
+    -unity-font-definition: url("project://database/Assets/PointedlyMad%20SDF.asset?fileID=11400000&guid=f906ed5ff5a524a8abffd3d0c632c33c&type=2#PointedlyMad SDF");
+    -unity-text-align: upper-center;
+    font-size: 22px;
+    margin-bottom: 3px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+.StatLabel {
+    -unity-font: url("project://database/Assets/PointedlyMad.ttf?fileID=12800000&guid=8ce9b364d895741aeb8fc8a5cb5a2407&type=3#PointedlyMad");
+    -unity-font-definition: url("project://database/Assets/PointedlyMad%20SDF.asset?fileID=11400000&guid=f906ed5ff5a524a8abffd3d0c632c33c&type=2#PointedlyMad SDF");
+    background-color: rgba(255, 255, 255, 0);
+    -unity-text-align: upper-center;
+}

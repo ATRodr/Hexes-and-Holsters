@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Code/Scripts/UI/SkillStyleSheet.uss?fileID=7433441132597879392&amp;guid=9acdc674527004ccf9169c855a502aff&amp;type=3#SkillStyleSheet" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.29); flex-direction: row;">
+        <ui:VisualElement name="StatPanel" class="SkillPanel" style="justify-content: center;">
+            <ui:Label tabindex="-1" text="Locked Abilities" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AbilitiesHeader" class="HeaderLabel" />
+            <ui:Label tabindex="-1" text="Chain Lightining&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ChainLightning" class="StatLabel" />
+            <ui:Label tabindex="-1" text="Destructive Wave&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DestructiveWave" class="StatLabel" />
+            <ui:Label tabindex="-1" text="Dynamite Dash&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DynamiteDash" class="StatLabel" />
+            <ui:Label tabindex="-1" text="Golden Gun&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GoldenGun" class="StatLabel" />
+            <ui:Label tabindex="-1" text="SkillPoints" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SkillPoints" class="HeaderLabel" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SkillTree" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.32);">
+            <ui:VisualElement name="SkillRow1" style="flex-grow: 1;" />
+            <ui:VisualElement name="SkillRow2" style="flex-grow: 1;" />
+            <ui:VisualElement name="SkillRow3" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SkillDescription" class="SkillPanel" />
+    </ui:VisualElement>
+</ui:UXML>
