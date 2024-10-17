@@ -10,10 +10,17 @@
             <ui:Label tabindex="-1" text="SkillPoints - 100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SkillPoints" class="HeaderLabel" />
         </ui:VisualElement>
         <ui:VisualElement name="SkillTree" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.32);">
-            <ui:VisualElement name="SkillRow1" style="flex-grow: 1;" />
-            <ui:VisualElement name="SkillRow2" style="flex-grow: 1;" />
-            <ui:VisualElement name="SkillRow3" style="flex-grow: 1;" />
+            <ui:VisualElement name="SkillRow1" class="skill-row" />
+            <ui:VisualElement name="SkillRow2" class="skill-row" />
+            <ui:VisualElement name="SkillRow3" class="skill-row" />
         </ui:VisualElement>
-        <ui:VisualElement name="SkillDescription" class="SkillPanel" />
+        <ui:VisualElement name="SkillDescription" class="SkillPanel" style="justify-content: center; align-items: center; align-self: stretch;">
+            <ui:VisualElement name="Icon" style="background-image: url(&quot;project://database/Assets/Art/Textures/IconsSkillTree/dilmin.png?fileID=21300000&amp;guid=6b0f097f0463ef64f9b98de3ce2c08cb&amp;type=3#dilmin&quot;); width: 60%; height: 15%; flex-shrink: 0;" />
+            <ui:Label tabindex="-1" text="winton" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SkillNameLabel" class="StatLabel" />
+            <ui:Label tabindex="-1" text="white boy swag" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SkillDescriptionLabel" class="StatLabel" />
+            <ui:Label tabindex="-1" text="1 clam" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SkillCostLabel" class="StatLabel" />
+            <ui:Label tabindex="-1" text="10 bones" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PreReqLabel" class="StatLabel" />
+            <ui:Button text="Purchase Skill" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BuySkillButton" class="skill-tree-button" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9883c07e2afa543b2a3f48095272bd, type: 3}
-  m_Name: Dynamite Dash
+  m_Name: Golden Gun
   m_EditorClassIdentifier: 
   UpgradeData:
-  - StatType: 0
+  - StatType: 3
     SkillIncreaseAmount: 1
     IsPercentage: 0
   IsAbility: 1
-  SkillName: Dynamite Dash
-  SkillDescription: drop a stick of tnt where you dashed from
+  SkillName: Golden Gun
+  SkillDescription: Do a billion more damage for 6 rounds
   SkillIcon: {fileID: 0}
   SkillPrerequisites: []
-  SkillTier: 1
+  SkillTier: 2
   Cost: 0
