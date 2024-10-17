@@ -57,7 +57,7 @@ namespace Code.Scripts.SkillTreeSystem
 
         private void ModifyStats(ScriptableSkill skill)
         {
-            foreach (UpgradeData data in skill.UpgradeData)
+            foreach (var data in skill.UpgradeData)
             {
                 switch (data.StatType)
                 {
