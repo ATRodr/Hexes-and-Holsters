@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 47
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,7 +103,7 @@ TextureImporter:
         x: 9
         y: 533
         width: 175
-        height: 226
+        height: 227
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,9 +121,9 @@ TextureImporter:
       name: western_B_1
       rect:
         serializedVersion: 2
-        x: 193
+        x: 192
         y: 629
-        width: 95
+        width: 96
         height: 139
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,7 +145,7 @@ TextureImporter:
         x: 300
         y: 629
         width: 73
-        height: 116
+        height: 117
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,9 +206,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 193
-        y: 531
+        y: 530
         width: 47
-        height: 84
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,9 +227,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 242
-        y: 577
+        y: 576
         width: 44
-        height: 47
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,9 +310,9 @@ TextureImporter:
       name: western_B_10
       rect:
         serializedVersion: 2
-        x: 639
+        x: 638
         y: 528
-        width: 129
+        width: 130
         height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -417,7 +417,7 @@ TextureImporter:
         serializedVersion: 2
         x: 192
         y: 388
-        width: 95
+        width: 96
         height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -583,9 +583,9 @@ TextureImporter:
       name: western_B_23
       rect:
         serializedVersion: 2
-        x: 154
+        x: 153
         y: 292
-        width: 36
+        width: 37
         height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -604,10 +604,10 @@ TextureImporter:
       name: western_B_24
       rect:
         serializedVersion: 2
-        x: 582
-        y: 274
-        width: 41
-        height: 43
+        x: 581
+        y: 273
+        width: 42
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -667,9 +667,9 @@ TextureImporter:
       name: western_B_27
       rect:
         serializedVersion: 2
-        x: 7
+        x: 6
         y: 240
-        width: 39
+        width: 40
         height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -688,10 +688,10 @@ TextureImporter:
       name: western_B_28
       rect:
         serializedVersion: 2
-        x: 62
-        y: 251
-        width: 24
-        height: 24
+        x: 61
+        y: 250
+        width: 25
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -752,9 +752,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 632
-        y: 266
+        y: 265
         width: 35
-        height: 31
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -793,9 +793,9 @@ TextureImporter:
       name: western_B_33
       rect:
         serializedVersion: 2
-        x: 193
+        x: 192
         y: 193
-        width: 45
+        width: 46
         height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -817,7 +817,7 @@ TextureImporter:
         x: 241
         y: 193
         width: 47
-        height: 46
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -836,9 +836,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 289
-        y: 162
+        y: 161
         width: 46
-        height: 61
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -920,9 +920,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 198
-        y: 99
+        y: 98
         width: 39
-        height: 90
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -943,7 +943,7 @@ TextureImporter:
         x: 244
         y: 109
         width: 41
-        height: 66
+        height: 67
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 47
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: western_E_0
+      name: Log
       rect:
         serializedVersion: 2
         x: 10
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_5
+      name: Poster_1
       rect:
         serializedVersion: 2
         x: 391
@@ -223,7 +223,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_6
+      name: Poster_2
       rect:
         serializedVersion: 2
         x: 440
@@ -244,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_7
+      name: Poster_3
       rect:
         serializedVersion: 2
         x: 482
@@ -265,7 +265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_8
+      name: Poster_4
       rect:
         serializedVersion: 2
         x: 538
@@ -286,7 +286,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_9
+      name: Poster_5
       rect:
         serializedVersion: 2
         x: 584
@@ -307,7 +307,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_10
+      name: Poster_6
       rect:
         serializedVersion: 2
         x: 628
@@ -328,7 +328,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_11
+      name: Poster_8
       rect:
         serializedVersion: 2
         x: 730
@@ -475,10 +475,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_18
+      name: Poster_10
       rect:
         serializedVersion: 2
-        x: 551
+        x: 550
         y: 691
         width: 52
         height: 17
@@ -496,7 +496,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_19
+      name: Poster_11
       rect:
         serializedVersion: 2
         x: 638
@@ -517,7 +517,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_20
+      name: Poster_7
       rect:
         serializedVersion: 2
         x: 683
@@ -538,7 +538,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_21
+      name: Poster_9
       rect:
         serializedVersion: 2
         x: 726
@@ -769,7 +769,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_32
+      name: Bones_1
       rect:
         serializedVersion: 2
         x: 731
@@ -1042,7 +1042,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_45
+      name: Bones_2
       rect:
         serializedVersion: 2
         x: 733
@@ -1210,7 +1210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_53
+      name: Bones_3
       rect:
         serializedVersion: 2
         x: 731
@@ -1441,7 +1441,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_64
+      name: Bones_4
       rect:
         serializedVersion: 2
         x: 720
@@ -1609,11 +1609,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_72
+      name: Gallows
       rect:
         serializedVersion: 2
         x: 574
-        y: 348
+        y: 349
         width: 146
         height: 124
       alignment: 0
@@ -2302,7 +2302,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_105
+      name: Poster_12
       rect:
         serializedVersion: 2
         x: 12
@@ -2323,7 +2323,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_106
+      name: Poster_13
       rect:
         serializedVersion: 2
         x: 61
@@ -2365,11 +2365,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_108
+      name: Poster_14
       rect:
         serializedVersion: 2
         x: 157
-        y: 207
+        y: 208
         width: 24
         height: 31
       alignment: 0
@@ -3477,6 +3477,132 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Fence_Enclosure
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 624
+        width: 144
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f8a87f2ddf853409df1a514f3e6dd8
+      internalID: 1296922380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_Front_Middle
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 624
+        width: 48
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b5af1e534c4d641a8908d8f1d91f41
+      internalID: 2145647734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_Front_BL
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 624
+        width: 48
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db8060d506bb20f4a97ae5a4c407f833
+      internalID: 45930495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_Front_BR
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 624
+        width: 48
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4858aba35b02d94d8c4a8f6e406ac5e
+      internalID: -2077461576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_Side
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 646
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bcea0119ad31bc4cb72afa82b1ff7b3
+      internalID: 409210450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: western_E_0
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 720
+        width: 48
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 112a2946c5aec9147bbffa2a4077be4f
+      internalID: 499675894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -3488,20 +3614,40 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      western_E_0: -1083143675
+      Bones_1: -509389629
+      Bones_2: -646611506
+      Bones_3: -1148405220
+      Bones_4: 272131839
+      Fence_Enclosure: 1296922380
+      Fence_Front_BL: 45930495
+      Fence_Front_BR: -2077461576
+      Fence_Front_Middle: 2145647734
+      Fence_Side: 409210450
+      Gallows: 1291989373
+      Log: -1083143675
+      Poster_1: -1788796826
+      Poster_10: 1948784840
+      Poster_11: -949587424
+      Poster_12: -472251505
+      Poster_13: 212430215
+      Poster_14: -660122496
+      Poster_2: 1709578542
+      Poster_3: 265801013
+      Poster_4: -1333830044
+      Poster_5: 1598304876
+      Poster_6: -1593678489
+      Poster_7: 483966487
+      Poster_8: -1737654034
+      Poster_9: 110493343
+      western_E_0: 499675894
       western_E_1: 400184005
-      western_E_10: -1593678489
       western_E_100: -1540469228
       western_E_101: -2054693047
       western_E_102: -1791465403
       western_E_103: -1707167764
       western_E_104: 1558060105
-      western_E_105: -472251505
-      western_E_106: 212430215
       western_E_107: -1821041085
-      western_E_108: -660122496
       western_E_109: -273808751
-      western_E_11: -1737654034
       western_E_110: -1529556854
       western_E_111: 1916820466
       western_E_112: 1478544066
@@ -3559,11 +3705,7 @@ TextureImporter:
       western_E_16: -1834060186
       western_E_160: -1928848069
       western_E_17: -496954546
-      western_E_18: 1948784840
-      western_E_19: -949587424
       western_E_2: 1115709613
-      western_E_20: 483966487
-      western_E_21: 110493343
       western_E_22: 759893508
       western_E_23: -858974404
       western_E_24: -237203313
@@ -3575,7 +3717,6 @@ TextureImporter:
       western_E_3: -1930593575
       western_E_30: 1501550528
       western_E_31: -495994176
-      western_E_32: -509389629
       western_E_33: -234901607
       western_E_34: 1017951494
       western_E_35: -2144171385
@@ -3589,37 +3730,30 @@ TextureImporter:
       western_E_42: 1622777195
       western_E_43: -18165774
       western_E_44: 329024966
-      western_E_45: -646611506
       western_E_46: -1032779581
       western_E_47: 1015266117
       western_E_48: -473939425
       western_E_49: 1302357498
-      western_E_5: -1788796826
       western_E_50: -1733450130
       western_E_51: -508744855
       western_E_52: 1510327057
-      western_E_53: -1148405220
       western_E_54: -1968826467
       western_E_55: -241958426
       western_E_56: 685051905
       western_E_57: -2019279295
       western_E_58: -605672480
       western_E_59: -528227121
-      western_E_6: 1709578542
       western_E_60: -618392610
       western_E_61: -792744596
       western_E_62: -852584444
       western_E_63: -876418931
-      western_E_64: 272131839
       western_E_65: -1925156809
       western_E_66: -745967002
       western_E_67: 674041184
       western_E_68: 1564573305
       western_E_69: -1785328797
-      western_E_7: 265801013
       western_E_70: -1937773719
       western_E_71: -1233207230
-      western_E_72: 1291989373
       western_E_73: 2063078610
       western_E_74: -1696253666
       western_E_75: 427428762
@@ -3627,7 +3761,6 @@ TextureImporter:
       western_E_77: 416140876
       western_E_78: -105225315
       western_E_79: -1820575828
-      western_E_8: -1333830044
       western_E_80: 2122614847
       western_E_81: 674174989
       western_E_82: 194784107
@@ -3638,7 +3771,6 @@ TextureImporter:
       western_E_87: 2071005503
       western_E_88: 2088639767
       western_E_89: -984953419
-      western_E_9: 1598304876
       western_E_90: -307217082
       western_E_91: -1157480664
       western_E_92: 1877093221
