@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public Gun gun;
     Vector2 moveDirection;
 
-    [Header("Dash Settings")]
+    [Header("Dash Settings")]  // This is the attribute causing the error
     [SerializeField] float dashSpeed = 15f;
     [SerializeField] float dashDuration = 1f;
     [SerializeField] float dashCoolDown = 1f;
@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(isDash){
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
-        
     }
 
     private void FixedUpdate(){
@@ -49,7 +47,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-
     }
 
     private IEnumerator Dash(){
@@ -63,3 +60,4 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 }
+
