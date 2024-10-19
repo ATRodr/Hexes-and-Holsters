@@ -2016,7 +2016,7 @@ TextureImporter:
         width: 48
         height: 93
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2024,6 +2024,69 @@ TextureImporter:
       bones: []
       spriteID: 57bef7cb015cb25469a8bd34edf715c0
       internalID: 868943329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Counter_White
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 432
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d1e5a782f646c4ea9256547e7887a8
+      internalID: 624084103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shelves_Brown
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b688e83d3146ff6429f0cc0f8b9482dd
+      internalID: 1815420030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shelf_Top
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 624
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eecb9d3bfc0bcb4fb83deb27e7b28bf
+      internalID: -127591443
       vertices: []
       indices: 
       edges: []
@@ -2041,8 +2104,11 @@ TextureImporter:
     nameFileIdTable:
       Cabinet: 226481526
       Corn: 1767233631
+      Counter_White: 624084103
       Cross_Jesus: 1152432904
       Curtains_Red: 868943329
+      Shelf_Top: -127591443
+      Shelves_Brown: 1815420030
       Window_Dark_1Pane: 1012789159
       Window_Dark_4Pane: 734542519
       Window_Light_1Pane: 1896966749
