@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -1974,7 +1974,7 @@ TextureImporter:
         width: 20
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1982,6 +1982,48 @@ TextureImporter:
       bones: []
       spriteID: ff1ebc06334ffa74c9194c4d373b86fd
       internalID: 1767233631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cabinet
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 624
+        width: 96
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6187bf838873304dbec48a6a481fef1
+      internalID: 226481526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_Red
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 435
+        width: 48
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57bef7cb015cb25469a8bd34edf715c0
+      internalID: 868943329
       vertices: []
       indices: 
       edges: []
@@ -1997,8 +2039,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Cabinet: 226481526
       Corn: 1767233631
       Cross_Jesus: 1152432904
+      Curtains_Red: 868943329
       Window_Dark_1Pane: 1012789159
       Window_Dark_4Pane: 734542519
       Window_Light_1Pane: 1896966749

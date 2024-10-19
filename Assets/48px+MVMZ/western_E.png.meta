@@ -1504,27 +1504,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_E_67
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 387
-        width: 240
-        height: 93
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4313a90871d58040a0d5537ac04139e
-      internalID: 674041184
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: western_E_68
       rect:
         serializedVersion: 2
@@ -3570,7 +3549,7 @@ TextureImporter:
         width: 4
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3591,7 +3570,7 @@ TextureImporter:
         width: 48
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3599,6 +3578,111 @@ TextureImporter:
       bones: []
       spriteID: 112a2946c5aec9147bbffa2a4077be4f
       internalID: 499675894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bar_Middle_Left
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 387
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa90eb2b190baf44e996bd4e6c6a117c
+      internalID: -1532414974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bar_Middle_Right
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 387
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bccceb2c15de72f4d976b0d7eb8564bb
+      internalID: -2031714335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bar_Right
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 387
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322c1fad2c1a5dd499ef4a57c19d840e
+      internalID: -681892124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: western_E_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 387
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9ccb9d6b03acc244bee648923dc9a86
+      internalID: -243365135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bar_Top_Left
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 432
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d462a34bc7ad04b8c024862f0b7a1c
+      internalID: 133145626
       vertices: []
       indices: 
       edges: []
@@ -3614,6 +3698,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Bar_Back: -1469289757
+      Bar_Left: 1762937858
+      Bar_Middle_Left: -1532414974
+      Bar_Middle_Right: -2031714335
+      Bar_Right: -681892124
+      Bar_Table_Middle: 1838771153
+      Bar_Top_Left: 133145626
       Bones_1: -509389629
       Bones_2: -646611506
       Bones_3: -1148405220
@@ -3752,6 +3843,7 @@ TextureImporter:
       western_E_67: 674041184
       western_E_68: 1564573305
       western_E_69: -1785328797
+      western_E_7: -243365135
       western_E_70: -1937773719
       western_E_71: -1233207230
       western_E_73: 2063078610
