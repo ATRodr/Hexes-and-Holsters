@@ -37,10 +37,12 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
     public void TakeDamage(float damageAmt){
         health -= damageAmt;
         if(health <= 0){
             Destroy(gameObject);
         }
     }
+    
 }

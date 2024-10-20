@@ -17,10 +17,8 @@ public class EnemyBulletScript : MonoBehaviour
 
         Destroy(gameObject, 2f);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.CompareTag("Player")){
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
         }
         Destroy(gameObject);
