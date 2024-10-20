@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6309198054212538416}
   - component: {fileID: 3997626533748406092}
   - component: {fileID: 3872129792550937908}
+  - component: {fileID: -557861991344747448}
   m_Layer: 7
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -140,6 +141,18 @@ MonoBehaviour:
   - {fileID: 1428824901949687441}
   - {fileID: 1606283305775091692}
   - {fileID: 6657432161536911945}
+--- !u!114 &-557861991344747448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173520198739243699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f4624df07464683960ac9b22dc99fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1185062361663092361
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,8 +504,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5787048688045433472, guid: 8ff0384f4da7c5a458a058eecd8c36f6, type: 3}
+  boltPrefab: {fileID: 0}
   firePoint: {fileID: 3454686018564746188}
   fireForce: 30
+  chainLightningEffect: {fileID: 0}
 --- !u!1 &2204910428640947882
 GameObject:
   m_ObjectHideFlags: 0
