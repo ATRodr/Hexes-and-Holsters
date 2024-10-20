@@ -13173,6 +13173,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moving Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2327544806780215669, guid: 5bb7059d55e214c02a3a9aac8f9151d2, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327544806780215669, guid: 5bb7059d55e214c02a3a9aac8f9151d2, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327544806780215669, guid: 5bb7059d55e214c02a3a9aac8f9151d2, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6466235492067989408, guid: 5bb7059d55e214c02a3a9aac8f9151d2, type: 3}
       propertyPath: player
       value: 
