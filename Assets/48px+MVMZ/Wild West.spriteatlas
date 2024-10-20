@@ -246,6 +246,7 @@ SpriteAtlas:
     - 6970c8f368c2a4d2fbceddefb84b286f: 39879636
     - 6970c8f368c2a4d2fbceddefb84b286f: -1800728610
     - 6970c8f368c2a4d2fbceddefb84b286f: 1012789159
+    - 6970c8f368c2a4d2fbceddefb84b286f: 1252020284
     - 6970c8f368c2a4d2fbceddefb84b286f: -127591443
     - 6970c8f368c2a4d2fbceddefb84b286f: 1367780217
     - 6970c8f368c2a4d2fbceddefb84b286f: 1744529669
@@ -1259,6 +1260,7 @@ SpriteAtlas:
   - {fileID: 39879636, guid: 6970c8f368c2a4d2fbceddefb84b286f, type: 3}
   - {fileID: -1800728610, guid: 6970c8f368c2a4d2fbceddefb84b286f, type: 3}
   - {fileID: 1012789159, guid: 6970c8f368c2a4d2fbceddefb84b286f, type: 3}
+  - {fileID: 1252020284, guid: 6970c8f368c2a4d2fbceddefb84b286f, type: 3}
   - {fileID: -127591443, guid: 6970c8f368c2a4d2fbceddefb84b286f, type: 3}
   - {fileID: 1367780217, guid: 6970c8f368c2a4d2fbceddefb84b286f, type: 3}
   - {fileID: 1744529669, guid: 6970c8f368c2a4d2fbceddefb84b286f, type: 3}
@@ -2271,6 +2273,7 @@ SpriteAtlas:
   - western_D_61
   - western_D_60
   - Window_Dark_1Pane
+  - Bench_Back_Long
   - Shelf_Top
   - Window_Light_4Pane
   - western_D_30

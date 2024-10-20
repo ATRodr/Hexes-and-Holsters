@@ -12,6 +12,7 @@ public class CameraFollow : MonoBehaviour
     {
         // Calculate the initial offset between the camera and player (optional, if you want a fixed offset)
         cameraOffset = transform.position - player.position;
+        Debug.Log("Camera offset initialized: " + cameraOffset);
     }
 
     void Update()
@@ -31,5 +32,18 @@ public class CameraFollow : MonoBehaviour
 
         // Smoothly move the camera towards the target position
         transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSpeed * Time.deltaTime);
+        Debug.Log($"Player Position: {playerPosition}, Target Point: {targetPoint}, Target Position: {targetPosition}");
+    }
+
+    public void SetPlayer(Transform newPlayer)
+    {
+        player = newPlayer;
+        if (player != null)
+        {
+            // Set a fixed offset from the player
+            cameraOffset = new Vector3(0, 0, -10f); // Adjust this value as needed
+            transform.position = player.position + cameraOffset; // Set the camera position directly
+            Debug.Log("Player set, camera position adjusted to: " + transform.position);
+        }
     }
 }
