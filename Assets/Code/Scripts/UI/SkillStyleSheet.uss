@@ -23,4 +23,33 @@
     -unity-font-definition: url("project://database/Assets/PointedlyMad%20SDF.asset?fileID=11400000&guid=f906ed5ff5a524a8abffd3d0c632c33c&type=2#PointedlyMad SDF");
     background-color: rgba(255, 255, 255, 0);
     -unity-text-align: upper-center;
+    white-space: normal;
+}
+
+.skill-button {
+    width: 128px;
+    height: 128px;
+    border-radius: 5px;
+}
+
+.skill-button:hover {
+    border-width: 5px;
+    border-color: rgb(255, 231, 98);
+}
+
+.skill-button:disabled {
+    border-width: 5px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.skill-row {
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.skill-tree-button {
+    -unity-font: url("project://database/Assets/PointedlyMad.ttf?fileID=12800000&guid=8ce9b364d895741aeb8fc8a5cb5a2407&type=3#PointedlyMad");
+    -unity-font-definition: url("project://database/Assets/PointedlyMad%20SDF.asset?fileID=11400000&guid=f906ed5ff5a524a8abffd3d0c632c33c&type=2#PointedlyMad SDF");
 }
