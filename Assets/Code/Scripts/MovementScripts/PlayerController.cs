@@ -31,9 +31,15 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal"); 
         float moveY = Input.GetAxisRaw("Vertical"); 
 
+        //normal bullet
         if(Input.GetMouseButtonDown(0)){
             gun.Fire();
+        } 
+        //Chain Lightning and cowboy abilty (TBD)
+        if(Input.GetKeyDown(KeyCode.E)){
+            gun.FireLightning();
         }
+        
 
         if(Input.GetKeyDown(KeyCode.Space) && canDash){
             StartCoroutine(Dash());

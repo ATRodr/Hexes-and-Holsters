@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.4106, y: 1.92, z: 0}
-  m_LocalScale: {x: 0.14133035, y: 0.13301718, z: 1}
+  m_LocalScale: {x: 25, y: 25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: 7320663792c347749977f81c1bf0a00e, type: 3}
-  m_Color: {r: 0.9716981, g: 0.5510409, b: 0.03208439, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,6 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c9fcacaafe94f2abd65d59ac9c20ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isChainLightning: 0
+  chainLightningEffect: {fileID: 3062000353973423308, guid: c3e0572a6b810d14880e6af48d735b0f, type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 5
+  ChainLightningEffect: {fileID: 3062000353973423308, guid: c3e0572a6b810d14880e6af48d735b0f, type: 3}
+  beenStuck: {fileID: 4292522431608293378, guid: 7f801f96875ef714eb9f24f212472b27, type: 3}
+  amountToChain: 4
+  EndObject: {fileID: 0}
+  parti: {fileID: 0}
 --- !u!50 &-2840962989223638617
 Rigidbody2D:
   serializedVersion: 4
@@ -122,7 +133,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
