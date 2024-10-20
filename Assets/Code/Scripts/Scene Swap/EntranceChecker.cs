@@ -36,7 +36,7 @@ public class BuildingEntrance : MonoBehaviour
         // Set the appropriate spawn point tag based on the building the player is in
         if (interiorSceneName == "Level1_Saloon_Interior") // Replace with the actual name of your building scenes
         {
-            SceneSwapManager.instance.spawnPointTag = "ExpitPoint_1";
+            SceneSwapManager.instance.spawnPointTag = "ExitPoint_1";
         }
         else if (interiorSceneName == "Level1_Bank_Interior")
         {
