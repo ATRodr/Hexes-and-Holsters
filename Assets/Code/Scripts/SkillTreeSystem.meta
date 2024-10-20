@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Level/Prefabs/Abilities.meta
+guid: 442c5e73a9e8048f687352070a025a09
+========
 guid: 343b19ca42f3747b4b7da5415c604cb3
+>>>>>>>> main:Assets/Code/Scripts/SkillTreeSystem.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

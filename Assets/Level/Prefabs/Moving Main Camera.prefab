@@ -107,4 +107,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   cameraSpeed: 5
-  followRatio: 0.25
+  followRatio: 0.15
