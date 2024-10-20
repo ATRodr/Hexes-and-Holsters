@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool isPaused = false;
+    private UIDocument uiDocument;
+    private VisualElement root;
     public float moveSpeed = 5f;
     public Rigidbody2D rb; 
     public GameObject[] sides;
@@ -19,8 +23,20 @@ public class PlayerController : MonoBehaviour
     bool canDash;
 
     private void Start(){
+        uiDocument = GameObject.FindObjectOfType<UIDocument>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         canDash = true;
+
+        // Hide the skill tree UI
+        if (uiDocument != null)
+        {
+            root = uiDocument.rootVisualElement;
+            root.visible = false;
+        }
+        else
+        {
+            Debug.LogError("UI Document not found in the scene.");
+        }
     }
 
     void Update()
@@ -45,7 +61,23 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Dash());
         }
 
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleSkillTree();
+        }
+
         moveDirection = new Vector2(moveX, moveY).normalized;
+    }
+
+    private void ToggleSkillTree()
+    {
+        isPaused = !isPaused;
+
+        // Show or hide the root element
+        root.visible = isPaused;
+        
+        // Pause or resume the game
+        Time.timeScale = isPaused ? 0f : 1f;
     }
 
     private void FixedUpdate(){
