@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2424757223712046673}
   - component: {fileID: 5957616519170241972}
   - component: {fileID: 6858572624129638260}
+  - component: {fileID: -8446330328353110479}
   m_Layer: 6
   m_Name: Ranged Enemy 1
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.73028, y: -4.5547075, z: 0}
-  m_LocalScale: {x: 200, y: 200, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7492757393861873714}
