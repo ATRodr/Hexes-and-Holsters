@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SpawnPoint_1
+  - ExitPoint_1
+  - SpawnPoint_2
+  - SpawnPoint_3
+  - SpawnPoint_4
+  - ExitPoint_2
+  - ExitPoint_3
+  - ExitPoint_4
   layers:
   - Default
   - TransparentFX
@@ -40,4 +48,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 871018987
+    locked: 0
+  - name: Player
+    uniqueID: 54392429
+    locked: 0
+  - name: Foreground
+    uniqueID: 1629362951
+    locked: 0
+  - name: Details
+    uniqueID: 3958692209
     locked: 0

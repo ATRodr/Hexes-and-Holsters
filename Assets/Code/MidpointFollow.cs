@@ -32,4 +32,15 @@ public class CameraFollow : MonoBehaviour
         // Smoothly move the camera towards the target position
         transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSpeed * Time.deltaTime);
     }
+
+    public void SetPlayer(Transform newPlayer)
+    {
+        player = newPlayer;
+        if (player != null)
+        {
+            // Set a fixed offset from the player
+            cameraOffset = new Vector3(0, 0, -10f); // Adjust this value as needed
+            transform.position = player.position + cameraOffset; // Set the camera position directly
+        }
+    }
 }
