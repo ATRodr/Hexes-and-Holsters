@@ -18,8 +18,8 @@ MonoBehaviour:
     IsPercentage: 0
   IsAbility: 1
   SkillName: Chain Lightning
-  SkillDescription: chain ur lightning
-  SkillIcon: {fileID: 1499401219, guid: 342e5a0c64f5d0747bb77cfeb844c5ea, type: 3}
+  SkillDescription: 
+  SkillIcon: {fileID: 0}
   SkillPrerequisites: []
   SkillTier: 1
   Cost: 0

@@ -196,9 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b37396464b4f47ed88c0cd114e4d49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillLibrary: {fileID: 11400000, guid: 38fb76dcb3e8441e5922d489eb934522, type: 2}
-  uiTalentButton: {fileID: 9197481963319205126, guid: 5d6993a4a5de3455792f6ce2757d4edd, type: 3}
-  talentButtons: []
 --- !u!1001 &434599335
 PrefabInstance:
   m_ObjectHideFlags: 0

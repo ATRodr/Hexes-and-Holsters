@@ -19,8 +19,8 @@ public class UIStatPanel : MonoBehaviour
 
     void Start()
     {
-        uiManager.PlayerSkillManager.OnSkillPointsChanged += PopulateLabelText;
         GatherLabelReferences();
+        uiManager.PlayerSkillManager.OnSkillPointsChanged += PopulateLabelText;
         PopulateLabelText();
     }
 
@@ -31,6 +31,12 @@ public class UIStatPanel : MonoBehaviour
         dynamiteDashLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("DynamiteDash");
         goldenGunLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("GoldenGun");
         skillPointsLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("SkillPoints");
+
+        Debug.Log(chainLightningLabel);
+        Debug.Log(destructiveWaveLabel);
+        Debug.Log(dynamiteDashLabel);
+        Debug.Log(goldenGunLabel);
+        Debug.Log(skillPointsLabel);
     }
 
     private void PopulateLabelText()
