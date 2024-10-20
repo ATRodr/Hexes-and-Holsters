@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class AimSystem : MonoBehaviour
 {
-    public Transform gun;  // Reference to unmirrored gun
+    public Transform gun; //Reference to unmirrored gun
+    public Transform wand; 
+    public Transform revolver;
     public GameObject[] bodySprites; // Array of body sprites (8 directions)
+    public GameObject[] cowboySprites;//Cowboy Sprites
+    public GameObject[] wizardSprites;//Wizard Spritess
     private Camera mainCamera;
     private Vector2 aimDirection;
 
@@ -18,6 +22,9 @@ public class AimSystem : MonoBehaviour
     void Update()
     {
         Aim();
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+
+        }
         UpdateBodySprite();
     }
 
@@ -48,6 +55,8 @@ public class AimSystem : MonoBehaviour
         }
         // gun.localScale = scale;
     }
+
+
 
     void UpdateBodySprite()
     {
