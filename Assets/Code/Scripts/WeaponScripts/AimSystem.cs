@@ -8,12 +8,11 @@ public class AimSystem : MonoBehaviour
     public GameObject[] bodySprites; // Array of body sprites (8 directions)
     private Camera mainCamera;
     private Vector2 aimDirection;
-    private bool isGunLeft; // Determines if the mirrored gun is active
+
 
     void Start()
     {
         mainCamera = Camera.main;
-        isGunLeft = false;
     }
 
     void Update()

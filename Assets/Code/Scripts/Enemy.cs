@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        //agent.updateUpAxis = false;
     }
 
     private void Update()
@@ -26,6 +26,12 @@ public class Enemy : MonoBehaviour
         health -= damageAmt;
         Destroy(Bullet);
 
+        if(health <= 0){
+            Destroy(gameObject);
+        }
+    }
+    public void TakeDamage(float damageAmt){
+        health -= damageAmt;
         if(health <= 0){
             Destroy(gameObject);
         }
