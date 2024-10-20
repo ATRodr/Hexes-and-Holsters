@@ -132,6 +132,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4162791171338207713, guid: 966d3ee9e78a1486194b314aefaf3421, type: 3}
   m_PrefabInstance: {fileID: 6226536791446478954}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1015918321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015918324}
+  - component: {fileID: 1015918323}
+  - component: {fileID: 1015918322}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1015918322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015918321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1015918323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015918321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1015918324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015918321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1023853186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5395766300962189051, guid: cb346f50966e740b8afdc94db645d8a1, type: 3}
@@ -314,6 +382,10 @@ PrefabInstance:
     - target: {fileID: 2045703242383302536, guid: 5bb7059d55e214c02a3a9aac8f9151d2, type: 3}
       propertyPath: m_Name
       value: Moving Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327544806780215669, guid: 5bb7059d55e214c02a3a9aac8f9151d2, type: 3}
+      propertyPath: orthographic size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6466235492067989408, guid: 5bb7059d55e214c02a3a9aac8f9151d2, type: 3}
       propertyPath: player
@@ -622,6 +694,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 23800000, guid: ef053a178775ba44fa275c3a501566cb, type: 2}
     - target: {fileID: 708513572486363050, guid: 75834ea8cc8dd410a83d8567c928e324, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 708513572486363050, guid: 75834ea8cc8dd410a83d8567c928e324, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 708513572486363050, guid: 75834ea8cc8dd410a83d8567c928e324, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -677,5 +757,6 @@ SceneRoots:
   - {fileID: 1255917111}
   - {fileID: 2084296591}
   - {fileID: 7770043619828157953}
-  - {fileID: 1826530417165991893}
-  - {fileID: 1105276579}
+  - {fileID: 1145295182}
+  - {fileID: 165088899}
+  - {fileID: 1015918324}
