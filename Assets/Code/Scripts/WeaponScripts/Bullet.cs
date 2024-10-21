@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
             if (isChainLightning)
             {
                 Debug.Log($"Hit: {collision.gameObject.name}, Layer: {collision.gameObject.layer}");
-                enemyComponent.TakeDamage(0, gameObject);
+                enemyComponent.TakeDamage(5, gameObject);
                 Instantiate(chainLightningEffect, collision.collider.transform.position, Quaternion.identity);
             }
             else

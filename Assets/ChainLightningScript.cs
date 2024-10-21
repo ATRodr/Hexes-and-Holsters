@@ -44,10 +44,9 @@ public class ChainLightningScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"Hit: {collision.gameObject.name}, Layer: {collision.gameObject.layer}");
-        if (enemyLayer == (enemyLayer | (1 << collision.gameObject.layer)) && !collision.GetComponentInChildren<EnemyStruck>())
-        {
-            Debug.Log("Hit Enemy");
+        if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
+        {   
+            Debug.Log("In da ting");
             if(singleSpawn != 0){
                 EndObject = collision.gameObject;
                 amountToChain -= 1; 
