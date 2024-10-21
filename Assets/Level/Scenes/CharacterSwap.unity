@@ -218,6 +218,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 363882930037425917, guid: 7e3dd1c27bed949fdb75bd1795f1aedc, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 6319299284404186939, guid: dc2c5c47fcc744c8e843129c97da6344, type: 3}
+    - target: {fileID: 2204910428640947882, guid: 7e3dd1c27bed949fdb75bd1795f1aedc, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3511194774426908653, guid: 7e3dd1c27bed949fdb75bd1795f1aedc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.407409
@@ -257,6 +265,14 @@ PrefabInstance:
     - target: {fileID: 3511194774426908653, guid: 7e3dd1c27bed949fdb75bd1795f1aedc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017860396760253965, guid: 7e3dd1c27bed949fdb75bd1795f1aedc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026435127191612920, guid: 7e3dd1c27bed949fdb75bd1795f1aedc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
