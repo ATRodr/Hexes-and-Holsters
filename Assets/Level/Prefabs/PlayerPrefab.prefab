@@ -169,6 +169,7 @@ MonoBehaviour:
   dynamite: {fileID: 5875590232435866451, guid: 73053d970d17fa548b56f0abc579d7fa, type: 3}
   explosion: {fileID: 6319299284404186939, guid: d07d42eb264cc62439842a10000730fc, type: 3}
   playerHealth: {fileID: 0}
+  healthBar: {fileID: 0}
   gun: {fileID: 363882930037425917}
   dashSpeed: 15
   dashDuration: 0.25
@@ -706,8 +707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cf4c56e1af547188ab8b78bdb19391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5787048688045433472, guid: a0715c87a0938f64abbc8ff2f2cc2f79, type: 3}
-  boltPrefab: {fileID: 6319299284404186939, guid: 41cb933aefd0843469e7cc24f11256df, type: 3}
+  bulletPrefab: {fileID: 6319299284404186939, guid: dc2c5c47fcc744c8e843129c97da6344, type: 3}
+  boltPrefab: {fileID: 0}
   firePoint: {fileID: 3454686018564746188}
   fireForce: 30
   chainLightningEffect: {fileID: 0}
