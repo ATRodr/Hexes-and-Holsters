@@ -165,6 +165,10 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 1438979162927685514}
   sides: []
+  aimSystem: {fileID: 0}
+  dynamite: {fileID: 5875590232435866451, guid: 73053d970d17fa548b56f0abc579d7fa, type: 3}
+  explosion: {fileID: 6319299284404186939, guid: d07d42eb264cc62439842a10000730fc, type: 3}
+  playerHealth: {fileID: 0}
   gun: {fileID: 363882930037425917}
   dashSpeed: 15
   dashDuration: 0.25
@@ -267,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 8
   maxHealth: 8
+  isInvincible: 0
 --- !u!1 &436860866801300081
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,8 +40,6 @@ public class FireAtPlayer : MonoBehaviour
                 hasLOS = ray.collider.CompareTag("Player");
                 if (hasLOS)
                 {
-                    Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-                    Debug.Log("Player in sight");
                     timer = 0;
                     shoot();
                 }

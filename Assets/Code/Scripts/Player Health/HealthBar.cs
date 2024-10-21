@@ -19,6 +19,7 @@ public class HealthBar : MonoBehaviour
     private void Start(){
         DrawHearts();
     }
+
     public void DrawHearts(){
         ClearHearts();
 

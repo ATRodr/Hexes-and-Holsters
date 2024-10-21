@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject dynamite;
     public GameObject explosion;
+
+    public PlayerHealth playerHealth;
+    public HealthBar healthBar;
     
     public Gun gun;
     Vector2 moveDirection;
@@ -27,10 +30,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashCoolDown = 1f;
 
     private float nextDynamiteDash;
+    private float nextShieldOfFaith;
+
     bool isDash;
     bool canDash;
 
     private void Start(){
+        healthBar = GameObject.FindObjectOfType<HealthBar>();
+        playerHealth = GetComponent<PlayerHealth>();
         aimSystem = GetComponent<AimSystem>();
         uiDocument = GameObject.FindObjectOfType<UIDocument>();
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -64,13 +71,19 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
             if(aimSystem.isCowboy){
                 if(Time.time > nextDynamiteDash){
-                    nextDynamiteDash = Time.time + 1f;
                     StartCoroutine(dynamiteDash());
                 }else{
                     Debug.Log("Dynamite Dash on cooldown");
                 }
             }else{
-                gun.FireLightning();
+                if (Time.time > nextShieldOfFaith)
+                {
+                    StartCoroutine(shieldOfFaith());
+                }
+                else
+                {
+                    Debug.Log("Shield of Faith on cooldown");
+                }
             }
         
         }
@@ -86,6 +99,15 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
+    }
+    IEnumerator shieldOfFaith()
+    {
+        nextShieldOfFaith = Time.time + 15f;
+        playerHealth.isInvincible = true;
+        healthBar.DrawHearts();
+        yield return new WaitForSeconds(5);
+        playerHealth.isInvincible = false;
+        healthBar.DrawHearts();
     }
     IEnumerator dynamiteDash()
     {
