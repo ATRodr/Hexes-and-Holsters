@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class AimSystem : MonoBehaviour
 {
+    [SerializeField]
+    public float delay = 0.5f;
+    public float time;
+    public bool isCowboy = true;
     public Transform gun; //Reference to unmirrored gun
     public Transform wand; 
     public Transform revolver;
     public GameObject[] bodySprites; // Array of body sprites (8 directions)
     public GameObject[] cowboySprites;//Cowboy Sprites
-    public GameObject[] wizardSprites;//Wizard Spritess
+    public GameObject[] wizardSprites;//Wizard Sprites
     private Camera mainCamera;
     private Vector2 aimDirection;
 
@@ -17,13 +21,25 @@ public class AimSystem : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        bodySprites = cowboySprites;
+        foreach (GameObject sprite in wizardSprites)
+        {
+            sprite.SetActive(false);
+        }
     }
 
     void Update()
     {
         Aim();
-        if(Input.GetKeyDown(KeyCode.LeftShift)){
-
+        if (Time.time >= delay + time && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            time = Time.time;
+            foreach (GameObject sprite in bodySprites)
+            {
+                sprite.SetActive(false);
+            }
+            bodySprites = isCowboy ? wizardSprites : cowboySprites;
+            isCowboy = !isCowboy;
         }
         UpdateBodySprite();
     }
@@ -73,34 +89,42 @@ public class AimSystem : MonoBehaviour
         if (angle > -22.5f && angle <= 22.5f)
         {
             bodySprites[3].SetActive(true); // Right
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
         else if (angle > 22.5f && angle <= 67.5f)
         {
             bodySprites[2].SetActive(true); // UpRight
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
         else if (angle > 67.5f && angle <= 112.5f)
         {
             bodySprites[1].SetActive(true); // Up
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
         else if (angle > 112.5f && angle <= 157.5f)
         {
             bodySprites[0].SetActive(true); // UpLeft
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
         else if (angle > 157.5f || angle <= -157.5f)
         {
             bodySprites[6].SetActive(true); // Left
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
         else if (angle > -157.5f && angle <= -112.5f)
         {
             bodySprites[5].SetActive(true); // DownLeft
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
         else if (angle > -112.5f && angle <= -67.5f)
         {
             bodySprites[7].SetActive(true); // Down
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
         else if (angle > -67.5f && angle <= -22.5f)
         {
             bodySprites[4].SetActive(true); // DownRight
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
     }
 }

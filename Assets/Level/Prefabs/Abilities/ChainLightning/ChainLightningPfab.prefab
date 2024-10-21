@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7621357993664946992}
   - component: {fileID: -6620566221712710605}
   - component: {fileID: 2166586422239786814}
+  - component: {fileID: -1916656225868773546}
   m_Layer: 0
   m_Name: ChainLightningPfab
   m_TagString: Untagged
@@ -4969,3 +4970,30 @@ MonoBehaviour:
   amountToChain: 5
   EndObject: {fileID: 0}
   parti: {fileID: 7621357993664946992}
+--- !u!50 &-1916656225868773546
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3062000353973423308}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);
+            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);  //Causes Problems I think
         }
     }
     public void TakeDamage(float damageAmt, GameObject Bullet){
