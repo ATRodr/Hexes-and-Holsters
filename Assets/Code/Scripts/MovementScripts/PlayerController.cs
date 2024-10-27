@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dynamite Dash");
         Instantiate(dynamite, pos, rot);
         StartCoroutine(Dash(0.16f, 27f));
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.75f);
         Instantiate(explosion, pos, rot);
     }
     private void ToggleSkillTree()

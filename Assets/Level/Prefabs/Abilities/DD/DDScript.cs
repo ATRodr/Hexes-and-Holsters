@@ -7,7 +7,7 @@ public class DDScript : MonoBehaviour
 {
     void Start()
     {
-        Destroy(gameObject, 0.8f);
+        Destroy(gameObject, 0.75f);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
