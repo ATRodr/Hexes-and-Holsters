@@ -7,7 +7,7 @@ public class AimSystem : MonoBehaviour
     [SerializeField]
     public float delay = 0.5f;
     public float time;
-    public bool isCowboy = true;
+    public bool isCowboy;
     public Transform gun; //Reference to unmirrored gun
     public Transform wand; 
     public Transform revolver;
@@ -16,12 +16,17 @@ public class AimSystem : MonoBehaviour
     public GameObject[] wizardSprites;//Wizard Sprites
     private Camera mainCamera;
     private Vector2 aimDirection;
-
+    public Animator animator;
+    public Animator ctwAnim;
 
     void Start()
     {
-        mainCamera = Camera.main;
-        bodySprites = wizardSprites;
+        isCowboy = true;
+        ctwAnim.SetBool("isCowboy",isCowboy);
+        //ctwAnim.GetComponent<SpriteRenderer>().enabled = false;
+        animator = GetComponent<Animator>();
+        mainCamera = Camera.main;   
+        bodySprites = cowboySprites;
         foreach (GameObject sprite in wizardSprites)
         {
             sprite.SetActive(false);
@@ -38,12 +43,28 @@ public class AimSystem : MonoBehaviour
             {
                 sprite.SetActive(false);
             }
+
             bodySprites = isCowboy ? wizardSprites : cowboySprites;
-            isCowboy = !isCowboy;
+            isCowboy =!isCowboy;
+            animator.SetBool("isCowboy",isCowboy);
+            ctwAnim.SetBool("isCowboy",isCowboy);
+            handleSwapAnimations();
         }
         UpdateBodySprite();
     }
 
+    void handleSwapAnimations(){
+        if(!isCowboy){  //If swapping to wizard THerefore no longer CB
+            ctwAnim.GetComponent<SpriteRenderer>().enabled = true;
+            ctwAnim.SetBool("isCowboy",isCowboy);
+            StartCoroutine(DisableAnimatorAfterAnimation(ctwAnim,0.72f));
+        }
+    }
+    IEnumerator DisableAnimatorAfterAnimation(Animator anim,float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        anim.GetComponent<SpriteRenderer>().enabled = false;
+    }
     void Aim()
     {
         // Get mouse position in world space
@@ -71,9 +92,6 @@ public class AimSystem : MonoBehaviour
         }
         // gun.localScale = scale;
     }
-
-
-
     void UpdateBodySprite()
     {
         // Calculate angle for player body sprite rotation

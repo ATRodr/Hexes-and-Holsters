@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a8d690bb9ea924d3b9fa999394c799c7
+guid: 07c8b132aab12bf4dbf69f7567bd4df2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_0
+      name: 00_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 179
-        width: 16
-        height: 32
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 485d19e4876b5a84285d4b842e5c7b07
-      internalID: -474661980
+      spriteID: 2b92b919e01f4bf49908f911f3cf92c4
+      internalID: 775622262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_1
+      name: 00_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 179
-        width: 16
-        height: 31
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a838d3133ed2e742bcbf59c23c5a140
-      internalID: -1615810806
+      spriteID: a51999351f3e73e47b72cae9030e95e7
+      internalID: -1895469760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_2
+      name: 00_2
       rect:
         serializedVersion: 2
-        x: 111
-        y: 179
-        width: 16
-        height: 31
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e747236bdc630143b074848eba545d0
-      internalID: -704733133
+      spriteID: 8bb2d1219354c774b9221a8883d2a3fa
+      internalID: 1281310534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_3
+      name: 00_3
       rect:
         serializedVersion: 2
-        x: 159
-        y: 179
-        width: 16
-        height: 31
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ecccfc08fa1209449dcf2e8dc2164b5
-      internalID: 343538555
+      spriteID: 565f43e333052d045a4b5170ae3a23ff
+      internalID: -44267543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_4
+      name: 00_4
       rect:
         serializedVersion: 2
-        x: 207
-        y: 179
-        width: 16
-        height: 32
+        x: 256
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bad772d260f2af43bcef5a8f0585263
-      internalID: -156894928
+      spriteID: 97e8fc277e1ffa142ab934a26624e372
+      internalID: 1549704190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_5
+      name: 00_5
       rect:
         serializedVersion: 2
-        x: 255
-        y: 179
-        width: 16
-        height: 32
+        x: 320
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c06bd5de902f2a84886dc1356b10a9fc
-      internalID: 402323955
+      spriteID: 1b4c9654537a43d40b902e7625d48a31
+      internalID: -924386454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_6
+      name: 00_6
       rect:
         serializedVersion: 2
-        x: 15
-        y: 135
-        width: 16
-        height: 31
+        x: 384
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52e70de7cf739544bb5846a78ddf298c
-      internalID: -1610551550
+      spriteID: ffb8b3b52e17680469a5fbd513439ae9
+      internalID: 490189182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_7
+      name: 00_7
       rect:
         serializedVersion: 2
-        x: 63
-        y: 135
-        width: 16
-        height: 32
+        x: 448
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 098e3d3b76f29344095e8e84a5420d9d
-      internalID: 1169518533
+      spriteID: 192dfaf4346c8074685aaf3015bd8061
+      internalID: 2083615185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_8
+      name: 00_8
       rect:
         serializedVersion: 2
-        x: 111
-        y: 135
-        width: 16
-        height: 31
+        x: 512
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9dc849e4e8de0d4a907b9d72aa486d6
-      internalID: -1847341630
+      spriteID: d9ebb1f572e77a9478ae25b2d01c84da
+      internalID: -1019178048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_9
+      name: 00_9
       rect:
         serializedVersion: 2
-        x: 159
-        y: 135
-        width: 16
-        height: 28
+        x: 576
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0b44b01f889c4c44bf89511ad865c79
-      internalID: -243515960
+      spriteID: 27952089679ec0f448b35d6f0872ec76
+      internalID: -1499834392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_10
+      name: 00_10
       rect:
         serializedVersion: 2
-        x: 207
-        y: 135
-        width: 16
-        height: 31
+        x: 640
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +321,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0141fa26846dbd547adbbec004f71440
-      internalID: 1021509459
+      spriteID: 4b3a4e5e96bcd5f40ad39d1d41ee3707
+      internalID: 1138001569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_11
+      name: 00_11
       rect:
         serializedVersion: 2
-        x: 255
-        y: 135
-        width: 16
-        height: 32
+        x: 704
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,20 +342,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a245a64014d18e48a8711eb2eb0c935
-      internalID: -712989234
+      spriteID: 398557838663fcf4bafc236eafa657b0
+      internalID: -1587041246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_12
+      name: 00_12
       rect:
         serializedVersion: 2
-        x: 303
-        y: 135
-        width: 16
-        height: 31
+        x: 768
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,20 +363,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 949724013077ab443a84105b556b973f
-      internalID: 536060588
+      spriteID: 9953973a32f65e545a0cc1b014b5ac38
+      internalID: -41620018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_13
+      name: 00_13
       rect:
         serializedVersion: 2
-        x: 351
-        y: 135
-        width: 17
-        height: 28
+        x: 832
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,20 +384,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db169001632a97245bb3abbb2f3d4f88
-      internalID: 1999404972
+      spriteID: a40a99548a1404e458532aacfcf81563
+      internalID: 190706676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_14
+      name: 00_14
       rect:
         serializedVersion: 2
-        x: 15
-        y: 91
-        width: 16
-        height: 32
+        x: 896
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,20 +405,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be9693acf7c6d9546ab8e4ec9bbd8546
-      internalID: -1755790521
+      spriteID: 15f82274e2f15bb4bb6b255ad77f000d
+      internalID: 1218149697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_15
+      name: 00_15
       rect:
         serializedVersion: 2
-        x: 63
-        y: 91
-        width: 21
-        height: 31
+        x: 960
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,20 +426,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d326871e40338640b688a3daab02ace
-      internalID: -430709302
+      spriteID: a71584c0c11e8a64e814c152309c34fe
+      internalID: 885252347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_16
+      name: 00_16
       rect:
         serializedVersion: 2
-        x: 110
-        y: 91
-        width: 28
-        height: 31
+        x: 1024
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,20 +447,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 448ee85ccc45a664a81fa84ce1e056e7
-      internalID: 493864628
+      spriteID: 3c962078b79bec0469ee7e56c519434a
+      internalID: 1456098286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_17
+      name: 00_17
       rect:
         serializedVersion: 2
-        x: 159
-        y: 91
-        width: 27
-        height: 31
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,20 +468,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53dd6c713fc5d6d4899d8f32e7de4993
-      internalID: -416075484
+      spriteID: cff34883011a52a4f81f68b5ec685000
+      internalID: 423710217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_18
+      name: 00_18
       rect:
         serializedVersion: 2
-        x: 207
-        y: 91
-        width: 17
-        height: 31
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,20 +489,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0db613188e7c6e448b154aed844c09b9
-      internalID: -42006168
+      spriteID: a81e8b7a6cf28574badb2c35aac35bac
+      internalID: 829296121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_19
+      name: 00_19
       rect:
         serializedVersion: 2
-        x: 255
-        y: 91
-        width: 16
-        height: 32
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -510,20 +510,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85319f2016824c946a7be479659d5b5d
-      internalID: -524722479
+      spriteID: b1834cfc38889bd4ab6e1aa57c66c0ef
+      internalID: 570762713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_20
+      name: 00_20
       rect:
         serializedVersion: 2
-        x: 12
-        y: 52
-        width: 22
-        height: 32
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -531,20 +531,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b51787818e169384a87a1d974df72710
-      internalID: 1967768281
+      spriteID: 3096b0f7a51e0f645ab118c40b076b6f
+      internalID: 547501436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_21
+      name: 00_21
       rect:
         serializedVersion: 2
-        x: 15
-        y: 3
-        width: 16
-        height: 31
+        x: 256
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -552,20 +552,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2f744fbb8731d241abda7ba3bdcf64b
-      internalID: 1144814274
+      spriteID: ddcebd47674bfb74cb4daed993383845
+      internalID: -196664310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_22
+      name: 00_22
       rect:
         serializedVersion: 2
-        x: 61
-        y: 3
-        width: 20
-        height: 34
+        x: 320
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -573,20 +573,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d40deadc3ce523b4ea3914d339d5301a
-      internalID: 1538717711
+      spriteID: 148a228c98463264294b91eff4a2fba6
+      internalID: 613068769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_23
+      name: 00_23
       rect:
         serializedVersion: 2
-        x: 109
-        y: 11
-        width: 20
-        height: 32
+        x: 384
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -594,20 +594,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f9cd6c876f6b23428b0c1d168e797ba
-      internalID: -217017911
+      spriteID: 3a0a66736f744e042b25552eb238e17d
+      internalID: 1394266536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_24
+      name: 00_24
       rect:
         serializedVersion: 2
-        x: 159
-        y: 30
-        width: 16
-        height: 10
+        x: 448
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -615,20 +615,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6594c52837f8e846a07af81f2712386
-      internalID: 1792026245
+      spriteID: 4f50c700910cce541bd79706361414a6
+      internalID: -1007862997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_25
+      name: 00_25
       rect:
         serializedVersion: 2
-        x: 206
-        y: 27
-        width: 16
-        height: 11
+        x: 512
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -636,20 +636,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6707519d0eb43bf45ba5b2642e2ad666
-      internalID: -576505099
+      spriteID: 702c618405112b84ea6ed12678480128
+      internalID: 1596722602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_26
+      name: 00_26
       rect:
         serializedVersion: 2
-        x: 258
-        y: 26
-        width: 16
-        height: 9
+        x: 576
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -657,20 +657,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c482cdab501dc24dad966d80554aff5
-      internalID: -1886998609
+      spriteID: 1ade666e6dae81647a41b53c5dfbbd13
+      internalID: -1626296083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_27
+      name: 00_27
       rect:
         serializedVersion: 2
-        x: 309
-        y: 23
-        width: 16
-        height: 10
+        x: 640
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -678,20 +678,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 446c6ba336209be44b55cef7fa5dc7c3
-      internalID: 2069145788
+      spriteID: f177bdb96bdbefe419e9257419e93318
+      internalID: 830700065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_28
+      name: 00_28
       rect:
         serializedVersion: 2
-        x: 159
-        y: 11
-        width: 16
-        height: 15
+        x: 704
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -699,20 +699,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf2d27809be1858428664215bf9b27c8
-      internalID: 1088239660
+      spriteID: 5865ad1a56f8652448004869972ce6cb
+      internalID: 1046913129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_29
+      name: 00_29
       rect:
         serializedVersion: 2
-        x: 205
-        y: 3
-        width: 20
-        height: 16
+        x: 768
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -720,20 +720,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25d7f357455b6b04986f737c132d2a34
-      internalID: 170079890
+      spriteID: bf1fe56d9dff0054ab8ecec9eb6d0de9
+      internalID: -1974540614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_30
+      name: 00_30
       rect:
         serializedVersion: 2
-        x: 254
-        y: 3
-        width: 18
-        height: 18
+        x: 832
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -741,20 +741,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fef6c87b33ef9514eb61b980ea0358eb
-      internalID: -1394845256
+      spriteID: 1815db84bc1cecb489a7a4b73230e983
+      internalID: 216089277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_31
+      name: 00_31
       rect:
         serializedVersion: 2
-        x: 302
-        y: 3
-        width: 18
-        height: 17
+        x: 896
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -762,20 +762,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75f7ca9102e30c544a336b891e5df557
-      internalID: -1711340018
+      spriteID: 037588f5c11832c42befe447eb7f4888
+      internalID: 1776846792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_32
+      name: 00_32
       rect:
         serializedVersion: 2
-        x: 350
-        y: 3
-        width: 22
-        height: 27
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -783,20 +783,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f6b223d71bbe8f4d8b2da9916392ec7
-      internalID: 1397447711
+      spriteID: 92eb7b1fb26003343a4cb819fe2ca404
+      internalID: 494968366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_33
+      name: 00_33
       rect:
         serializedVersion: 2
-        x: 398
-        y: 3
-        width: 19
-        height: 24
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -804,20 +804,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7aeef0c2c399936439784730594a2f7b
-      internalID: 367181565
+      spriteID: cf892ff5a6a4bc947b7eca8ad14be160
+      internalID: -1084301672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_34
+      name: 00_34
       rect:
         serializedVersion: 2
-        x: 445
-        y: 3
-        width: 19
-        height: 22
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -825,20 +825,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 434237e86cd0d6e4f9de55834be8ada5
-      internalID: -1928042731
+      spriteID: fd1c451148de8a94788a8eb40dc80a74
+      internalID: -136966996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_35
+      name: 00_35
       rect:
         serializedVersion: 2
-        x: 494
-        y: 3
-        width: 18
-        height: 21
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -846,20 +846,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8747c6c62f11f534cb57df39d52519dc
-      internalID: 124607387
+      spriteID: b3648a86b2b29ef4483a407876fe8375
+      internalID: 931034023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_36
+      name: 00_36
       rect:
         serializedVersion: 2
-        x: 542
-        y: 3
-        width: 18
-        height: 20
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -867,20 +867,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 847aa57e5e8f1894abc359dfd571d358
-      internalID: -1097722006
+      spriteID: e42ff10a3530d2848946f5844c9cd0de
+      internalID: 710609505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_37
+      name: 00_37
       rect:
         serializedVersion: 2
-        x: 590
-        y: 3
-        width: 18
-        height: 20
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -888,20 +888,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e6ba1e6c49f6c043a2852eb3904307c
-      internalID: 216110392
+      spriteID: cf851122b9b5b8644ba473a4fee1ca3e
+      internalID: -977255748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_38
+      name: 00_38
       rect:
         serializedVersion: 2
-        x: 638
-        y: 3
-        width: 18
-        height: 20
+        x: 384
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -909,20 +909,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adfd6f932b4f62f4a8f64b4e71a51b25
-      internalID: -1645517899
+      spriteID: 865fa07e6f71a08469860ddfa9ac64fe
+      internalID: -598194198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_39
+      name: 00_39
       rect:
         serializedVersion: 2
-        x: 111
-        y: 3
-        width: 16
-        height: 6
+        x: 448
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -930,20 +930,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ab9b43d6c7945f40867665911f0760b
-      internalID: -178795464
+      spriteID: ab8ad878776a0304fa0da03ca141de64
+      internalID: -840194164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Angle 2 Sheet_40
+      name: 00_40
       rect:
         serializedVersion: 2
-        x: 159
-        y: 3
-        width: 16
-        height: 6
+        x: 512
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -951,8 +951,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 355cdaadb2e378f48bb7268454a1924b
-      internalID: -31502591
+      spriteID: ec302e116c7b30e4b8c0c16f9b7b0cd8
+      internalID: -367469562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_41
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 701c60b18f41f9d4984d4ea47d2acd50
+      internalID: 1247696545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_42
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb58f5c51befdce469f7d45a105e3d3d
+      internalID: -1192126751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_43
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1097489f4ea7cba468bd538756c3a114
+      internalID: 1444687314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_44
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f48d978a0b987140a82cc0019d44891
+      internalID: 638007995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_45
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7c8a00f6fe7bd48865d5cb9c01456b
+      internalID: -2048518373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_46
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac8896bb143df9448b6a263eb84cde5
+      internalID: 2076066149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_47
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ce29d1bcd446048ab608831b813386
+      internalID: 1548014346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_48
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1977930b9355da46bc33807240d1a1b
+      internalID: 800018078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 00_49
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e2438c6a43b6f14aa7654c63f373c82
+      internalID: -208598506
       vertices: []
       indices: 
       edges: []
@@ -968,47 +1157,56 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player Angle 2 Sheet_0: -474661980
-      Player Angle 2 Sheet_1: -1615810806
-      Player Angle 2 Sheet_10: 1021509459
-      Player Angle 2 Sheet_11: -712989234
-      Player Angle 2 Sheet_12: 536060588
-      Player Angle 2 Sheet_13: 1999404972
-      Player Angle 2 Sheet_14: -1755790521
-      Player Angle 2 Sheet_15: -430709302
-      Player Angle 2 Sheet_16: 493864628
-      Player Angle 2 Sheet_17: -416075484
-      Player Angle 2 Sheet_18: -42006168
-      Player Angle 2 Sheet_19: -524722479
-      Player Angle 2 Sheet_2: -704733133
-      Player Angle 2 Sheet_20: 1967768281
-      Player Angle 2 Sheet_21: 1144814274
-      Player Angle 2 Sheet_22: 1538717711
-      Player Angle 2 Sheet_23: -217017911
-      Player Angle 2 Sheet_24: 1792026245
-      Player Angle 2 Sheet_25: -576505099
-      Player Angle 2 Sheet_26: -1886998609
-      Player Angle 2 Sheet_27: 2069145788
-      Player Angle 2 Sheet_28: 1088239660
-      Player Angle 2 Sheet_29: 170079890
-      Player Angle 2 Sheet_3: 343538555
-      Player Angle 2 Sheet_30: -1394845256
-      Player Angle 2 Sheet_31: -1711340018
-      Player Angle 2 Sheet_32: 1397447711
-      Player Angle 2 Sheet_33: 367181565
-      Player Angle 2 Sheet_34: -1928042731
-      Player Angle 2 Sheet_35: 124607387
-      Player Angle 2 Sheet_36: -1097722006
-      Player Angle 2 Sheet_37: 216110392
-      Player Angle 2 Sheet_38: -1645517899
-      Player Angle 2 Sheet_39: -178795464
-      Player Angle 2 Sheet_4: -156894928
-      Player Angle 2 Sheet_40: -31502591
-      Player Angle 2 Sheet_5: 402323955
-      Player Angle 2 Sheet_6: -1610551550
-      Player Angle 2 Sheet_7: 1169518533
-      Player Angle 2 Sheet_8: -1847341630
-      Player Angle 2 Sheet_9: -243515960
+      00_0: 775622262
+      00_1: -1895469760
+      00_10: 1138001569
+      00_11: -1587041246
+      00_12: -41620018
+      00_13: 190706676
+      00_14: 1218149697
+      00_15: 885252347
+      00_16: 1456098286
+      00_17: 423710217
+      00_18: 829296121
+      00_19: 570762713
+      00_2: 1281310534
+      00_20: 547501436
+      00_21: -196664310
+      00_22: 613068769
+      00_23: 1394266536
+      00_24: -1007862997
+      00_25: 1596722602
+      00_26: -1626296083
+      00_27: 830700065
+      00_28: 1046913129
+      00_29: -1974540614
+      00_3: -44267543
+      00_30: 216089277
+      00_31: 1776846792
+      00_32: 494968366
+      00_33: -1084301672
+      00_34: -136966996
+      00_35: 931034023
+      00_36: 710609505
+      00_37: -977255748
+      00_38: -598194198
+      00_39: -840194164
+      00_4: 1549704190
+      00_40: -367469562
+      00_41: 1247696545
+      00_42: -1192126751
+      00_43: 1444687314
+      00_44: 638007995
+      00_45: -2048518373
+      00_46: 2076066149
+      00_47: 1548014346
+      00_48: 800018078
+      00_49: -208598506
+      00_5: -924386454
+      00_6: 490189182
+      00_7: 2083615185
+      00_8: -1019178048
+      00_9: -1499834392
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
