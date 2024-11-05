@@ -8,8 +8,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] float health, maxHealth = 4f;
     [SerializeField] float attackRate = 1f;
-    [SerializeField] bool isMelle = true;
-    
+    [SerializeField] bool isMelle = false;
+    [SerializeField] public bool isMagic = false;
+        
     float nextAttack = 0f;
 
     NavMeshAgent agent;

@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7358861125931753648, guid: b3b02aa0ec808474581ea5a06b175dc6, type: 3}
+      propertyPath: fireBoltPrefab
+      value: 
+      objectReference: {fileID: 6319299284404186939, guid: 1d90d94f4011a40d387234dd7d9ae0bd, type: 3}
     - target: {fileID: 8625620628166079364, guid: b3b02aa0ec808474581ea5a06b175dc6, type: 3}
       propertyPath: m_Name
       value: REALPlayerPrefab
@@ -406,6 +410,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1278813707}
+    - target: {fileID: 8895200428994156677, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: isMagic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8895200428994156677, guid: bafae02d8838747aab61092e52a38648, type: 3}
       propertyPath: isMelle
       value: 1
