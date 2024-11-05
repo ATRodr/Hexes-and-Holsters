@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,6 +7,10 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float health, maxHealth = 4f;
+    [SerializeField] float attackRate = 1f;
+    [SerializeField] bool isMelle = true;
+    
+    float nextAttack = 0f;
 
     NavMeshAgent agent;
 
@@ -22,13 +27,17 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(target.position);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (!isMelle) return;
+        
+        if(collision.gameObject.CompareTag("Player") && Time.time > nextAttack)
         {
-            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);  //Causes Problems I think
+            nextAttack = Time.time + attackRate;
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
         }
     }
+
     public void TakeDamage(float damageAmt, GameObject Bullet){
         health -= damageAmt;
         Destroy(Bullet);

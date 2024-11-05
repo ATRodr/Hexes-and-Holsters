@@ -128,6 +128,8 @@ MonoBehaviour:
   target: {fileID: 0}
   health: 6
   maxHealth: 6
+  attackRate: 1
+  isMelle: 0
 --- !u!61 &2424757223712046673
 BoxCollider2D:
   m_ObjectHideFlags: 0
