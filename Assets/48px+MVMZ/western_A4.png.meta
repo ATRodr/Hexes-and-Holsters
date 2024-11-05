@@ -3608,7 +3608,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 336
-        y: 48
+        y: 47
         width: 48
         height: 48
       alignment: 0
@@ -3629,7 +3629,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 48
+        y: 47
         width: 48
         height: 48
       alignment: 0
@@ -4074,7 +4074,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4095,7 +4095,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4116,7 +4116,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4137,7 +4137,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4158,7 +4158,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4166,6 +4166,111 @@ TextureImporter:
       bones: []
       spriteID: 142f6a50ba508244f81465edb70ba3a1
       internalID: 1353174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LibBrick_Middle
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 22
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3e88890f4366b4459801a3e94f41bc3
+      internalID: 390220620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LibBrick_Back_Middle
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9384dc2ec098f5d4da0201fdd9a64742
+      internalID: 119107461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LibBrick_Right_Middle
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 22
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409f5d030753b6841888f3d9bf8fb7c7
+      internalID: -1996632566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LibBrick_Left_Middle
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 22
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b9fcfe6a933c349bdf3702d2a50c7f
+      internalID: -1451470035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LibBrick_Bottom_Middle
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9281b7488060c84ba3186fbae61cbf7
+      internalID: 1252686227
       vertices: []
       indices: 
       edges: []
@@ -4186,6 +4291,11 @@ TextureImporter:
       Carpet_Middle: -904988117
       Carpet_Middle_Left: 1163167042
       Carpet_Middle_Right: 1522649107
+      LibBrick_Back_Middle: 119107461
+      LibBrick_Bottom_Middle: 1252686227
+      LibBrick_Left_Middle: -1451470035
+      LibBrick_Middle: 390220620
+      LibBrick_Right_Middle: -1996632566
       Roof_Beige_Back_Middle: 879563597
       Roof_Beige_Front_Middle: 143430685
       Roof_Beige_Left_Middle: -1155183980
