@@ -8,6 +8,7 @@ public class AimSystem : MonoBehaviour
     public float delay = 0.5f;
     public float time;
     public bool isCowboy;
+    public bool swapping;
     public Transform gun; //Reference to unmirrored gun
     public Transform wand; 
     public Transform revolver;
@@ -38,6 +39,7 @@ public class AimSystem : MonoBehaviour
         Aim();
         if (Time.time >= delay + time && Input.GetKeyDown(KeyCode.LeftShift))
         {
+            swapping = true;
             time = Time.time;
             foreach (GameObject sprite in bodySprites)
             {
@@ -47,23 +49,23 @@ public class AimSystem : MonoBehaviour
             bodySprites = isCowboy ? wizardSprites : cowboySprites;
             isCowboy =!isCowboy;
             animator.SetBool("isCowboy",isCowboy);
-            ctwAnim.SetBool("isCowboy",isCowboy);
-            handleSwapAnimations();
+            StartCoroutine(handleSwapAnimations(ctwAnim,0.55f));
+        }else if(!swapping){
+            UpdateBodySprite();
         }
-        UpdateBodySprite();
     }
 
-    void handleSwapAnimations(){
-        if(!isCowboy){  //If swapping to wizard THerefore no longer CB
-            ctwAnim.GetComponent<SpriteRenderer>().enabled = true;
-            ctwAnim.SetBool("isCowboy",isCowboy);
-            StartCoroutine(DisableAnimatorAfterAnimation(ctwAnim,0.72f));
-        }
-    }
-    IEnumerator DisableAnimatorAfterAnimation(Animator anim,float duration)
-    {
+    IEnumerator handleSwapAnimations(Animator anim,float duration){
+        gun.GetComponent<SpriteRenderer>().enabled = false;
+        ctwAnim.SetBool("isCowboy",isCowboy);
+        ctwAnim.playbackTime = 0;
+        ctwAnim.GetComponent<SpriteRenderer>().enabled = true;
+        Debug.Log("Reseting");
         yield return new WaitForSeconds(duration);
         anim.GetComponent<SpriteRenderer>().enabled = false;
+        gun.GetComponent<SpriteRenderer>().enabled = true;
+        swapping = !swapping;
+        
     }
     void Aim()
     {

@@ -469,6 +469,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3872129792550937908, guid: 7e3dd1c27bed949fdb75bd1795f1aedc, type: 3}
+      propertyPath: delay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872129792550937908, guid: 7e3dd1c27bed949fdb75bd1795f1aedc, type: 3}
       propertyPath: CTWAnim
       value: 
       objectReference: {fileID: 3662082865101161267, guid: 519eeb73b6ca47540a96f545bcf7b9ef, type: 3}
