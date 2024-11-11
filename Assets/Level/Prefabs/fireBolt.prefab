@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c9fcacaafe94f2abd65d59ac9c20ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFireBolt: 1
   isChainLightning: 0
   chainLightningEffect: {fileID: 3062000353973423308, guid: c3e0572a6b810d14880e6af48d735b0f, type: 3}
 --- !u!50 &-2840962989223638617
