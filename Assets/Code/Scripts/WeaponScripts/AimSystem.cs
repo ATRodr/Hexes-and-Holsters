@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class AimSystem : MonoBehaviour
 {
+    private float lastSwapTime;
+
     [SerializeField]
-    public float delay = 0.5f;
-    public float time;
-    public bool isCowboy;
+    public float swappingDelay = 0.5f;
+    public bool isCowboy = true;
     public bool swapping;
     public Transform gun; //Reference to unmirrored gun
-    public Transform wand; 
-    public Transform revolver;
+    public Transform orb; 
     public GameObject[] bodySprites; // Array of body sprites (8/4? directions)
     public GameObject[] cowboySprites;//Cowboy Sprites
     public GameObject[] wizardSprites;//Wizard Sprites
     private Camera mainCamera;
     private Vector2 aimDirection;
-    public Animator animator;
-    public Animator ctwAnim;
+    public Animator swappingAnimation;
 
     void Start()
     {
-        isCowboy = true;
-        ctwAnim.SetBool("isCowboy",isCowboy);
-        //ctwAnim.GetComponent<SpriteRenderer>().enabled = false;
-        animator = GetComponent<Animator>();
+        swappingAnimation.SetBool("isCowboy",isCowboy);
         mainCamera = Camera.main;   
         bodySprites = cowboySprites;
         foreach (GameObject sprite in wizardSprites)
@@ -37,19 +33,18 @@ public class AimSystem : MonoBehaviour
     void Update()
     {
         Aim();
-        if (Time.time >= delay + time && Input.GetKeyDown(KeyCode.LeftShift))
+        if (Time.time >= swappingDelay + lastSwapTime && Input.GetKeyDown(KeyCode.LeftShift))
         {
-            swapping = true;
-            time = Time.time;
+            swapping = true; //protects from mid swap updates
             foreach (GameObject sprite in bodySprites)
             {
                 sprite.SetActive(false);
             }
 
-            bodySprites = isCowboy ? wizardSprites : cowboySprites;
-            isCowboy =!isCowboy;
-            animator.SetBool("isCowboy",isCowboy);
-            StartCoroutine(handleSwapAnimations(ctwAnim,0.55f));
+            bodySprites = isCowboy ? wizardSprites : cowboySprites;  //swap logic
+            isCowboy =!isCowboy;  //match state
+            lastSwapTime = Time.time;  //get swap time
+            StartCoroutine(handleSwapAnimations(swappingAnimation,0.55f)); 
         }else if(!swapping){
             UpdateBodySprite();
         }
@@ -57,15 +52,15 @@ public class AimSystem : MonoBehaviour
 
     IEnumerator handleSwapAnimations(Animator anim,float duration){
         gun.GetComponent<SpriteRenderer>().enabled = false;
-        ctwAnim.SetBool("isCowboy",isCowboy);
-        ctwAnim.playbackTime = 0;
-        ctwAnim.GetComponent<SpriteRenderer>().enabled = true;
+        swappingAnimation.SetBool("isCowboy",isCowboy);
+        swappingAnimation.playbackTime = 0;
+        swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
         Debug.Log("Reseting");
         yield return new WaitForSeconds(duration);
         anim.GetComponent<SpriteRenderer>().enabled = false;
         gun.GetComponent<SpriteRenderer>().enabled = true;
         swapping = !swapping;
-        
+        lastSwapTime = Time.time;  //get swap time
     }
     void Aim()
     {
@@ -127,25 +122,5 @@ public class AimSystem : MonoBehaviour
             bodySprites[3].SetActive(true); // Down
             gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
-        // else if (angle > 157.5f || angle <= -157.5f)
-        // {
-        //     bodySprites[6].SetActive(true); // Left
-        //     gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
-        // }
-        // else if (angle > -157.5f && angle <= -112.5f)
-        // {
-        //     bodySprites[5].SetActive(true); // DownLeft
-        //     gun.GetComponent<SpriteRenderer>().sortingOrder = 2;
-        // }
-        // else if (angle > -112.5f && angle <= -67.5f)
-        // {
-        //     bodySprites[7].SetActive(true); // Down
-        //     gun.GetComponent<SpriteRenderer>().sortingOrder = 2;
-        // }
-        // else if (angle > -67.5f && angle <= -22.5f)
-        // {
-        //     bodySprites[4].SetActive(true); // DownRight
-        //     gun.GetComponent<SpriteRenderer>().sortingOrder = 2;
-        // }
     }
 }

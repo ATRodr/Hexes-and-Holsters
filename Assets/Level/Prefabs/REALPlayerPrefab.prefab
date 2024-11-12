@@ -947,7 +947,6 @@ GameObject:
   - component: {fileID: 797489134282026568}
   - component: {fileID: 3914230067109764810}
   - component: {fileID: 7938284189996904330}
-  - component: {fileID: 5851307295816719705}
   - component: {fileID: 2917228067347405668}
   m_Layer: 7
   m_Name: REALPlayerPrefab
@@ -1072,13 +1071,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e02fbc71a47b64f8999167dcde60bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 2
-  time: 0
+  swappingDelay: 0.5
   isCowboy: 1
   swapping: 0
   gun: {fileID: 7101080641625730490}
-  wand: {fileID: 0}
-  revolver: {fileID: 0}
+  orb: {fileID: 0}
   bodySprites: []
   cowboySprites:
   - {fileID: 9054879411173511652}
@@ -1090,8 +1087,7 @@ MonoBehaviour:
   - {fileID: 1932705440377390023}
   - {fileID: 8405098317000955390}
   - {fileID: 890883650629006824}
-  animator: {fileID: 5851307295816719705}
-  ctwAnim: {fileID: 3939382514808641976}
+  swappingAnimation: {fileID: 3939382514808641976}
 --- !u!114 &3914230067109764810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,27 +1115,6 @@ MonoBehaviour:
   health: 8
   maxHealth: 8
   isInvincible: 0
---- !u!95 &5851307295816719705
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625620628166079364}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fc635d37580e5d5408997fc6bcdadb46, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2917228067347405668
 MonoBehaviour:
   m_ObjectHideFlags: 0

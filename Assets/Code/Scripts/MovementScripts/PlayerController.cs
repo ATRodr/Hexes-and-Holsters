@@ -11,16 +11,11 @@ public class PlayerController : MonoBehaviour
     private VisualElement root;
     public float moveSpeed = 5f;
     public Rigidbody2D rb; 
-    public GameObject[] sides;
-
     public AimSystem aimSystem;
-
     public GameObject dynamite;
     public GameObject explosion;
-
     public PlayerHealth playerHealth;
     public HealthBar healthBar;
-    
     public Gun gun;
     Vector2 moveDirection;
 
@@ -33,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private float nextShieldOfFaith;
 
     bool isDash;
-    bool canDash;
+    bool canDash = true;
 
     private void Start(){
         healthBar = GameObject.FindObjectOfType<HealthBar>();
@@ -41,7 +36,6 @@ public class PlayerController : MonoBehaviour
         aimSystem = GetComponent<AimSystem>();
         uiDocument = GameObject.FindObjectOfType<UIDocument>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        canDash = true;
 
         // Hide the skill tree UI
         if (uiDocument != null)
