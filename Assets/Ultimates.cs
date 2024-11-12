@@ -32,6 +32,8 @@ public class Ultimates : MonoBehaviour
         {
             wizardUltCooldown -= Time.deltaTime;
         }
+
+        
         if(Input.GetKeyDown(KeyCode.Q))
         {
             // if is cowboy and ult ready or is wizard and ult ready
@@ -49,7 +51,7 @@ public class Ultimates : MonoBehaviour
                             Debug.Log("Gatling Gun");
                             break;
                         case 3:
-                            Debug.Log("Whip");
+                            Debug.Log("Bullwhip Spin");
                             break;
                     }
                     cowboyUltReady = false;
@@ -62,7 +64,7 @@ public class Ultimates : MonoBehaviour
                             Debug.Log("Destructive Wave");
                             break;
                         case 2:
-                            Debug.Log("Dominate Person");
+                            Debug.Log("Power Word Heal");
                             break;
                         case 3:
                             Debug.Log("Hunger of Hadar");
