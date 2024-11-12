@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6319299284404186939, guid: dc2c5c47fcc744c8e843129c97da6344, type: 3}
+  fireBoltPrefab: {fileID: 6319299284404186939, guid: 1d90d94f4011a40d387234dd7d9ae0bd, type: 3}
   boltPrefab: {fileID: 0}
   firePoint: {fileID: 2996072542822455288}
   fireForce: 30
@@ -947,6 +948,7 @@ GameObject:
   - component: {fileID: 3914230067109764810}
   - component: {fileID: 7938284189996904330}
   - component: {fileID: 5851307295816719705}
+  - component: {fileID: 2917228067347405668}
   m_Layer: 7
   m_Name: REALPlayerPrefab
   m_TagString: Player
@@ -1138,6 +1140,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2917228067347405668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625620628166079364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c7db9b7ad4f4a05906a4a2abef90f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowboyUltReady: 0
+  wizardUltReady: 0
 --- !u!1 &9054879411173511652
 GameObject:
   m_ObjectHideFlags: 0
