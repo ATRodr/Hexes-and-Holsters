@@ -10,8 +10,10 @@ public class AimSystem : MonoBehaviour
     public float swappingDelay = 0.5f;
     public bool isCowboy = true;
     public bool swapping;
-    public Transform gun; //Reference to unmirrored gun
-    public Transform orb; 
+    public GameObject gun; //Reference to unmirrored gun
+    public GameObject orb; 
+    private GameObject weapon;
+    private SpriteRenderer weaponRenderer; 
     public GameObject[] bodySprites; // Array of body sprites (8/4? directions)
     public GameObject[] cowboySprites;//Cowboy Sprites
     public GameObject[] wizardSprites;//Wizard Sprites
@@ -28,11 +30,14 @@ public class AimSystem : MonoBehaviour
         {
             sprite.SetActive(false);
         }
+        weapon = gun;
+        gun.SetActive(true);
+        orb.SetActive(false);
     }
 
     void Update()
     {
-        Aim();
+        Aim(weapon);
         if (Time.time >= swappingDelay + lastSwapTime && Input.GetKeyDown(KeyCode.LeftShift))
         {
             swapping = true; //protects from mid swap updates
@@ -40,10 +45,19 @@ public class AimSystem : MonoBehaviour
             {
                 sprite.SetActive(false);
             }
-
             bodySprites = isCowboy ? wizardSprites : cowboySprites;  //swap logic
+            weapon = isCowboy ? orb : gun; //swap weapon logic
             isCowboy =!isCowboy;  //match state
             lastSwapTime = Time.time;  //get swap time
+            if(isCowboy)
+            {
+                gun.SetActive(true);
+                orb.SetActive(false);
+            }else
+            {
+                gun.SetActive(false);
+                orb.SetActive(true);
+            }
             StartCoroutine(handleSwapAnimations(swappingAnimation,0.55f)); 
         }else if(!swapping){
             UpdateBodySprite();
@@ -62,7 +76,7 @@ public class AimSystem : MonoBehaviour
         swapping = !swapping;
         lastSwapTime = Time.time;  //get swap time
     }
-    void Aim()
+    void Aim(GameObject weap)
     {
         // Get mouse position in world space
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -74,20 +88,29 @@ public class AimSystem : MonoBehaviour
         // Get the angle in degrees
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        gun.rotation = Quaternion.Euler(0, 0, angle);
-        
-        Vector2 scale = transform.localScale;
+        weap.transform.rotation = Quaternion.Euler(0, 0, angle);
 
         // Switch guns based on the angle (-90 to 90 shows right gun, otherwise left gun)
-        if (angle > -90 && angle < 90)
+        if(weap = gun)
         {
-            gun.localScale = new Vector3(0.25f,0.25f,0.25f);
+            if (angle > -90 && angle < 90)
+            {
+              weap.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
+            }
+            else
+            {
+               weap.transform.localScale = new Vector3(0.25f,-0.25f,0.25f);
+            }   
         }
-        else
-        {
-            gun.localScale = new Vector3(0.25f,-0.25f,0.25f);
-        }
-        // gun.localScale = scale;
+        // //weaponRenderer = weap.GetComponent(SpriteRenderer);
+        // if(angle > -180 && angle < 0)
+        // {
+        //     weap.GetComponent<SpriteRenderer>().sortingOrder = 7;
+        // }
+        // else
+        // {
+        //     weap.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        // }
     }
     void UpdateBodySprite()
     {
@@ -105,22 +128,22 @@ public class AimSystem : MonoBehaviour
         if (angle > -45f && angle <= 45f)
         {
             bodySprites[0].SetActive(true); // Right
-            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if (angle > 45f && angle <= 135f)
         {
             bodySprites[1].SetActive(true); // Up
-            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if ((angle > 135f && angle <= 180) || angle > -180f && angle <= -135)
         {
             bodySprites[2].SetActive(true); // Left
-            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if (angle > -135f && angle <= -45f)
         {
             bodySprites[3].SetActive(true); // Down
-            gun.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            gun.GetComponent<SpriteRenderer>().sortingOrder = 7;
         }
     }
 }
