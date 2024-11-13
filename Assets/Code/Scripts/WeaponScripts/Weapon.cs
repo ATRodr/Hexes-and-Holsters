@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     private bool isCowboy;
     private AimSystem aimSystem;
+
     public GameObject bulletPrefab;
     public GameObject fireBoltPrefab;
-    public GameObject boltPrefab;
-    public Transform firePoint;
+
+    public Transform gunFirePoint;
+    public Transform orbFirePoint;
+
     public float fireForce = 30f;
 
     public ChainLightningScript chainLightningEffect;
@@ -27,34 +30,22 @@ public class Gun : MonoBehaviour
         }
         else
             isCowboy = aimSystem.isCowboy;
+        Debug.Log(isCowboy);
     }
     public void Fire(){
-        
         GameObject bullet = null;
         if (isCowboy)
         {
-            bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
         }
         else
         {
-            bullet = Instantiate(fireBoltPrefab, firePoint.position, firePoint.rotation);
+            Debug.Log("FIREBOLT in Gun.cs");
+            bullet = Instantiate(fireBoltPrefab, orbFirePoint.position, orbFirePoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().AddForce(orbFirePoint.right * fireForce, ForceMode2D.Impulse);
         }
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
         Destroy(bullet, 5f);
     }
-     public void FireLightning(){
-        
-        GameObject bullet = Instantiate(boltPrefab, firePoint.position, firePoint.rotation);
-
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.isChainLightning = true;
-        
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
-
-
-        //Destroy(bullet, 5f);
-    }
-
-
 }
 

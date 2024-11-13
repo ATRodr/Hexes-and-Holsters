@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public GameObject explosion;
     public PlayerHealth playerHealth;
     public HealthBar healthBar;
-    public Gun gun;
+    public Weapon weapon;
     Vector2 moveDirection;
 
     [Header("Dash Settings")]  // This is the attribute causing the error
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         //normal bullet
         if(Input.GetMouseButtonDown(0)){
-            gun.Fire();
+            weapon.Fire();
         } 
         //Chain Lightning and cowboy abilty (TBD)
         if(Input.GetKeyDown(KeyCode.E)){
