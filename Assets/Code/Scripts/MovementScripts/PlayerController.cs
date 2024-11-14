@@ -26,8 +26,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashDuration = 0.25f;
     [SerializeField] float dashCoolDown = 1f;
 
-    public float nextDynamiteDash;
-    public float nextShieldOfFaith;
+    public float nextWizardAbility1Time;
+    public float nextWizardAbility2Time;
+    public float nextCowboyAbility1Time;
+    public float nextCowboyAbility2Time;
+    
 
     bool isDash;
     bool canDash = true;
@@ -64,16 +67,25 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             weapon.Fire();
         } 
-        //Chain Lightning and cowboy abilty (TBD)
-        if(Input.GetKeyDown(KeyCode.E)){
-            if(Time.time >= nextDynamiteDash && aimSystem.isCowboy){
-                    skillManager.cowboyAbility();
-                    Debug.Log("Cowboy Ability");
-            }else if(Time.time >= nextShieldOfFaith) {
-                    skillManager.wizardAbility();
-                    Debug.Log("wiz Ability");
-            }
         
+        if(Input.GetKeyDown(KeyCode.E)){
+            if(Time.time >= nextCowboyAbility1Time && aimSystem.isCowboy){
+                    skillManager.castCowboyAbility1();
+                    Debug.Log("Cowboy Ability 1");
+            }else if(Time.time >= nextWizardAbility1Time) {
+                    skillManager.castWizardAbility1();
+                    Debug.Log("wiz Ability 1");
+            }
+        }
+        //tenatively F key for testing can change to whatever
+        if(Input.GetKeyDown(KeyCode.F)){
+            if(Time.time >= nextCowboyAbility2Time && aimSystem.isCowboy){
+                    skillManager.castCowboyAbility2();
+                    Debug.Log("Cowboy Ability 2");
+            }else if(Time.time >= nextWizardAbility2Time) {
+                    skillManager.castWizardAbility2();
+                    Debug.Log("wiz Ability 2");
+            }
         }
         
 

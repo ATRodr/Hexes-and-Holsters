@@ -15,6 +15,10 @@ namespace Code.Scripts.SkillTreeSystem
         private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel;
         private int skillPoints;
         
+        public StatTypes wizardAbility1;
+        public StatTypes wizardAbility2;
+        public StatTypes cowboyAbility1;
+        public StatTypes cowboyAbility2;
         public int ChainLightning => chainLightningLevel;
         public int DestructiveWave => destructiveWaveLevel;
         public int DynamiteDash => dynamiteDashLevel;
@@ -25,7 +29,7 @@ namespace Code.Scripts.SkillTreeSystem
         public UnityAction OnSkillPointsChanged;
 
         private List<ScriptableSkill> unlockedSkills = new List<ScriptableSkill>();
-
+        
         //used for calling abilities and controlling player
         private PlayerController playerController;
         private void Awake()
@@ -48,7 +52,7 @@ namespace Code.Scripts.SkillTreeSystem
         {
             return skillPoints >= skill.Cost;
         }
-
+        
         public void UnlockSkill(ScriptableSkill skill)
         {
             if (!CanAffordSkill(skill)) return;
@@ -106,7 +110,7 @@ namespace Code.Scripts.SkillTreeSystem
         }
         IEnumerator shieldOfFaith()
         {
-            playerController.nextShieldOfFaith = Time.time + 15f;
+            //playerController.nextShieldOfFaith = Time.time + 15f;
             playerController.playerHealth.isInvincible = true;
             playerController.healthBar.DrawHearts();
             yield return new WaitForSeconds(5);
@@ -115,7 +119,7 @@ namespace Code.Scripts.SkillTreeSystem
         }
         IEnumerator dynamiteDash()
         {
-            playerController.nextDynamiteDash = Time.time + 15f;
+            //playerController.nextDynamiteDash = Time.time + 15f;
             Vector2 pos = transform.position;
             Quaternion rot = transform.rotation;
             Debug.Log("Dynamite Dash");
@@ -124,12 +128,22 @@ namespace Code.Scripts.SkillTreeSystem
             yield return new WaitForSeconds(0.75f);
             Instantiate(playerController.explosion, pos, rot);
         }
-        public void cowboyAbility()
+        public void castCowboyAbility1()
         {
             StartCoroutine(dynamiteDash());
             Debug.Log("Cowboy Ability");
         }
-        public void wizardAbility()
+        public void castWizardAbility1()
+        {
+            StartCoroutine(shieldOfFaith());
+            Debug.Log("Wizard Ability");
+        }
+        public void castCowboyAbility2()
+        {
+            StartCoroutine(dynamiteDash());
+            Debug.Log("Cowboy Ability");
+        }
+        public void castWizardAbility2()
         {
             StartCoroutine(shieldOfFaith());
             Debug.Log("Wizard Ability");
