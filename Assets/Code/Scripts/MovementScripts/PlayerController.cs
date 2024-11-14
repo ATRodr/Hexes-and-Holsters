@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Code.Scripts.SkillTreeSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,19 +19,21 @@ public class PlayerController : MonoBehaviour
     public HealthBar healthBar;
     public Weapon weapon;
     Vector2 moveDirection;
+    private PlayerSkillManager skillManager;
 
     [Header("Dash Settings")]  // This is the attribute causing the error
     [SerializeField] float dashSpeed = 15f;
     [SerializeField] float dashDuration = 0.25f;
     [SerializeField] float dashCoolDown = 1f;
 
-    private float nextDynamiteDash;
-    private float nextShieldOfFaith;
+    public float nextDynamiteDash;
+    public float nextShieldOfFaith;
 
     bool isDash;
     bool canDash = true;
 
     private void Start(){
+        skillManager = GetComponent<PlayerSkillManager>();
         healthBar = GameObject.FindObjectOfType<HealthBar>();
         playerHealth = GetComponent<PlayerHealth>();
         aimSystem = GetComponent<AimSystem>();
@@ -63,21 +66,12 @@ public class PlayerController : MonoBehaviour
         } 
         //Chain Lightning and cowboy abilty (TBD)
         if(Input.GetKeyDown(KeyCode.E)){
-            if(aimSystem.isCowboy){
-                if(Time.time > nextDynamiteDash){
-                    StartCoroutine(dynamiteDash());
-                }else{
-                    Debug.Log("Dynamite Dash on cooldown");
-                }
-            }else{
-                if (Time.time > nextShieldOfFaith)
-                {
-                    StartCoroutine(shieldOfFaith());
-                }
-                else
-                {
-                    Debug.Log("Shield of Faith on cooldown");
-                }
+            if(Time.time >= nextDynamiteDash && aimSystem.isCowboy){
+                    skillManager.cowboyAbility();
+                    Debug.Log("Cowboy Ability");
+            }else if(Time.time >= nextShieldOfFaith) {
+                    skillManager.wizardAbility();
+                    Debug.Log("wiz Ability");
             }
         
         }
@@ -93,26 +87,6 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
-    }
-    IEnumerator shieldOfFaith()
-    {
-        nextShieldOfFaith = Time.time + 15f;
-        playerHealth.isInvincible = true;
-        healthBar.DrawHearts();
-        yield return new WaitForSeconds(5);
-        playerHealth.isInvincible = false;
-        healthBar.DrawHearts();
-    }
-    IEnumerator dynamiteDash()
-    {
-        nextDynamiteDash = Time.time + 15f;
-        Vector2 pos = transform.position;
-        Quaternion rot = transform.rotation;
-        Debug.Log("Dynamite Dash");
-        Instantiate(dynamite, pos, rot);
-        StartCoroutine(Dash(0.16f, 27f));
-        yield return new WaitForSeconds(0.75f);
-        Instantiate(explosion, pos, rot);
     }
     private void ToggleSkillTree()
     {
@@ -132,7 +106,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
-    private IEnumerator Dash(float duration,float speed){
+    public IEnumerator Dash(float duration,float speed){
         canDash = false;
         isDash = true;
         rb.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);

@@ -12,13 +12,13 @@ namespace Code.Scripts.SkillTreeSystem
         // Start is called before the first frame update
 
         // unlockable abilities
-        private int chainLightning, destructiveWave, dynamiteDash, goldenGun;
+        private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel;
         private int skillPoints;
         
-        public int ChainLightning => chainLightning;
-        public int DestructiveWave => destructiveWave;
-        public int DynamiteDash => dynamiteDash;
-        public int GoldenGun => goldenGun;
+        public int ChainLightning => chainLightningLevel;
+        public int DestructiveWave => destructiveWaveLevel;
+        public int DynamiteDash => dynamiteDashLevel;
+        public int GoldenGun => goldenGunLevel;
         
         public int SkillPoints => skillPoints;
 
@@ -26,13 +26,16 @@ namespace Code.Scripts.SkillTreeSystem
 
         private List<ScriptableSkill> unlockedSkills = new List<ScriptableSkill>();
 
+        //used for calling abilities and controlling player
+        private PlayerController playerController;
         private void Awake()
         {
+            playerController = GetComponent<PlayerController>();
             skillPoints = 10;
-            chainLightning = 0;
-            destructiveWave = 0;
-            dynamiteDash = 0;
-            goldenGun = 0;
+            chainLightningLevel = 0;
+            destructiveWaveLevel = 0;
+            dynamiteDashLevel = 0;
+            goldenGunLevel = 0;
         }
         
         public void GainSkillPoint()
@@ -62,16 +65,16 @@ namespace Code.Scripts.SkillTreeSystem
                 switch (data.StatType)
                 {
                     case StatTypes.chainLightning:
-                        ModifyStat(ref chainLightning, data);
+                        ModifyStat(ref chainLightningLevel, data);
                         break;
                     case StatTypes.destructiveWave:
-                        ModifyStat(ref destructiveWave, data);
+                        ModifyStat(ref destructiveWaveLevel, data);
                         break;
                     case StatTypes.dynamiteDash:
-                        ModifyStat(ref dynamiteDash, data);
+                        ModifyStat(ref dynamiteDashLevel, data);
                         break;
                     case StatTypes.goldenGun:
-                        ModifyStat(ref goldenGun, data);
+                        ModifyStat(ref goldenGunLevel, data);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -100,6 +103,36 @@ namespace Code.Scripts.SkillTreeSystem
             {
                 stat += data.SkillIncreaseAmount;
             }
+        }
+        IEnumerator shieldOfFaith()
+        {
+            playerController.nextShieldOfFaith = Time.time + 15f;
+            playerController.playerHealth.isInvincible = true;
+            playerController.healthBar.DrawHearts();
+            yield return new WaitForSeconds(5);
+            playerController.playerHealth.isInvincible = false;
+            playerController.healthBar.DrawHearts();
+        }
+        IEnumerator dynamiteDash()
+        {
+            playerController.nextDynamiteDash = Time.time + 15f;
+            Vector2 pos = transform.position;
+            Quaternion rot = transform.rotation;
+            Debug.Log("Dynamite Dash");
+            Instantiate(playerController.dynamite, pos, rot);
+            StartCoroutine(playerController.Dash(0.16f, 27f));
+            yield return new WaitForSeconds(0.75f);
+            Instantiate(playerController.explosion, pos, rot);
+        }
+        public void cowboyAbility()
+        {
+            StartCoroutine(dynamiteDash());
+            Debug.Log("Cowboy Ability");
+        }
+        public void wizardAbility()
+        {
+            StartCoroutine(shieldOfFaith());
+            Debug.Log("Wizard Ability");
         }
     }
 }
