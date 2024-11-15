@@ -40,7 +40,7 @@ public class SceneSwapManager : MonoBehaviour
         if (spawnPoint != null)
         {
             // Move the player to the spawn point
-            GameObject player = GameObject.FindWithTag("Player");
+            GameObject player = MainManager.Instance.playerController.gameObject;
             if (player != null)
             {
                 player.transform.position = spawnPoint.transform.position; // Set the player's position
