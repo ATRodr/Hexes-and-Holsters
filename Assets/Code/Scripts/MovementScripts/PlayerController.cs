@@ -35,11 +35,20 @@ public class PlayerController : MonoBehaviour
     bool isDash;
     bool canDash = true;
 
-    private void Start(){
-        skillManager = GetComponent<PlayerSkillManager>();
-        healthBar = GameObject.FindObjectOfType<HealthBar>();
-        playerHealth = GetComponent<PlayerHealth>();
-        aimSystem = GetComponent<AimSystem>();
+    private IEnumerator Start(){
+        while (MainManager.Instance == null)
+        {
+            yield return null;
+        }
+        MainManager.Instance.playerController = this;
+        while (MainManager.Instance.healthBar == null || MainManager.Instance.playerHealth == null)
+        {
+            yield return null;
+        }
+        healthBar = MainManager.Instance.healthBar;
+        playerHealth = MainManager.Instance.playerHealth;
+        skillManager = MainManager.Instance.playerSkillManager;
+        aimSystem = MainManager.Instance.aimSystem;
         uiDocument = GameObject.FindObjectOfType<UIDocument>();
         rb = gameObject.GetComponent<Rigidbody2D>();
 

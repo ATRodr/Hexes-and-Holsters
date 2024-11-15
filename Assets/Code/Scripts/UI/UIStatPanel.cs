@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class UIStatPanel : MonoBehaviour
 {
@@ -8,17 +11,13 @@ public class UIStatPanel : MonoBehaviour
 
     private UIManager uiManager;
 
-    private void Awake()
+    private IEnumerator Start()
     {
-        uiManager = GetComponent<UIManager>();
-        if (uiManager == null)
+        while (MainManager.Instance == null || MainManager.Instance.uiManager == null)
         {
-            Debug.LogError("UIStatPanel: UIManager not found!");
+            yield return null;
         }
-    }
-
-    void Start()
-    {
+        uiManager = MainManager.Instance.uiManager;
         uiManager.PlayerSkillManager.OnSkillPointsChanged += PopulateLabelText;
         GatherLabelReferences();
         PopulateLabelText();

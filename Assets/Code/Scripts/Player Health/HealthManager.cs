@@ -15,17 +15,20 @@ public class HealthManager : MonoBehaviour
     public PlayerHealth playerHealth;
     Image heartImage;
 
-    private void Awake(){
-        playerHealth = FindObjectOfType<PlayerHealth>();
-        if(playerHealth == null){
-            Debug.LogError("Player Health not found in the scene.");
-        }
+    private void Start()
+    {
         heartImage = GetComponent<Image>();
     }
 
-    public void SetHeartImage(HeartStatus status){
-        if (playerHealth.isInvincible)
+    public void SetHeartImage(HeartStatus status, bool isInvincible = false)
+    {
+        if (heartImage == null)
         {
+            heartImage = GetComponent<Image>();
+        }
+        if (isInvincible)
+        {
+            Debug.Log("Invincible");
             switch (status)
             {
                 case HeartStatus.Empty:
@@ -41,7 +44,7 @@ public class HealthManager : MonoBehaviour
         }
         else
         {
-            switch(status)
+            switch (status)
             {
                 case HeartStatus.Empty:
                     heartImage.sprite = emptyHeart;

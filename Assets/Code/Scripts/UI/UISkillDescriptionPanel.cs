@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using Code.Scripts.SkillTreeSystem;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class UISkillDescriptionPanel : MonoBehaviour
 {
@@ -10,11 +13,6 @@ public class UISkillDescriptionPanel : MonoBehaviour
     private Label skillNameLabel, skillDescriptionLabel, skillCostLabel, skillPreReqLabel;
     private Button purchaseSkillButton;
     
-
-    private void Awake()
-    {
-        uiManager = GetComponent<UIManager>();
-    }
 
     private void OnEnable()
     {
@@ -27,8 +25,13 @@ public class UISkillDescriptionPanel : MonoBehaviour
         if (purchaseSkillButton != null) purchaseSkillButton.clicked -= PurchaseSkill;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        while (MainManager.Instance == null || MainManager.Instance.uiManager == null)
+        {
+            yield return null;
+        }
+        uiManager = MainManager.Instance.uiManager;
         GatherLabelReferences();
         var skill = uiManager.SkillLibrary.GetSkillsOfTier(1)[0];
         PopulateLabelText(skill);

@@ -15,9 +15,14 @@ public class Ultimates : MonoBehaviour
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
 
-    public void Start()
+    public IEnumerator Start()
     {
-        aimSystem = GetComponent<AimSystem>();
+        while (MainManager.Instance == null || MainManager.Instance.aimSystem == null)
+        {
+            yield return null;
+        }
+
+        aimSystem = MainManager.Instance.aimSystem;
         cowboyUltCooldown = COWBOY_COOLDOWN;
         wizardUltCooldown = WIZARD_COOLDOWN;
     }

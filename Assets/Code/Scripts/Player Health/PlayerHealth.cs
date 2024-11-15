@@ -10,8 +10,13 @@ public class PlayerHealth : MonoBehaviour
     public float health, maxHealth;
     public bool isInvincible = false;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        while (MainManager.Instance == null)
+        {
+            yield return null;
+        }
+        MainManager.Instance.playerHealth = this;
         health = maxHealth;
     }
 

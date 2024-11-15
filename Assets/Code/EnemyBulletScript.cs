@@ -19,7 +19,7 @@ public class EnemyBulletScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.CompareTag("Player")){
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
+            MainManager.Instance.playerHealth.TakeDamage(1);
         }
         Destroy(gameObject);
     }
