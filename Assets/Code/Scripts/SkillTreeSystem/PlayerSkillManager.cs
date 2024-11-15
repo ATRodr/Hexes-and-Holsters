@@ -4,25 +4,69 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 namespace Code.Scripts.SkillTreeSystem
 {
+
+    // LRU Cache (Least Recently Used) keeps track of the oldest skill
+    // activated and replaces it with new skill activated if player has
+    // > 2 skills activated, also keeps track of the skill's ability number
+    // to know which ability to fire
+    class LRUCache
+    {
+        public int capacity;
+        public Dictionary<ScriptableSkill, int> cache;
+        public LRUCache()
+        {
+            capacity = 2;
+            cache = new Dictionary<ScriptableSkill, int>();
+        }
+        public void Add(ScriptableSkill skill)
+        {
+            if (cache.ContainsKey(skill)) return;
+
+            if (cache.Count == capacity)
+            {
+                int abilityNumber = cache[cache.Keys.First()];
+                cache.Remove(cache.Keys.First());
+
+                cache.Add(skill, abilityNumber);
+            }
+            else
+            {
+                cache.Add(skill, cache.Count + 1);
+            }
+
+        }
+        
+        // returns ability name based on ability number (1 or 2)
+        public ScriptableSkill GetSkill(int number)
+        {
+            foreach (ScriptableSkill skill in cache.Keys)
+            {
+                if (cache[skill] == number)
+                {
+                    return skill;
+                }
+            }
+            return null;
+        }
+    }
     public class PlayerSkillManager : MonoBehaviour
     {
         // Start is called before the first frame update
 
         // unlockable abilities
-        private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel;
+        private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel;
         private int skillPoints;
-        
-        public StatTypes wizardAbility1;
-        public StatTypes wizardAbility2;
-        public StatTypes cowboyAbility1;
-        public StatTypes cowboyAbility2;
+        private LRUCache activeCowboySkills;
+        private LRUCache activeWizardSkills;        
         public int ChainLightning => chainLightningLevel;
         public int DestructiveWave => destructiveWaveLevel;
         public int DynamiteDash => dynamiteDashLevel;
         public int GoldenGun => goldenGunLevel;
+        public int ShieldOfFaith => shieldOfFaithLevel;
         
         public int SkillPoints => skillPoints;
 
@@ -35,11 +79,14 @@ namespace Code.Scripts.SkillTreeSystem
         private void Awake()
         {
             playerController = GetComponent<PlayerController>();
+            activeCowboySkills = new LRUCache();
+            activeWizardSkills = new LRUCache();
             skillPoints = 10;
             chainLightningLevel = 0;
             destructiveWaveLevel = 0;
             dynamiteDashLevel = 0;
             goldenGunLevel = 0;
+            shieldOfFaithLevel = 0;
         }
         
         public void GainSkillPoint()
@@ -55,9 +102,9 @@ namespace Code.Scripts.SkillTreeSystem
         
         public void UnlockSkill(ScriptableSkill skill)
         {
-            if (!CanAffordSkill(skill)) return;
             ModifyStats(skill);
             unlockedSkills.Add(skill);
+            ActivateSkill(skill);
             skillPoints -= skill.Cost;
             OnSkillPointsChanged?.Invoke();
         }
@@ -80,6 +127,9 @@ namespace Code.Scripts.SkillTreeSystem
                     case StatTypes.goldenGun:
                         ModifyStat(ref goldenGunLevel, data);
                         break;
+                    case StatTypes.shieldOfFaith:
+                        ModifyStat(ref shieldOfFaithLevel, data);
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -95,7 +145,10 @@ namespace Code.Scripts.SkillTreeSystem
         {
             return skill.SkillPrerequisites.Count == 0 || skill.SkillPrerequisites.All(IsSkillUnlocked);
         }
-
+        public bool isSkillActive(ScriptableSkill skill)
+        {
+            return skill.isCowboySkill ? activeCowboySkills.cache.ContainsKey(skill) : activeWizardSkills.cache.ContainsKey(skill);
+        }
         private void ModifyStat(ref int stat, UpgradeData data)
         {
             bool isPercentage = data.IsPercentage;
@@ -108,9 +161,18 @@ namespace Code.Scripts.SkillTreeSystem
                 stat += data.SkillIncreaseAmount;
             }
         }
+
+        public void ActivateSkill(ScriptableSkill skill)
+        {
+            Debug.Log("Activating skill: " + skill.SkillName);
+            if (skill.isCowboySkill)
+                activeCowboySkills.Add(skill);
+            else
+                activeWizardSkills.Add(skill);            
+        }
+
         IEnumerator shieldOfFaith()
         {
-            //playerController.nextShieldOfFaith = Time.time + 15f;
             playerController.playerHealth.isInvincible = true;
             playerController.healthBar.DrawHearts();
             yield return new WaitForSeconds(5);
@@ -119,7 +181,6 @@ namespace Code.Scripts.SkillTreeSystem
         }
         IEnumerator dynamiteDash()
         {
-            //playerController.nextDynamiteDash = Time.time + 15f;
             Vector2 pos = transform.position;
             Quaternion rot = transform.rotation;
             Debug.Log("Dynamite Dash");
@@ -128,25 +189,58 @@ namespace Code.Scripts.SkillTreeSystem
             yield return new WaitForSeconds(0.75f);
             Instantiate(playerController.explosion, pos, rot);
         }
-        public void castCowboyAbility1()
+
+        public void castCowboyAbility(int number, ref float lastTimeActivated)
         {
-            StartCoroutine(dynamiteDash());
-            Debug.Log("Cowboy Ability");
+            // find key in activeCowboySkills that has value number
+            ScriptableSkill skill = activeCowboySkills.GetSkill(number);
+
+            // dont have skill
+            if (skill == null) return;
+
+            string skillName = skill.SkillName;
+            int cooldown = skill.CoolDown;
+
+            if (Time.time - lastTimeActivated < cooldown) return;
+
+            lastTimeActivated = Time.time;
+
+            // switch on the skill name and normalize it
+            switch (skillName.ToLower().Replace(" ", ""))
+            {
+                case "dynamitedash":
+                    StartCoroutine(dynamiteDash());
+                    Debug.Log("DynoDashh");
+                    break;
+                case "goldengun":
+                    Debug.Log("Golden Gun");
+                    break;
+            }
         }
-        public void castWizardAbility1()
+        public void castWizardAbility(int number, ref float lastTimeActivated)
         {
-            StartCoroutine(shieldOfFaith());
-            Debug.Log("Wizard Ability");
-        }
-        public void castCowboyAbility2()
-        {
-            StartCoroutine(dynamiteDash());
-            Debug.Log("Cowboy Ability");
-        }
-        public void castWizardAbility2()
-        {
-            StartCoroutine(shieldOfFaith());
-            Debug.Log("Wizard Ability");
+            // find key in activeWizardSkills that has value 1
+            ScriptableSkill skill = activeWizardSkills.GetSkill(number);
+
+            // dont have skill
+            if (skill == null) return;
+
+            string skillName = skill.SkillName;
+            int cooldown = skill.CoolDown;
+            if (Time.time - lastTimeActivated < cooldown) return;
+            lastTimeActivated = Time.time;
+
+            // switch on the skill name and normalize it
+            switch (skillName.ToLower().Replace(" ", ""))
+            {
+                case "shieldoffaith":
+                    StartCoroutine(shieldOfFaith());
+                    Debug.Log("Shield of Faith");
+                    break;
+                case "destructivewave":
+                    Debug.Log("Destructive Wave");
+                    break;
+            }
         }
     }
 }

@@ -30,7 +30,6 @@ public class Weapon : MonoBehaviour
         }
         else
             isCowboy = aimSystem.isCowboy;
-        Debug.Log(isCowboy);
     }
     public void Fire(){
         GameObject bullet = null;
@@ -41,7 +40,6 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            Debug.Log("FIREBOLT in Gun.cs");
             bullet = Instantiate(fireBoltPrefab, orbFirePoint.position, orbFirePoint.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(orbFirePoint.right * fireForce, ForceMode2D.Impulse);
         }

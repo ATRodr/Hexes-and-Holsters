@@ -7,9 +7,9 @@ using Code.Scripts.SkillTreeSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool isPaused = false;
     private UIDocument uiDocument;
     private VisualElement root;
+    public bool isPaused = false;
     public float moveSpeed = 5f;
     public Rigidbody2D rb; 
     public AimSystem aimSystem;
@@ -26,10 +26,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashDuration = 0.25f;
     [SerializeField] float dashCoolDown = 1f;
 
-    public float nextWizardAbility1Time;
-    public float nextWizardAbility2Time;
-    public float nextCowboyAbility1Time;
-    public float nextCowboyAbility2Time;
+    public float lastWizardAbility1Time = 0;
+    public float lastWizardAbility2Time = 0;
+    public float lastCowboyAbility1Time = 0;
+    public float lastCowboyAbility2Time = 0;
     
 
     bool isDash;
@@ -57,9 +57,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(isDash){
-            return;
-        }
+        if (isDash) return;
+
         float moveX = Input.GetAxisRaw("Horizontal"); 
         float moveY = Input.GetAxisRaw("Vertical"); 
 
@@ -68,28 +67,35 @@ public class PlayerController : MonoBehaviour
             weapon.Fire();
         } 
         
-        if(Input.GetKeyDown(KeyCode.E)){
-            if(Time.time >= nextCowboyAbility1Time && aimSystem.isCowboy){
-                    skillManager.castCowboyAbility1();
-                    Debug.Log("Cowboy Ability 1");
-            }else if(Time.time >= nextWizardAbility1Time) {
-                    skillManager.castWizardAbility1();
-                    Debug.Log("wiz Ability 1");
+        if(!isPaused && Input.GetKeyDown(KeyCode.E))
+        {
+            if (aimSystem.isCowboy)
+            {
+                skillManager.castCowboyAbility(1, ref lastCowboyAbility1Time);
+                Debug.Log("Cowboy Ability 1");
             }
-        }
-        //tenatively F key for testing can change to whatever
-        if(Input.GetKeyDown(KeyCode.F)){
-            if(Time.time >= nextCowboyAbility2Time && aimSystem.isCowboy){
-                    skillManager.castCowboyAbility2();
-                    Debug.Log("Cowboy Ability 2");
-            }else if(Time.time >= nextWizardAbility2Time) {
-                    skillManager.castWizardAbility2();
-                    Debug.Log("wiz Ability 2");
+            else
+            {
+                skillManager.castWizardAbility(1, ref lastWizardAbility1Time);
+                Debug.Log("wiz Ability 1");
             }
         }
         
+        if (!isPaused && Input.GetKeyDown(KeyCode.F))
+        {
+            if (aimSystem.isCowboy)
+            {
+                skillManager.castCowboyAbility(2, ref lastCowboyAbility2Time);
+                Debug.Log("Cowboy Ability 2");
+            }
+            else
+            {
+                skillManager.castWizardAbility(2, ref lastWizardAbility2Time);
+                Debug.Log("wiz Ability 2");
+            }
+        }
 
-        if(Input.GetKeyDown(KeyCode.Space) && canDash){
+        if( !isPaused && Input.GetKeyDown(KeyCode.Space) && canDash){
             StartCoroutine(Dash(dashDuration,dashSpeed));
         }
 

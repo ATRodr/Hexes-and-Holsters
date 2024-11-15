@@ -6,6 +6,9 @@ public class AimSystem : MonoBehaviour
 {
     private float lastSwapTime;
 
+    // need player controller to know if game is paused
+    private PlayerController controller;
+
     [SerializeField]
     public float swappingDelay = 0.5f;
     public bool isCowboy = true;
@@ -37,6 +40,7 @@ public class AimSystem : MonoBehaviour
 
     void Start()
     {
+        controller = GetComponent<PlayerController>();
         //start as cowboy and assign sprites
         swappingAnimation.SetBool("isCowboy",isCowboy);
         bodySprites = cowboySprites;
@@ -57,6 +61,8 @@ public class AimSystem : MonoBehaviour
 
     void Update()
     {
+        if (controller.isPaused) return;
+
         //always update aim 
         Aim(weapon);
         //only update body sprite when not swapping

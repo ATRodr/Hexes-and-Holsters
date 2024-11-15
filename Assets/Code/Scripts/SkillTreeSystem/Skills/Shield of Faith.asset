@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9883c07e2afa543b2a3f48095272bd, type: 3}
-  m_Name: Destructive Wave
+  m_Name: Shield of Faith
   m_EditorClassIdentifier: 
   UpgradeData: []
   IsAbility: 1
-  isCowboySkill: 1
-  SkillName: Destructive Wave
-  SkillDescription: Destructib Wabe
-  SkillIcon: {fileID: -731979260, guid: 342e5a0c64f5d0747bb77cfeb844c5ea, type: 3}
+  isCowboySkill: 0
+  SkillName: Shield of Faith
+  SkillDescription: shield
+  SkillIcon: {fileID: 931034023, guid: 07c8b132aab12bf4dbf69f7567bd4df2, type: 3}
   SkillPrerequisites: []
   SkillTier: 1
-  Cost: 1
+  Cost: 5
   CoolDown: 1
