@@ -672,10 +672,12 @@ SpriteAtlas:
     - 995ff668a463148ae9534dd39dce6af0: 1295783832
     - 995ff668a463148ae9534dd39dce6af0: 2035075133
     - 995ff668a463148ae9534dd39dce6af0: 805266005
+    - 995ff668a463148ae9534dd39dce6af0: -771235877
     - 995ff668a463148ae9534dd39dce6af0: 1042798677
     - 995ff668a463148ae9534dd39dce6af0: 1163167042
     - 995ff668a463148ae9534dd39dce6af0: 56613265
     - 995ff668a463148ae9534dd39dce6af0: 119107461
+    - 995ff668a463148ae9534dd39dce6af0: 1296009943
     - 995ff668a463148ae9534dd39dce6af0: -889262709
     - 995ff668a463148ae9534dd39dce6af0: -1996632566
     - 995ff668a463148ae9534dd39dce6af0: 388526237
@@ -787,14 +789,18 @@ SpriteAtlas:
     - 995ff668a463148ae9534dd39dce6af0: -1694244475
     - 995ff668a463148ae9534dd39dce6af0: -965642074
     - 995ff668a463148ae9534dd39dce6af0: -1155183980
+    - 995ff668a463148ae9534dd39dce6af0: 2135226352
     - 995ff668a463148ae9534dd39dce6af0: -498494743
+    - 995ff668a463148ae9534dd39dce6af0: 1224969974
     - 995ff668a463148ae9534dd39dce6af0: 898073333
     - 995ff668a463148ae9534dd39dce6af0: -781654660
     - 995ff668a463148ae9534dd39dce6af0: 1252686227
     - 995ff668a463148ae9534dd39dce6af0: -1626212849
     - 995ff668a463148ae9534dd39dce6af0: 1353174
+    - 995ff668a463148ae9534dd39dce6af0: 932999834
     - 995ff668a463148ae9534dd39dce6af0: -1163515456
     - 995ff668a463148ae9534dd39dce6af0: 143430685
+    - 995ff668a463148ae9534dd39dce6af0: -409811086
     - 995ff668a463148ae9534dd39dce6af0: 1481214860
     - 995ff668a463148ae9534dd39dce6af0: 1445516585
     - 995ff668a463148ae9534dd39dce6af0: 574281244
@@ -1697,10 +1703,12 @@ SpriteAtlas:
   - {fileID: 1295783832, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 2035075133, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 805266005, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
+  - {fileID: -771235877, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 1042798677, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 1163167042, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 56613265, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 119107461, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
+  - {fileID: 1296009943, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -889262709, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -1996632566, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 388526237, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
@@ -1812,14 +1820,18 @@ SpriteAtlas:
   - {fileID: -1694244475, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -965642074, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -1155183980, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
+  - {fileID: 2135226352, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -498494743, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
+  - {fileID: 1224969974, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 898073333, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -781654660, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 1252686227, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -1626212849, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 1353174, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
+  - {fileID: 932999834, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -1163515456, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 143430685, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
+  - {fileID: -409811086, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 1481214860, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 1445516585, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 574281244, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
@@ -2721,10 +2733,12 @@ SpriteAtlas:
   - western_A4_121
   - western_A4_120
   - LibRoof_Middle
+  - WoodPillar_Middle
   - LibRoof_Bottom_Middle
   - Carpet_Middle_Left
   - LibRoof_Right_Middle
   - LibBrick_Back_Middle
+  - Carpet_Interior_Bottom_Middle
   - LibBrick_Left_Middl
   - LibBrick_Right_Middle
   - western_A4_71
@@ -2836,14 +2850,18 @@ SpriteAtlas:
   - western_A4_183
   - western_A4_182
   - Roof_Beige_Left_Middle
+  - Carpet_Interior_Middle
   - LibRoof_Back_Middle
+  - Carpet_Interior_Left_Middle
   - Pillar_Middle
   - Carpet_Back_Middle
   - LibBrick_Bottom_Middle
   - Roof_Beige_Right_Middle
   - Carpet_Front_Middle
+  - Carpet_Interior_Top
   - Roof_Beige_Middle
   - Roof_Beige_Front_Middle
+  - Carpet_Interior_Right_Middle
   - western_A4_17
   - western_A4_48
   - western_A4_16
