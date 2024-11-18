@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -47,6 +48,7 @@ namespace Code.Scripts.SkillTreeSystem
             {
                 if (cache[skill] == number)
                 {
+                    Debug.Log("Returning: " + skill.SkillName);
                     return skill;
                 }
             }
@@ -76,7 +78,8 @@ namespace Code.Scripts.SkillTreeSystem
         
         //used for calling abilities and controlling player
         private PlayerController playerController;
-        private void Awake()
+        
+        private void Start()
         {
             playerController = GetComponent<PlayerController>();
             activeCowboySkills = new LRUCache();
@@ -87,6 +90,8 @@ namespace Code.Scripts.SkillTreeSystem
             dynamiteDashLevel = 0;
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
+            Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
+
         }
         
         public void GainSkillPoint()
@@ -164,7 +169,6 @@ namespace Code.Scripts.SkillTreeSystem
 
         public void ActivateSkill(ScriptableSkill skill)
         {
-            Debug.Log("Activating skill: " + skill.SkillName);
             if (skill.isCowboySkill)
                 activeCowboySkills.Add(skill);
             else
@@ -194,9 +198,12 @@ namespace Code.Scripts.SkillTreeSystem
         {
             // find key in activeCowboySkills that has value number
             ScriptableSkill skill = activeCowboySkills.GetSkill(number);
-
             // dont have skill
-            if (skill == null) return;
+            if (skill == null) 
+            {
+                Debug.Log("dont have skill");
+                return;
+            };
 
             string skillName = skill.SkillName;
             int cooldown = skill.CoolDown;

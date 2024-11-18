@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("UI Document not found in the scene.");
         }
+        Debug.Log($"SkillManager instance in PlayerController: {skillManager.GetInstanceID()}");
+
     }
 
     void Update()
