@@ -10,12 +10,9 @@ public class BuildingEntrance : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         // Check if the object colliding is the player
-        //PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        //PlayerController player =  MainManager.Instance.playerController;
-
-        if (collision.gameObject.tag=="Player") // If the player enters the trigger
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (player)
         {
             // Load the interior scene
             if (SceneManager.GetActiveScene().name != interiorSceneName)
