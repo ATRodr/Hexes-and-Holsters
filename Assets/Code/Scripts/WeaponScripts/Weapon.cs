@@ -18,14 +18,9 @@ public class Weapon : MonoBehaviour
 
     public ChainLightningScript chainLightningEffect;
 
-    private IEnumerator Start()
+    private void Start()
     {
-        while (MainManager.Instance == null || MainManager.Instance.aimSystem == null)
-        {
-            yield return null;
-        }
-
-        aimSystem = MainManager.Instance.aimSystem;
+        aimSystem = GetComponentInParent<AimSystem>();
     }
     private void Update()
     {

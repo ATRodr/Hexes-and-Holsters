@@ -11,7 +11,6 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         // Calculate the initial offset between the camera and player (optional, if you want a fixed offset)
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         cameraOffset = transform.position - player.position;
     }
 

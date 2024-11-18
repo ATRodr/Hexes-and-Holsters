@@ -38,15 +38,9 @@ public class AimSystem : MonoBehaviour
     //animation used when swapping between characters
     public Animator swappingAnimation;
 
-    private IEnumerator Start()
+    void Start()
     {
-
-        MainManager.Instance.aimSystem = this;
-        while (MainManager.Instance == null || MainManager.Instance.playerController == null)
-        {
-            yield return null;
-        }
-        controller = MainManager.Instance.playerController;
+        controller = GetComponent<PlayerController>();
         //start as cowboy and assign sprites
         swappingAnimation.SetBool("isCowboy",isCowboy);
         bodySprites = cowboySprites;

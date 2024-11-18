@@ -56,7 +56,7 @@ namespace Code.Scripts.SkillTreeSystem
     public class PlayerSkillManager : MonoBehaviour
     {
         // Start is called before the first frame update
-        private MainManager MainManager;
+
         // unlockable abilities
         private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel;
         private int skillPoints;
@@ -76,15 +76,9 @@ namespace Code.Scripts.SkillTreeSystem
         
         //used for calling abilities and controlling player
         private PlayerController playerController;
-
-        private IEnumerator Start()
+        private void Awake()
         {
-            MainManager.Instance.playerSkillManager = this;
-            while (MainManager.Instance == null || MainManager.Instance.playerController == null)
-            {
-                yield return null;
-            }
-            playerController = MainManager.Instance.playerController;
+            playerController = GetComponent<PlayerController>();
             activeCowboySkills = new LRUCache();
             activeWizardSkills = new LRUCache();
             skillPoints = 10;
@@ -180,10 +174,10 @@ namespace Code.Scripts.SkillTreeSystem
         IEnumerator shieldOfFaith()
         {
             playerController.playerHealth.isInvincible = true;
-            playerController.healthBar.DrawHearts(true);
+            playerController.healthBar.DrawHearts();
             yield return new WaitForSeconds(5);
             playerController.playerHealth.isInvincible = false;
-            playerController.healthBar.DrawHearts(false);
+            playerController.healthBar.DrawHearts();
         }
         IEnumerator dynamiteDash()
         {

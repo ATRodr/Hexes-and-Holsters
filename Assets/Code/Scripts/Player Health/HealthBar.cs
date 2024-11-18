@@ -9,26 +9,19 @@ public class HealthBar : MonoBehaviour
     List<HealthManager> hearts = new List<HealthManager>();
 
     private void OnEnable(){
-        PlayerHealth.OnPlayerDamaged += () => DrawHearts();
+        PlayerHealth.OnPlayerDamaged += DrawHearts;
     }
 
     private void OnDisable(){
-        PlayerHealth.OnPlayerDamaged -= () => DrawHearts();
+        PlayerHealth.OnPlayerDamaged -= DrawHearts;
     }
 
-    private IEnumerator Start(){
-        MainManager.Instance.healthBar = this;
-
-        while (MainManager.Instance == null || MainManager.Instance.playerHealth == null)
-        {
-            yield return null;
-        }
-
-        playerHealth = MainManager.Instance.playerHealth;
+    private void Start(){
+        playerHealth = GameObject.FindObjectOfType<PlayerHealth>();
         DrawHearts();
     }
 
-    public void DrawHearts(bool isInvincible = false){
+    public void DrawHearts(){
         ClearHearts();
 
         float maxHealthRemainder = playerHealth.maxHealth % 2;
@@ -40,7 +33,7 @@ public class HealthBar : MonoBehaviour
 
         for(int i = 0; i < hearts.Count; i++){
             int heartStatusRemainder = (int)Mathf.Clamp(playerHealth.health - (i * 2), 0, 2);
-            hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder, isInvincible);
+            hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder);
         }
     }
 

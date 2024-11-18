@@ -16,7 +16,7 @@ public class FireAtPlayer : MonoBehaviour
     private int EnemyLayer; //needed in future to implement wizard ult(enemy shot should witch layers and shoot other enemies)
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player  = GameObject.FindGameObjectWithTag("Player");
 
         PlayerLayer = LayerMask.NameToLayer("Player");
         EnemyLayer = LayerMask.NameToLayer("Enemy");
@@ -36,6 +36,7 @@ public class FireAtPlayer : MonoBehaviour
             RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, distance:Mathf.Infinity, 1 << PlayerLayer);
             if (ray.collider != null)
             {
+                //Debug.Log("Ray collider not null");
                 hasLOS = ray.collider.CompareTag("Player");
                 if (hasLOS)
                 {
