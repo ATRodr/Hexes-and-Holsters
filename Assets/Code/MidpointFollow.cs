@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -9,14 +8,10 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 cameraOffset;
 
-    public IEnumerator Start()
+    void Start()
     {
-        while (MainManager.Instance.playerController == null)
-        {
-            yield return null;
-        }
         // Calculate the initial offset between the camera and player (optional, if you want a fixed offset)
-        player = MainManager.Instance.playerController.transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         cameraOffset = transform.position - player.position;
     }
 
@@ -38,7 +33,7 @@ public class CameraFollow : MonoBehaviour
         // Smoothly move the camera towards the target position
         transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSpeed * Time.deltaTime);
     }
-    
+
     public void SetPlayer(Transform newPlayer)
     {
         player = newPlayer;
