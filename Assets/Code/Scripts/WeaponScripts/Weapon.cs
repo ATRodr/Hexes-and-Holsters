@@ -16,7 +16,6 @@ public class Weapon : MonoBehaviour
 
     public float fireForce = 30f;
 
-    public ChainLightningScript chainLightningEffect;
 
     private void Start()
     {
@@ -35,8 +34,16 @@ public class Weapon : MonoBehaviour
         GameObject bullet = null;
         if (isCowboy)
         {
-            bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+            if(aimSystem.goldenGunActive)
+            {
+                bulletPrefab.GetComponent<SpriteRenderer>().color = Color.yellow;
+                bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
+                bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+            }else{
+                bulletPrefab.GetComponent<SpriteRenderer>().color = Color.gray;
+                bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
+                bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+            }
         }
         else
         {

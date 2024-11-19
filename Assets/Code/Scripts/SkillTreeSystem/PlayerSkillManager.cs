@@ -174,7 +174,20 @@ namespace Code.Scripts.SkillTreeSystem
             else
                 activeWizardSkills.Add(skill);            
         }
+        IEnumerator ActivateGoldenGun()
+        {
+            playerController.aimSystem.goldenGunActive = true;
+            Color originalColor = playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color;
+            yield return new WaitForSeconds(3f);
 
+            for(int i = 0; i < 60; i++)
+            {
+                playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color = Color.Lerp(originalColor, Color.black, Mathf.PingPong(Time.time * 2, 1));
+                yield return new WaitForSeconds(0.05f);
+            }
+            playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color = originalColor;
+            playerController.aimSystem.goldenGunActive = false;
+        }
         IEnumerator shieldOfFaith()
         {
             playerController.playerHealth.isInvincible = true;
@@ -220,6 +233,7 @@ namespace Code.Scripts.SkillTreeSystem
                     Debug.Log("DynoDashh");
                     break;
                 case "goldengun":
+                    StartCoroutine(ActivateGoldenGun());
                     Debug.Log("Golden Gun");
                     break;
             }
