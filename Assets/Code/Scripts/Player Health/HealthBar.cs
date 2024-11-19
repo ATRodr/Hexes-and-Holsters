@@ -17,6 +17,7 @@ public class HealthBar : MonoBehaviour
     }
 
     private void Start(){
+        playerHealth = GameObject.FindObjectOfType<PlayerHealth>();
         DrawHearts();
     }
 

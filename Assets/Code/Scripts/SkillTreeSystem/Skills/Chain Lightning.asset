@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9883c07e2afa543b2a3f48095272bd, type: 3}
   m_Name: Chain Lightning
   m_EditorClassIdentifier: 
-  UpgradeData:
-  - StatType: 0
-    SkillIncreaseAmount: 1
-    IsPercentage: 0
+  UpgradeData: []
   IsAbility: 1
+  isCowboySkill: 0
   SkillName: Chain Lightning
   SkillDescription: 'chain lining '
   SkillIcon: {fileID: -1416701169, guid: 342e5a0c64f5d0747bb77cfeb844c5ea, type: 3}
   SkillPrerequisites: []
   SkillTier: 1
   Cost: 5
+  CoolDown: 0

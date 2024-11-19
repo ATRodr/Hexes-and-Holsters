@@ -50,7 +50,7 @@ public class FireAtPlayer : MonoBehaviour
             }
             else
             {
-                Debug.Log("raycast null");
+                // Debug.Log("raycast null");
             }
         } 
     }

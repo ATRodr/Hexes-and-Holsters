@@ -8,13 +8,14 @@ namespace Code.Scripts.SkillTreeSystem
     {
         public List<UpgradeData> UpgradeData = new List<UpgradeData>();
         public bool IsAbility;
+        public bool isCowboySkill;
         public string SkillName;
         [TextArea(1, 4)] public string SkillDescription;
         public Sprite SkillIcon;
         public List<ScriptableSkill> SkillPrerequisites = new List<ScriptableSkill>();
         public int SkillTier;
         public int Cost;
-
+        public int CoolDown;
         private void OnValidate()
         {
             if (SkillName == "") SkillName = name;
@@ -35,6 +36,7 @@ namespace Code.Scripts.SkillTreeSystem
         chainLightning, 
         destructiveWave, 
         dynamiteDash, 
-        goldenGun
+        goldenGun,
+        shieldOfFaith
     }
 }
