@@ -43,6 +43,7 @@ public class AimSystem : MonoBehaviour
     void Start()
     {
         controller = GetComponent<PlayerController>();
+        GoldenGun = GameObject.Find("GoldenGun");
         //start as cowboy and assign sprites
         swappingAnimation.SetBool("isCowboy",isCowboy);
         bodySprites = cowboySprites;
