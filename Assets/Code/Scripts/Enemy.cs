@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        target = GameObject.Find("REALPlayerPrefab").transform;
         health = maxHealth;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -25,6 +26,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (target == null)
+        {
+            target = GameObject.Find("REALPlayerPrefab").transform;
+        }
         agent.SetDestination(target.position);
     }
 

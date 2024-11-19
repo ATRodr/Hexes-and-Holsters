@@ -64,6 +64,10 @@ public class AimSystem : MonoBehaviour
 
     void Update()
     {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
         if (controller.isPaused) return;
 
         //always update aim 
