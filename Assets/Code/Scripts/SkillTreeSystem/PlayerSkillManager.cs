@@ -203,7 +203,7 @@ namespace Code.Scripts.SkillTreeSystem
             Debug.Log("Dynamite Dash");
             Instantiate(playerController.dynamite, pos, rot);
             StartCoroutine(playerController.Dash(0.16f, 27f));
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(0.5f);
             Instantiate(playerController.explosion, pos, rot);
         }
 
