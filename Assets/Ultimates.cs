@@ -8,12 +8,14 @@ public class Ultimates : MonoBehaviour
     private AimSystem aimSystem;
     [SerializeField]
     private Weapon weapon;
+    private GameObject wave;
+    private GameObject hadar;
     private int cowboyUlt;
     private int wizardUlt;
     private float cowboyUltCooldown;
     private float wizardUltCooldown;
     public const float COWBOY_COOLDOWN = 3f;
-    public const float WIZARD_COOLDOWN = 3f;
+    public const float WIZARD_COOLDOWN = 0f; //CHANGE BACK TO WHATEVER IT WAS
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
 
@@ -23,6 +25,11 @@ public class Ultimates : MonoBehaviour
         cowboyUltCooldown = COWBOY_COOLDOWN;
         wizardUltCooldown = WIZARD_COOLDOWN;
         GameObject.FindObjectOfType<Weapon>();
+        
+        hadar = Resources.Load<GameObject>("Hadar");
+        wave = Resources.Load<GameObject>("DestructiveWave");
+        if(wave == null)
+            Debug.LogError("Wave not found");
     }
 
     public void Update()
@@ -66,12 +73,14 @@ public class Ultimates : MonoBehaviour
                     {
                         case 1:
                             Debug.Log("Destructive Wave");
+                            StartCoroutine(DestructiveWave());
                             break;
                         case 2:
                             Debug.Log("Power Word Heal");
                             break;
                         case 3:
                             Debug.Log("Hunger of Hadar");
+                            StartCoroutine(HungerOfHadar());
                             break;
                     }
                     wizardUltReady = false;
@@ -108,6 +117,11 @@ public class Ultimates : MonoBehaviour
             Debug.Log("Wizard Ult: " + wizardUlt);
         }
     }
+    IEnumerator DestructiveWave()
+        {
+            Instantiate(wave, transform.position, transform.rotation);
+            yield return new WaitForSeconds(0.1f);
+        }
     IEnumerator GatlingGun()
     {
         // fire gatling gun
@@ -117,6 +131,10 @@ public class Ultimates : MonoBehaviour
             weapon.FireGat();
             yield return new WaitForSeconds(0.25f);
         }
-        //yield return new WaitForSeconds(0.1f);
+    }
+    IEnumerator HungerOfHadar()
+    {
+        Instantiate(hadar, transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.25f);
     }
 }

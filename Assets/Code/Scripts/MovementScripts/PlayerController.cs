@@ -13,8 +13,11 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb; 
     public AimSystem aimSystem;
+
+    //Dynamite dash stuff
     public GameObject dynamite;
     public GameObject explosion;
+
     public PlayerHealth playerHealth;
     public HealthBar healthBar;
     public Weapon weapon;
@@ -35,7 +38,16 @@ public class PlayerController : MonoBehaviour
     bool isDash;
     bool canDash = true;
 
-    private void Start(){
+    private void Start()
+    {
+        //Get the dynamite and explosion prefabs from resources
+        dynamite = Resources.Load<GameObject>("Dynamite");
+        explosion = Resources.Load<GameObject>("Explosion");
+        if(dynamite == null)
+            Debug.LogError("Dynamite not found");
+        if(explosion == null)
+            Debug.LogError("Explosion not found");
+        
         skillManager = GetComponent<PlayerSkillManager>();
         healthBar = GameObject.FindObjectOfType<HealthBar>();
         playerHealth = GetComponent<PlayerHealth>();

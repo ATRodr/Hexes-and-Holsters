@@ -13,10 +13,11 @@ public class Enemy : MonoBehaviour
         
     float nextAttack = 0f;
 
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     private void Start()
     {
+        target = GameObject.Find("REALPlayerPrefab").transform;
         health = maxHealth;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -25,6 +26,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (target == null)
+        {
+            target = GameObject.Find("REALPlayerPrefab").transform;
+        }
         agent.SetDestination(target.position);
     }
 
@@ -39,6 +44,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Overloaded methods for giving damage to the enemy
+    
+    //Destroys GameObject that collides with the enemy
     public void TakeDamage(float damageAmt, GameObject Bullet){
         health -= damageAmt;
         Destroy(Bullet);
@@ -48,6 +56,7 @@ public class Enemy : MonoBehaviour
         }
     }
     
+    //does not destroy GameObject that collides with the enemy
     public void TakeDamage(float damageAmt){
         health -= damageAmt;
         if(health <= 0){
