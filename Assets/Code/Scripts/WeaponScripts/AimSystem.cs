@@ -24,6 +24,8 @@ public class AimSystem : MonoBehaviour
     public GameObject orbParent; 
     //orb (orb child) is what we need to change layers of animation of
     
+    //animation 
+    public Animator animator;
     public GameObject orb;
     private GameObject weapon;
     
@@ -72,6 +74,9 @@ public class AimSystem : MonoBehaviour
 
         //always update aim 
         Aim(weapon);
+        //update walking animation
+        animator.SetFloat("MouseDirectionX", aimDirection.x);
+        animator.SetFloat("MouseDirectionY", aimDirection.y);
         //only update body sprite when not swapping
         if(!swapping)
             UpdateBodySprite();
