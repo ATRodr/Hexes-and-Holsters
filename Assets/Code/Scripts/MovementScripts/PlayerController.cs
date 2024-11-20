@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
     bool isDash;
     bool canDash = true;
 
-    private void Start(){
+    private void Start()
+    {
         skillManager = GetComponent<PlayerSkillManager>();
         healthBar = GameObject.FindObjectOfType<HealthBar>();
         playerHealth = GetComponent<PlayerHealth>();
