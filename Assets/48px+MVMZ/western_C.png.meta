@@ -370,27 +370,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: western_C_13
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 241
-        width: 240
-        height: 191
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13677b24ef02c6747ab0a47c66e9cdb9
-      internalID: 374551654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: western_C_14
       rect:
         serializedVersion: 2
@@ -628,7 +607,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 336
-        height: 240
+        height: 238
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -966,7 +945,7 @@ TextureImporter:
         width: 43
         height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -974,6 +953,216 @@ TextureImporter:
       bones: []
       spriteID: c5dbda5112f6eb543ad82a7f10506077
       internalID: 1501091715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_Up
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 241
+        width: 117
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c8986201618630488aca54595d1c748
+      internalID: -721226176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BridgeRail_BR
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a97edac8f02a2eb449578ec42a071034
+      internalID: 1791026539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BrideRail_BL
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8546116f108e7644817767df0f1b667
+      internalID: -72282030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_B
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 240
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f75ed612c97a5d409f8fec600906e9d
+      internalID: 143217549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_ML
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a3787045561838449ce4fb7e648ae92
+      internalID: -1278986700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_MR
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a44b6398a6009314d99679e7d58ae34c
+      internalID: 2117748684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_TR
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 336
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599caa09296ff564bad1bbd5c9b3a796
+      internalID: -318868864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_M
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 288
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ca713dc2745b4438207d932141e462
+      internalID: 359380747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_TL
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 336
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 194f90c7e8d47604c9a5bfbfadd6f266
+      internalID: -309573515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bridge_TM
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 336
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eccd7ec392da4b44973b46dcfce0da5
+      internalID: -1427375110
       vertices: []
       indices: 
       edges: []
@@ -989,6 +1178,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      BrideRail_BL: -72282030
+      BridgeRail_BR: 1791026539
+      Bridge_B: 143217549
+      Bridge_Bottom: 590019111
+      Bridge_M: 359380747
+      Bridge_ML: -1278986700
+      Bridge_MR: 2117748684
+      Bridge_Middle: 374551654
+      Bridge_TL: -309573515
+      Bridge_TM: -1427375110
+      Bridge_TR: -318868864
+      Bridge_TopPart: 1309823770
+      Bridge_Up: -721226176
       Log_Wall: 505333684
       Log_Wall_Side: -280675356
       SIgn_Train: 1552200611
@@ -1006,7 +1208,6 @@ TextureImporter:
       western_C_10: 15578589
       western_C_11: -1162871415
       western_C_12: 1583049623
-      western_C_13: 374551654
       western_C_14: 187172279
       western_C_15: 1288491726
       western_C_16: 1795669666
