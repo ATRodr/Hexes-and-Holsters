@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/Level2_Interior_Room1.unity
     guid: ca819d458a47a9949b621ff8634183fc
+  - enabled: 1
+    path: Assets/Level/Scenes/Level3_Exterior.unity
+    guid: 62272567c32a4ac4e9fe77440a5719c8
   m_configObjects: {}
