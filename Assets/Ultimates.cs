@@ -8,21 +8,25 @@ public class Ultimates : MonoBehaviour
     private AimSystem aimSystem;
     [SerializeField]
     private Weapon weapon;
+    private GameObject wave;
     private int cowboyUlt;
     private int wizardUlt;
     private float cowboyUltCooldown;
     private float wizardUltCooldown;
     public const float COWBOY_COOLDOWN = 3f;
-    public const float WIZARD_COOLDOWN = 3f;
+    public const float WIZARD_COOLDOWN = 0f; //CHANGE BACK TO WHATEVER IT WAS
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
 
     public void Start()
     {
+        wave = Resources.Load<GameObject>("DestructiveWave");
         aimSystem = GetComponent<AimSystem>();
         cowboyUltCooldown = COWBOY_COOLDOWN;
         wizardUltCooldown = WIZARD_COOLDOWN;
         GameObject.FindObjectOfType<Weapon>();
+        if(wave == null)
+            Debug.LogError("Wave not found");
     }
 
     public void Update()
@@ -66,6 +70,7 @@ public class Ultimates : MonoBehaviour
                     {
                         case 1:
                             Debug.Log("Destructive Wave");
+                            StartCoroutine(DestructiveWave());
                             break;
                         case 2:
                             Debug.Log("Power Word Heal");
@@ -91,7 +96,7 @@ public class Ultimates : MonoBehaviour
         // roll ult
 
         // random number between 1 and 20
-        int roll = Random.Range(1, 4);
+        int roll = Random.Range(1, 3);
 
         if (aimSystem.isCowboy)
         {
@@ -108,6 +113,11 @@ public class Ultimates : MonoBehaviour
             Debug.Log("Wizard Ult: " + wizardUlt);
         }
     }
+    IEnumerator DestructiveWave()
+        {
+            Instantiate(wave, transform.position, transform.rotation);
+            yield return new WaitForSeconds(0.1f);
+        }
     IEnumerator GatlingGun()
     {
         // fire gatling gun
@@ -117,6 +127,5 @@ public class Ultimates : MonoBehaviour
             weapon.FireGat();
             yield return new WaitForSeconds(0.25f);
         }
-        //yield return new WaitForSeconds(0.1f);
     }
 }

@@ -11,10 +11,10 @@ public class DDScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colliding");
+        //Debug.Log("Colliding");
         if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-            Debug.Log("Hit enemy");
+            //Debug.Log("Hit enemy");
             enemyComponent.TakeDamage(3);
 
         }

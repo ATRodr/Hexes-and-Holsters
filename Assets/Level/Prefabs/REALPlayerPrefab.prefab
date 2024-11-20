@@ -376,8 +376,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 54392429
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 605102840, guid: afca03bfec9d0c5458a64c4b911db75b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   rb: {fileID: 1740943087667597521}
   aimSystem: {fileID: 797489134282026568}
   dynamite: {fileID: 5875590232435866451, guid: 73053d970d17fa548b56f0abc579d7fa, type: 3}
-  explosion: {fileID: 6319299284404186939, guid: d07d42eb264cc62439842a10000730fc, type: 3}
+  explosion: {fileID: 4911726455621953392, guid: d07d42eb264cc62439842a10000730fc, type: 3}
   playerHealth: {fileID: 0}
   healthBar: {fileID: 0}
   weapon: {fileID: 7183604561621121597}
@@ -1325,7 +1325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c7db9b7ad4f4a05906a4a2abef90f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  weapon: {fileID: 7183604561621121597}
   cowboyUltReady: 0
   wizardUltReady: 0
 --- !u!114 &-5117658767388862903

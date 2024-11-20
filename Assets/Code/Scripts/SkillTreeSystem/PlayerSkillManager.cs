@@ -258,9 +258,6 @@ namespace Code.Scripts.SkillTreeSystem
                     StartCoroutine(shieldOfFaith());
                     Debug.Log("Shield of Faith");
                     break;
-                case "destructivewave":
-                    Debug.Log("Destructive Wave");
-                    break;
             }
         }
     }
