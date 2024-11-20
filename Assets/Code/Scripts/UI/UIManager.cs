@@ -2,7 +2,6 @@ using Code.Scripts.SkillTreeSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Code.Scripts.SkillTreeSystem;
 
 public class UIManager : MonoBehaviour
 {

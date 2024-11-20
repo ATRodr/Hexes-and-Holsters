@@ -78,16 +78,25 @@ public class UISkillDescriptionPanel : MonoBehaviour
             skillPreReqLabel.text = "Prerequisites: None";
         }
 
-        if (uiManager.PlayerSkillManager.IsSkillUnlocked(assignedSkill))
+        // if the skill is active
+        if (uiManager.PlayerSkillManager.isSkillActive(assignedSkill))
         {
-            purchaseSkillButton.text = "Purchased";
+            purchaseSkillButton.text = "Active";
             purchaseSkillButton.SetEnabled(false);
         }
+        // if the skill is inactive and skill is unlocked
+        else if (uiManager.PlayerSkillManager.IsSkillUnlocked(assignedSkill))
+        {
+            purchaseSkillButton.text = "Activate";
+            purchaseSkillButton.SetEnabled(true);
+        }
+        // if the skill is inactive and skill is locked and prerequisites are not met
         else if (!uiManager.PlayerSkillManager.PreReqsMet(assignedSkill))
         {
             purchaseSkillButton.text = "Prerequisites Not Met";
             purchaseSkillButton.SetEnabled(false);
         }
+        // if the skill is inactive and skill is locked and prerequisites are met and player cannot afford the skill
         else if (!uiManager.PlayerSkillManager.CanAffordSkill(assignedSkill))
         {
             purchaseSkillButton.text = "Insufficient Skill Points";

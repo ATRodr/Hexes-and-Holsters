@@ -3,45 +3,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Code.Scripts.SkillTreeSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool isPaused = false;
     private UIDocument uiDocument;
     private VisualElement root;
+    public bool isPaused = false;
     public float moveSpeed = 5f;
     public Rigidbody2D rb; 
-    public GameObject[] sides;
-
     public AimSystem aimSystem;
-
     public GameObject dynamite;
     public GameObject explosion;
-
     public PlayerHealth playerHealth;
     public HealthBar healthBar;
-    
-    public Gun gun;
+    public Weapon weapon;
     Vector2 moveDirection;
+    private PlayerSkillManager skillManager;
 
     [Header("Dash Settings")]  // This is the attribute causing the error
     [SerializeField] float dashSpeed = 15f;
     [SerializeField] float dashDuration = 0.25f;
     [SerializeField] float dashCoolDown = 1f;
 
-    private float nextDynamiteDash;
-    private float nextShieldOfFaith;
+    public float lastWizardAbility1Time = 0;
+    public float lastWizardAbility2Time = 0;
+    public float lastCowboyAbility1Time = 0;
+    public float lastCowboyAbility2Time = 0;
+    
 
     bool isDash;
-    bool canDash;
+    bool canDash = true;
 
-    private void Start(){
+    private void Start()
+    {
+        skillManager = GetComponent<PlayerSkillManager>();
         healthBar = GameObject.FindObjectOfType<HealthBar>();
         playerHealth = GetComponent<PlayerHealth>();
         aimSystem = GetComponent<AimSystem>();
         uiDocument = GameObject.FindObjectOfType<UIDocument>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        canDash = true;
 
         // Hide the skill tree UI
         if (uiDocument != null)
@@ -53,43 +54,51 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("UI Document not found in the scene.");
         }
+        Debug.Log($"SkillManager instance in PlayerController: {skillManager.GetInstanceID()}");
+
     }
 
     void Update()
     {
-        if(isDash){
-            return;
-        }
+        if (isDash) return;
+
         float moveX = Input.GetAxisRaw("Horizontal"); 
         float moveY = Input.GetAxisRaw("Vertical"); 
 
         //normal bullet
         if(Input.GetMouseButtonDown(0)){
-            gun.Fire();
+            weapon.Fire();
         } 
-        //Chain Lightning and cowboy abilty (TBD)
-        if(Input.GetKeyDown(KeyCode.E)){
-            if(aimSystem.isCowboy){
-                if(Time.time > nextDynamiteDash){
-                    StartCoroutine(dynamiteDash());
-                }else{
-                    Debug.Log("Dynamite Dash on cooldown");
-                }
-            }else{
-                if (Time.time > nextShieldOfFaith)
-                {
-                    StartCoroutine(shieldOfFaith());
-                }
-                else
-                {
-                    Debug.Log("Shield of Faith on cooldown");
-                }
-            }
         
+        if(!isPaused && Input.GetKeyDown(KeyCode.E))
+        {
+            if (aimSystem.isCowboy)
+            {
+                skillManager.castCowboyAbility(1, ref lastCowboyAbility1Time);
+                Debug.Log("Cowboy Ability 1");
+            }
+            else
+            {
+                skillManager.castWizardAbility(1, ref lastWizardAbility1Time);
+                Debug.Log("wiz Ability 1");
+            }
         }
         
+        if (!isPaused && Input.GetKeyDown(KeyCode.F))
+        {
+            if (aimSystem.isCowboy)
+            {
+                skillManager.castCowboyAbility(2, ref lastCowboyAbility2Time);
+                Debug.Log("Cowboy Ability 2");
+            }
+            else
+            {
+                skillManager.castWizardAbility(2, ref lastWizardAbility2Time);
+                Debug.Log("wiz Ability 2");
+            }
+        }
 
-        if(Input.GetKeyDown(KeyCode.Space) && canDash){
+        if( !isPaused && Input.GetKeyDown(KeyCode.Space) && canDash){
             StartCoroutine(Dash(dashDuration,dashSpeed));
         }
 
@@ -99,26 +108,6 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
-    }
-    IEnumerator shieldOfFaith()
-    {
-        nextShieldOfFaith = Time.time + 15f;
-        playerHealth.isInvincible = true;
-        healthBar.DrawHearts();
-        yield return new WaitForSeconds(5);
-        playerHealth.isInvincible = false;
-        healthBar.DrawHearts();
-    }
-    IEnumerator dynamiteDash()
-    {
-        nextDynamiteDash = Time.time + 15f;
-        Vector2 pos = transform.position;
-        Quaternion rot = transform.rotation;
-        Debug.Log("Dynamite Dash");
-        Instantiate(dynamite, pos, rot);
-        StartCoroutine(Dash(0.16f, 27f));
-        yield return new WaitForSeconds(0.75f);
-        Instantiate(explosion, pos, rot);
     }
     private void ToggleSkillTree()
     {
@@ -138,7 +127,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
-    private IEnumerator Dash(float duration,float speed){
+    public IEnumerator Dash(float duration,float speed){
         canDash = false;
         isDash = true;
         rb.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);

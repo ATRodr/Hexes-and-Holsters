@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4329984765504386351}
   - component: {fileID: 8316518652140073437}
   - component: {fileID: 4123901787830125654}
+  - component: {fileID: 2423957349616000291}
   m_Layer: 5
   m_Name: UI and Health
   m_TagString: Untagged
@@ -104,6 +105,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2423957349616000291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814597818405961902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86796d77956a41ceaa583990b4155c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4573546065953181802
 GameObject:
   m_ObjectHideFlags: 0

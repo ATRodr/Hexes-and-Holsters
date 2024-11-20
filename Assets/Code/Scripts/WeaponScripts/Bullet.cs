@@ -5,28 +5,26 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    // Boolean to check if it's a chain lightning bolt
-    public bool isChainLightning = false;
-    public GameObject chainLightningEffect;
-
+    
+    public bool isFireBolt = false;
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Colliding");
-        if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Debug.Log("Hit enemy");
-            if (isChainLightning)
+            Enemy enemyComponent = collision.gameObject.GetComponent<Enemy>();
+            if (enemyComponent.isMagic && !isFireBolt || isFireBolt && !enemyComponent.isMagic)
             {
-                Debug.Log($"Hit: {collision.gameObject.name}, Layer: {collision.gameObject.layer}");
-                enemyComponent.TakeDamage(5, gameObject);
-                Instantiate(chainLightningEffect, collision.collider.transform.position, Quaternion.identity);
+                // if magic enemy is being hit by bullet take full damage
+                enemyComponent.TakeDamage(1, gameObject);
             }
             else
-                enemyComponent.TakeDamage(1, gameObject);
-
+            {
+                // if non magic enemy hit by bullet, take half damage
+                enemyComponent.TakeDamage(0.5f, gameObject);
+            }
         }
-
         Destroy(gameObject); // Destroy bullet after collision
     }
 }

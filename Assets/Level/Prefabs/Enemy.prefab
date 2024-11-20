@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8895200428994156677}
   - component: {fileID: 8332872196143967389}
   - component: {fileID: 7541067024260178666}
-  - component: {fileID: -2791497239415806799}
   - component: {fileID: 738397446174232224}
   m_Layer: 6
   m_Name: Enemy
@@ -32,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5227934475121093548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 349.3009, y: 330.17108, z: 0}
+  m_LocalPosition: {x: 3.9892998, y: 2.3419724, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,7 +103,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -125,8 +124,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  health: 0
+  health: 4
   maxHealth: 4
+  attackRate: 1
+  isMelle: 0
+  isMagic: 0
 --- !u!61 &8332872196143967389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0020859241, y: 0}
+  m_Offset: {x: -0.026391506, y: 0.00000011920929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -170,7 +172,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0041718, y: 1}
+  m_Size: {x: 1.2319956, y: 1.1708672}
   m_EdgeRadius: 0
 --- !u!50 &7541067024260178666
 Rigidbody2D:
@@ -199,18 +201,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &-2791497239415806799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5227934475121093548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f4624df07464683960ac9b22dc99fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &738397446174232224
 MonoBehaviour:
   m_ObjectHideFlags: 0
