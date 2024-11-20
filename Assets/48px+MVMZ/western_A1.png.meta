@@ -2436,7 +2436,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2444,6 +2444,111 @@ TextureImporter:
       bones: []
       spriteID: 2ae8fa10e93336245a4b5b35df3a5415
       internalID: 1303876160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassWater_Middle
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 168
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2008c89f84758a45a8b171a491881c5
+      internalID: -365263564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassWater_Top
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb7c6e33c0b1a2478e18ced7962e4ce
+      internalID: 735852801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassWater_Bottom
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37c2439ebc9377048baee7ad6b28a2da
+      internalID: 2089239282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassWater_Left
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 168
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9c70f73f3b819439e3c1f99b875b1b
+      internalID: -1944871759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassWater_Right
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 168
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c0ff023130f5f44ac2eb488db0565a
+      internalID: -1417211618
       vertices: []
       indices: 
       edges: []
@@ -2459,6 +2564,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      GrassWater_Bottom: 2089239282
+      GrassWater_Left: -1944871759
+      GrassWater_Middle: -365263564
+      GrassWater_Right: -1417211618
+      GrassWater_Top: 735852801
       WaterTrough_Back: 1303876160
       WaterTrough_Middle: -1792975910
       western_A1_0: 1118544458
