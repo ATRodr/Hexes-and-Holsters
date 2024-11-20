@@ -16,16 +16,10 @@ public class Weapon : MonoBehaviour
 
     public float fireForce = 30f;
 
-    public ChainLightningScript chainLightningEffect;
 
-    private IEnumerator Start()
+    private void Start()
     {
-        while (MainManager.Instance == null || MainManager.Instance.aimSystem == null)
-        {
-            yield return null;
-        }
-
-        aimSystem = MainManager.Instance.aimSystem;
+        aimSystem = GetComponentInParent<AimSystem>();
     }
     private void Update()
     {
@@ -40,8 +34,16 @@ public class Weapon : MonoBehaviour
         GameObject bullet = null;
         if (isCowboy)
         {
-            bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+            if(aimSystem.goldenGunActive)
+            {
+                bulletPrefab.GetComponent<SpriteRenderer>().color = Color.yellow;
+                bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
+                bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+            }else{
+                bulletPrefab.GetComponent<SpriteRenderer>().color = Color.gray;
+                bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
+                bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+            }
         }
         else
         {
@@ -49,6 +51,23 @@ public class Weapon : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().AddForce(orbFirePoint.right * fireForce, ForceMode2D.Impulse);
         }
         Destroy(bullet, 5f);
+    }
+    public void FireGat(){
+        GameObject bullet1 = null;
+        GameObject bullet2 = null;
+        GameObject bullet3 = null;
+
+        Vector3 offset1 = new Vector3(-0.3f, 0.2f, 0f);
+        Vector3 offset2 = new Vector3(-0.3f, -0.2f, 0f);
+        Quaternion rotationQ = new Quaternion(20, 0, 0, 0);
+
+        bullet1 = Instantiate(bulletPrefab, gunFirePoint.position + offset1, gunFirePoint.rotation);
+        bullet2 = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
+        bullet3 = Instantiate(bulletPrefab, gunFirePoint.position + offset2, gunFirePoint.rotation);
+
+        bullet1.GetComponent<Rigidbody2D>().AddForce((gunFirePoint.right + offset1) * 5, ForceMode2D.Impulse);
+        bullet2.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * 5, ForceMode2D.Impulse);
+        bullet3.GetComponent<Rigidbody2D>().AddForce((gunFirePoint.right + offset2) * 5 + offset2, ForceMode2D.Impulse);
     }
 }
 

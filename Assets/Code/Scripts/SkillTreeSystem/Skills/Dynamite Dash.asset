@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9883c07e2afa543b2a3f48095272bd, type: 3}
   m_Name: Dynamite Dash
   m_EditorClassIdentifier: 
-  UpgradeData: []
+  UpgradeData:
+  - StatType: 2
+    SkillIncreaseAmount: 1
+    IsPercentage: 0
   IsAbility: 1
   isCowboySkill: 1
   SkillName: Dynamite Dash

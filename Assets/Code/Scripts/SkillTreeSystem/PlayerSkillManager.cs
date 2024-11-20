@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -47,6 +48,7 @@ namespace Code.Scripts.SkillTreeSystem
             {
                 if (cache[skill] == number)
                 {
+                    Debug.Log("Returning: " + skill.SkillName);
                     return skill;
                 }
             }
@@ -56,7 +58,7 @@ namespace Code.Scripts.SkillTreeSystem
     public class PlayerSkillManager : MonoBehaviour
     {
         // Start is called before the first frame update
-        private MainManager MainManager;
+
         // unlockable abilities
         private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel;
         private int skillPoints;
@@ -76,15 +78,10 @@ namespace Code.Scripts.SkillTreeSystem
         
         //used for calling abilities and controlling player
         private PlayerController playerController;
-
-        private IEnumerator Start()
+        
+        private void Start()
         {
-            MainManager.Instance.playerSkillManager = this;
-            while (MainManager.Instance == null || MainManager.Instance.playerController == null)
-            {
-                yield return null;
-            }
-            playerController = MainManager.Instance.playerController;
+            playerController = GetComponent<PlayerController>();
             activeCowboySkills = new LRUCache();
             activeWizardSkills = new LRUCache();
             skillPoints = 10;
@@ -93,6 +90,8 @@ namespace Code.Scripts.SkillTreeSystem
             dynamiteDashLevel = 0;
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
+            Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
+
         }
         
         public void GainSkillPoint()
@@ -170,20 +169,32 @@ namespace Code.Scripts.SkillTreeSystem
 
         public void ActivateSkill(ScriptableSkill skill)
         {
-            Debug.Log("Activating skill: " + skill.SkillName);
             if (skill.isCowboySkill)
                 activeCowboySkills.Add(skill);
             else
                 activeWizardSkills.Add(skill);            
         }
+        IEnumerator ActivateGoldenGun()
+        {
+            playerController.aimSystem.goldenGunActive = true;
+            Color originalColor = playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color;
+            yield return new WaitForSeconds(3f);
 
+            for(int i = 0; i < 60; i++)
+            {
+                playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color = Color.Lerp(originalColor, Color.black, Mathf.PingPong(Time.time * 2, 1));
+                yield return new WaitForSeconds(0.05f);
+            }
+            playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color = originalColor;
+            playerController.aimSystem.goldenGunActive = false;
+        }
         IEnumerator shieldOfFaith()
         {
             playerController.playerHealth.isInvincible = true;
-            playerController.healthBar.DrawHearts(true);
+            playerController.healthBar.DrawHearts();
             yield return new WaitForSeconds(5);
             playerController.playerHealth.isInvincible = false;
-            playerController.healthBar.DrawHearts(false);
+            playerController.healthBar.DrawHearts();
         }
         IEnumerator dynamiteDash()
         {
@@ -192,7 +203,7 @@ namespace Code.Scripts.SkillTreeSystem
             Debug.Log("Dynamite Dash");
             Instantiate(playerController.dynamite, pos, rot);
             StartCoroutine(playerController.Dash(0.16f, 27f));
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(0.5f);
             Instantiate(playerController.explosion, pos, rot);
         }
 
@@ -200,9 +211,12 @@ namespace Code.Scripts.SkillTreeSystem
         {
             // find key in activeCowboySkills that has value number
             ScriptableSkill skill = activeCowboySkills.GetSkill(number);
-
             // dont have skill
-            if (skill == null) return;
+            if (skill == null) 
+            {
+                Debug.Log("dont have skill");
+                return;
+            };
 
             string skillName = skill.SkillName;
             int cooldown = skill.CoolDown;
@@ -219,6 +233,7 @@ namespace Code.Scripts.SkillTreeSystem
                     Debug.Log("DynoDashh");
                     break;
                 case "goldengun":
+                    StartCoroutine(ActivateGoldenGun());
                     Debug.Log("Golden Gun");
                     break;
             }

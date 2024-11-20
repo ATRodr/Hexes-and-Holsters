@@ -15,7 +15,7 @@ public class DDScript : MonoBehaviour
         if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
             Debug.Log("Hit enemy");
-            enemyComponent.TakeDamage(3, gameObject);
+            enemyComponent.TakeDamage(3);
 
         }
     }

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    
     public bool isFireBolt = false;
-    // Boolean to check if it's a chain lightning bolt
     
     private void OnCollisionEnter2D(Collision2D collision)
     {

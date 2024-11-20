@@ -1,27 +1,23 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Don't forget me!
+using UnityEngine.SceneManagement;
 
 public class BuildingEntrance : MonoBehaviour
 {
-#pragma warning disable 0649 // Private variables
     [SerializeField] private string interiorSceneName; // Name of the interior scene to load
     [SerializeField] private string spawnPointTag; // Tag for the spawn point
-#pragma warning restore 0649
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         // Check if the object colliding is the player
-        //PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        //PlayerController player =  MainManager.Instance.playerController;
-
-        if (collision.gameObject.tag=="Player") // If the player enters the trigger
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (player)
         {
             // Load the interior scene
             if (SceneManager.GetActiveScene().name != interiorSceneName)
             {
-                SceneManager.LoadScene(interiorSceneName);
+                Debug.Log($"Transitioning to scene: {interiorSceneName} with spawn point tag: {spawnPointTag}");
                 SceneSwapManager.instance.spawnPointTag = spawnPointTag; // Set spawn point tag in SceneSwapManager
+                SceneManager.LoadScene(interiorSceneName);
             }
             else
             {
@@ -33,11 +29,10 @@ public class BuildingEntrance : MonoBehaviour
 
     private void LoadTownScene()
     {
-        // Change this to your town scene name
-        string townSceneName = "Level1_Town_Exterior"; // Replace with the actual name of your town scene
+        string townSceneName = "Level1_Town_Exterior"; // Replace with your town scene name
 
-        // Set the appropriate spawn point tag based on the building the player is in
-        if (interiorSceneName == "Level1_Saloon_Interior") // Replace with the actual name of your building scenes
+        // Set the appropriate spawn point tag based on the building
+        if (interiorSceneName == "Level1_Saloon_Interior")
         {
             SceneSwapManager.instance.spawnPointTag = "ExitPoint_1";
         }
@@ -54,7 +49,7 @@ public class BuildingEntrance : MonoBehaviour
             SceneSwapManager.instance.spawnPointTag = "ExitPoint_4";
         }
 
+        Debug.Log($"Transitioning to town scene: {townSceneName} with spawn point tag: {SceneSwapManager.instance.spawnPointTag}");
         SceneManager.LoadScene(townSceneName); // Load the town scene
     }
-
 }

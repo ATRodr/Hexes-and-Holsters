@@ -6,6 +6,8 @@ using UnityEngine;
 public class Ultimates : MonoBehaviour
 {
     private AimSystem aimSystem;
+    [SerializeField]
+    private Weapon weapon;
     private int cowboyUlt;
     private int wizardUlt;
     private float cowboyUltCooldown;
@@ -15,16 +17,12 @@ public class Ultimates : MonoBehaviour
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
 
-    public IEnumerator Start()
+    public void Start()
     {
-        while (MainManager.Instance == null || MainManager.Instance.aimSystem == null)
-        {
-            yield return null;
-        }
-
-        aimSystem = MainManager.Instance.aimSystem;
+        aimSystem = GetComponent<AimSystem>();
         cowboyUltCooldown = COWBOY_COOLDOWN;
         wizardUltCooldown = WIZARD_COOLDOWN;
+        GameObject.FindObjectOfType<Weapon>();
     }
 
     public void Update()
@@ -54,6 +52,7 @@ public class Ultimates : MonoBehaviour
                             break;
                         case 2:
                             Debug.Log("Gatling Gun");
+                            StartCoroutine(GatlingGun());
                             break;
                         case 3:
                             Debug.Log("Bullwhip Spin");
@@ -108,5 +107,16 @@ public class Ultimates : MonoBehaviour
             wizardUlt = roll;
             Debug.Log("Wizard Ult: " + wizardUlt);
         }
+    }
+    IEnumerator GatlingGun()
+    {
+        // fire gatling gun
+        Debug.Log("Gatling Gun Fired");
+        for(int i = 0; i < 20;i++)
+        {
+            weapon.FireGat();
+            yield return new WaitForSeconds(0.25f);
+        }
+        //yield return new WaitForSeconds(0.1f);
     }
 }

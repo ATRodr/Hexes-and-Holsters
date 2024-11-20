@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class AimSystem : MonoBehaviour
@@ -13,10 +14,11 @@ public class AimSystem : MonoBehaviour
     public float swappingDelay = 0.5f;
     public bool isCowboy = true;
     public bool swapping;
-
+    public bool goldenGunActive = false;
     //gun is cowboys weapon orb is wizrd weapon.
     //Weapon is singleton/parent which takes on the current weapon based on which character is currently being played
     public GameObject gun; 
+    public GameObject GoldenGun;
 
     //orb parent is what we need to rotate
     public GameObject orbParent; 
@@ -38,15 +40,10 @@ public class AimSystem : MonoBehaviour
     //animation used when swapping between characters
     public Animator swappingAnimation;
 
-    private IEnumerator Start()
+    void Start()
     {
-
-        MainManager.Instance.aimSystem = this;
-        while (MainManager.Instance == null || MainManager.Instance.playerController == null)
-        {
-            yield return null;
-        }
-        controller = MainManager.Instance.playerController;
+        controller = GetComponent<PlayerController>();
+        GoldenGun = GameObject.Find("GoldenGun");
         //start as cowboy and assign sprites
         swappingAnimation.SetBool("isCowboy",isCowboy);
         bodySprites = cowboySprites;
@@ -67,6 +64,10 @@ public class AimSystem : MonoBehaviour
 
     void Update()
     {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
         if (controller.isPaused) return;
 
         //always update aim 
@@ -84,20 +85,13 @@ public class AimSystem : MonoBehaviour
             {
                 sprite.SetActive(false);
             }
-            //call swap then change state 
-            swap();
+            //switch body sprites and flip state 
+            bodySprites = isCowboy ? wizardSprites : cowboySprites;
             isCowboy =!isCowboy;  
 
             //run swap animation
             StartCoroutine(handleSwapAnimations(swappingAnimation,0.55f)); 
         }
-    }
-    void swap()
-    {
-        bodySprites = isCowboy ? wizardSprites : cowboySprites;
-        weapon.SetActive(false);
-        weapon = isCowboy ? orbParent : gun; 
-        weapon.SetActive(true);
     }
 
     IEnumerator handleSwapAnimations(Animator anim,float duration){
@@ -125,14 +119,11 @@ public class AimSystem : MonoBehaviour
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
         gun.transform.rotation = Quaternion.Euler(0, 0, angle);
+        GoldenGun.transform.rotation = Quaternion.Euler(0, 0, angle);
         weap.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Switch guns based on the angle (-90 to 90 shows right gun, otherwise left gun)
-        if(weap == gun)
-        {
-            
-        }
-        if(weap = gun)
+
+        if(weap == gun || weap == GoldenGun)
         {
             if (angle > -90 && angle < 90)
             {
@@ -146,6 +137,31 @@ public class AimSystem : MonoBehaviour
     }
     void UpdateBodySprite()
     {
+        // GameObject renderThis = gun;
+
+        if(isCowboy)
+        {
+            if(goldenGunActive)
+            {
+                weapon = GoldenGun;
+                gun.SetActive(false);
+                orbParent.SetActive(false);
+               // renderThis = GoldenGun;
+            }
+            else
+            {
+                weapon = gun;
+                orbParent.SetActive(false);
+                GoldenGun.SetActive(false);
+               // renderThis = gun;
+            }
+        }else
+        {
+            weapon = orbParent;
+            gun.SetActive(false);
+            GoldenGun.SetActive(false);
+        }
+         weapon.SetActive(true);
         // Calculate angle for player body sprite rotation
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
@@ -160,23 +176,23 @@ public class AimSystem : MonoBehaviour
         if (angle > -45f && angle <= 45f)
         {
             bodySprites[0].SetActive(true); // Right
-            gun.GetComponent<SpriteRenderer>().sortingOrder = 0;
+           // weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
 
         }
         else if (angle > 45f && angle <= 135f)
         {
             bodySprites[1].SetActive(true); // Up
-            gun.GetComponent<SpriteRenderer>().sortingOrder = 0;
+           // weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if ((angle > 135f && angle <= 180) || angle > -180f && angle <= -135)
         {
             bodySprites[2].SetActive(true); // Left
-            gun.GetComponent<SpriteRenderer>().sortingOrder = 0;
+           // weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if (angle > -135f && angle <= -45f)
         {
             bodySprites[3].SetActive(true); // Down
-            gun.GetComponent<SpriteRenderer>().sortingOrder = 7;
+           // weapon.GetComponent<SpriteRenderer>().sortingOrder = 7;
             //orb.GetComponent<SpriteRenderer>().sortingOrder = 7;
         }
     }

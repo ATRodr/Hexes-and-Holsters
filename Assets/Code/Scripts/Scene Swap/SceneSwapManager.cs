@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneSwapManager : MonoBehaviour
 {
@@ -21,12 +22,13 @@ public class SceneSwapManager : MonoBehaviour
         }
     }
 
-    // Called when the scene finishes loading
+    // Subscribe to sceneLoaded event
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    // Unsubscribe from sceneLoaded event
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -35,23 +37,50 @@ public class SceneSwapManager : MonoBehaviour
     // Method to position the player at the spawn point after the scene loads
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StartCoroutine(PositionPlayerAfterSceneLoad(scene));
+    }
+
+    private IEnumerator PositionPlayerAfterSceneLoad(Scene scene)
+    {
+        // Wait for one frame to ensure all objects in the scene are initialized
+        yield return null;
+
+        if (string.IsNullOrEmpty(spawnPointTag))
+        {
+            Debug.LogWarning($"Scene '{scene.name}' loaded, but spawnPointTag is not set. Cannot position player.");
+            yield break;
+        }
+
         // Find the spawn point by tag
         GameObject spawnPoint = GameObject.FindWithTag(spawnPointTag);
-        if (spawnPoint != null)
+        if (spawnPoint == null)
         {
-            // Move the player to the spawn point
-            GameObject player = MainManager.Instance.playerController.gameObject;
-            if (player != null)
-            {
-                player.transform.position = spawnPoint.transform.position; // Set the player's position
+            Debug.LogError($"Scene '{scene.name}' loaded, but no GameObject with tag '{spawnPointTag}' found.");
+            yield break;
+        }
 
-                // Find the camera and set the player as the target
-                CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow>();
-                if (cameraFollow != null)
-                {
-                    cameraFollow.SetPlayer(player.transform); // Update the camera's target to the player
-                }
-            }
+        // Find the player
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("Player GameObject not found in the scene. Ensure the player is tagged correctly.");
+            yield break;
+        }
+
+        // Move the player to the spawn point
+        player.transform.position = spawnPoint.transform.position;
+        Debug.Log($"Player positioned at spawn point '{spawnPoint.name}' in scene '{scene.name}'.");
+
+        // Update the camera's target to the player
+        CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        if (cameraFollow != null)
+        {
+            cameraFollow.SetPlayer(player.transform);
+            Debug.Log("Camera target updated to the player.");
+        }
+        else
+        {
+            Debug.LogWarning("CameraFollow component not found on the main camera.");
         }
     }
 }

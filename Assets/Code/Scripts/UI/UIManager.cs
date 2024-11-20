@@ -2,9 +2,6 @@ using Code.Scripts.SkillTreeSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Collections;
-using System.Collections.Generic;
-using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,15 +17,14 @@ public class UIManager : MonoBehaviour
     private VisualElement skillTopRow, skillMiddleRow, skillBottomRow;
     [SerializeField] private List<UITalentButton> talentButtons;
 
-    private IEnumerator Start()
+    private void Awake()
     {
-        MainManager.Instance.uiManager = this;
-        while (MainManager.Instance == null || MainManager.Instance.playerSkillManager == null)
-        {
-            yield return null; // Wait for the next frame
-        }
-        playerSkillManager = MainManager.Instance.playerSkillManager;
         uiDocument = GetComponent<UIDocument>();
+        playerSkillManager = FindObjectOfType<PlayerSkillManager>();
+    }
+
+    private void Start()
+    {
         CreateSkillButtons();
     }
 
