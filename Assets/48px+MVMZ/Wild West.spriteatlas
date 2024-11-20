@@ -811,6 +811,7 @@ SpriteAtlas:
     - 995ff668a463148ae9534dd39dce6af0: 356405172
     - 995ff668a463148ae9534dd39dce6af0: -2125368667
     - 995ff668a463148ae9534dd39dce6af0: 590814388
+    - 83b4afc95ad20471e9763e20844f1328: 480982845
     - 83b4afc95ad20471e9763e20844f1328: -150929645
     - 83b4afc95ad20471e9763e20844f1328: -1474859070
     - 83b4afc95ad20471e9763e20844f1328: 1721856356
@@ -839,9 +840,9 @@ SpriteAtlas:
     - 83b4afc95ad20471e9763e20844f1328: -229543846
     - 83b4afc95ad20471e9763e20844f1328: 1628458207
     - 83b4afc95ad20471e9763e20844f1328: 1460471486
-    - 83b4afc95ad20471e9763e20844f1328: -1318344831
     - 83b4afc95ad20471e9763e20844f1328: 1708258448
     - 83b4afc95ad20471e9763e20844f1328: 1438019373
+    - 83b4afc95ad20471e9763e20844f1328: -281246838
     - 83b4afc95ad20471e9763e20844f1328: -1536850434
     - 83b4afc95ad20471e9763e20844f1328: -1842072243
     - 83b4afc95ad20471e9763e20844f1328: 426857455
@@ -851,10 +852,13 @@ SpriteAtlas:
     - 83b4afc95ad20471e9763e20844f1328: -1621907553
     - 83b4afc95ad20471e9763e20844f1328: 2011193730
     - 83b4afc95ad20471e9763e20844f1328: -697469746
+    - 83b4afc95ad20471e9763e20844f1328: -1581375624
+    - 83b4afc95ad20471e9763e20844f1328: -1195890437
     - 83b4afc95ad20471e9763e20844f1328: -1742518712
     - 83b4afc95ad20471e9763e20844f1328: -1013331104
     - 83b4afc95ad20471e9763e20844f1328: 1070820692
     - 83b4afc95ad20471e9763e20844f1328: -992646909
+    - 83b4afc95ad20471e9763e20844f1328: -1318344831
     - 8c565d8aeab704870a6132c3a84a18dc: 1938458129
     - 8c565d8aeab704870a6132c3a84a18dc: -6022163
     - 8c565d8aeab704870a6132c3a84a18dc: -1996961356
@@ -1857,6 +1861,7 @@ SpriteAtlas:
   - {fileID: 356405172, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: -2125368667, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
   - {fileID: 590814388, guid: 995ff668a463148ae9534dd39dce6af0, type: 3}
+  - {fileID: 480982845, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: -150929645, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: -1474859070, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 1721856356, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
@@ -1885,9 +1890,9 @@ SpriteAtlas:
   - {fileID: -229543846, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 1628458207, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 1460471486, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
-  - {fileID: -1318344831, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 1708258448, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 1438019373, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
+  - {fileID: -281246838, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: -1536850434, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: -1842072243, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 426857455, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
@@ -1897,10 +1902,13 @@ SpriteAtlas:
   - {fileID: -1621907553, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 2011193730, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: -697469746, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
+  - {fileID: -1581375624, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
+  - {fileID: -1195890437, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: -1742518712, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: -1013331104, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 1070820692, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: -992646909, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
+  - {fileID: -1318344831, guid: 83b4afc95ad20471e9763e20844f1328, type: 3}
   - {fileID: 1938458129, guid: 8c565d8aeab704870a6132c3a84a18dc, type: 3}
   - {fileID: -6022163, guid: 8c565d8aeab704870a6132c3a84a18dc, type: 3}
   - {fileID: -1996961356, guid: 8c565d8aeab704870a6132c3a84a18dc, type: 3}
@@ -2902,6 +2910,7 @@ SpriteAtlas:
   - western_A4_13
   - western_A4_12
   - western_A4_28
+  - Cliff_Middle
   - western_B_1
   - western_B_0
   - western_B_3
@@ -2930,9 +2939,9 @@ SpriteAtlas:
   - western_B_32
   - western_B_28
   - western_B_33
-  - western_B_30
   - western_B_31
   - western_B_21
+  - Cliff_Right
   - western_B_20
   - western_B_23
   - western_B_38
@@ -2942,10 +2951,13 @@ SpriteAtlas:
   - western_B_24
   - western_B_27
   - western_B_26
+  - Cliff_Grass
+  - western_B_46
   - western_B_43
   - western_B_42
   - western_B_41
   - western_B_40
+  - Cliff_Left
   - western_A3_51
   - Brick_Back_Middle
   - Brick_Right_Middle

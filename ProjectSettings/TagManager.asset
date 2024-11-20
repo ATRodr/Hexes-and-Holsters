@@ -12,6 +12,8 @@ TagManager:
   - ExitPoint_2
   - ExitPoint_3
   - ExitPoint_4
+  - SpawnPoint_5
+  - SpawnPoint_6
   layers:
   - Default
   - TransparentFX
