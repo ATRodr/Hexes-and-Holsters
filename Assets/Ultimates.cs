@@ -9,6 +9,7 @@ public class Ultimates : MonoBehaviour
     [SerializeField]
     private Weapon weapon;
     private GameObject wave;
+    private GameObject hadar;
     private int cowboyUlt;
     private int wizardUlt;
     private float cowboyUltCooldown;
@@ -20,11 +21,13 @@ public class Ultimates : MonoBehaviour
 
     public void Start()
     {
-        wave = Resources.Load<GameObject>("DestructiveWave");
         aimSystem = GetComponent<AimSystem>();
         cowboyUltCooldown = COWBOY_COOLDOWN;
         wizardUltCooldown = WIZARD_COOLDOWN;
         GameObject.FindObjectOfType<Weapon>();
+        
+        hadar = Resources.Load<GameObject>("Hadar");
+        wave = Resources.Load<GameObject>("DestructiveWave");
         if(wave == null)
             Debug.LogError("Wave not found");
     }
@@ -77,6 +80,7 @@ public class Ultimates : MonoBehaviour
                             break;
                         case 3:
                             Debug.Log("Hunger of Hadar");
+                            StartCoroutine(HungerOfHadar());
                             break;
                     }
                     wizardUltReady = false;
@@ -96,7 +100,7 @@ public class Ultimates : MonoBehaviour
         // roll ult
 
         // random number between 1 and 20
-        int roll = Random.Range(1, 3);
+        int roll = Random.Range(1, 4);
 
         if (aimSystem.isCowboy)
         {
@@ -127,5 +131,10 @@ public class Ultimates : MonoBehaviour
             weapon.FireGat();
             yield return new WaitForSeconds(0.25f);
         }
+    }
+    IEnumerator HungerOfHadar()
+    {
+        Instantiate(hadar, transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.25f);
     }
 }
