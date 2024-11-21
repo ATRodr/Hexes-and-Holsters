@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colliding");
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             Enemy enemyComponent = collision.gameObject.GetComponent<Enemy>();

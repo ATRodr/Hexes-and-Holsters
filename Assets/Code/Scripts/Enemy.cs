@@ -5,6 +5,10 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    private Rigidbody2D rb;
+    private bool isChasing = false;
+    private bool hasLOS = false;
+    public bool HasLOS => HasLOS;
     [SerializeField] Transform target;
     [SerializeField] float health, maxHealth = 4f;
     [SerializeField] float attackRate = 1f;
@@ -17,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("REALPlayerPrefab").transform;
         health = maxHealth;
         agent = GetComponent<NavMeshAgent>();
@@ -30,7 +35,11 @@ public class Enemy : MonoBehaviour
         {
             target = GameObject.Find("REALPlayerPrefab").transform;
         }
-        agent.SetDestination(target.position);
+
+        if (isChasing)
+        {
+            agent.SetDestination(target.position);
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -44,6 +53,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+            isChasing = true;
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+            isChasing = false;
+    }
     //Overloaded methods for giving damage to the enemy
     
     //Destroys GameObject that collides with the enemy
