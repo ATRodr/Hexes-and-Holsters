@@ -43255,9 +43255,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1602127282}
   - component: {fileID: 1602127281}
+  - component: {fileID: 1602127290}
+  - component: {fileID: 1602127291}
   - component: {fileID: 1602127284}
   - component: {fileID: 1602127283}
-  - component: {fileID: 1602127289}
   - component: {fileID: 1602127285}
   - component: {fileID: 1602127287}
   - component: {fileID: 1602127286}
@@ -43349,13 +43350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe266e23a4db64dc88f523646b4a487f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  health: 0
-  maxHealth: 4
-  attackRate: 1
-  isMelle: 0
-  isMagic: 0
-  agent: {fileID: 0}
 --- !u!114 &1602127284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43382,7 +43376,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 3.5
-  m_StoppingDistance: 1
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -43443,7 +43437,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602127280}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -43497,7 +43491,7 @@ CircleCollider2D:
   m_Offset: {x: 0.13955975, y: -0.21783066}
   serializedVersion: 2
   m_Radius: 15.032664
---- !u!114 &1602127289
+--- !u!114 &1602127290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43506,10 +43500,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1602127280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e84e741f4854c1c9b0aacc32316910, type: 3}
+  m_Script: {fileID: 11500000, guid: c30e9821425a543c2ab266e063796eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0
+  target: {fileID: 0}
+  health: 0
+  maxHealth: 4
+  attackRate: 1
+  isMelle: 0
+  isMagic: 0
+  agent: {fileID: 0}
+--- !u!114 &1602127291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602127280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98044bdb517694649b66c83ce6e6039b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 2
   bullet: {fileID: 6756061119310239216, guid: db5d6e746abef4d7d9f6427aff4d260b, type: 3}
   bulletPos: {fileID: 1477689150}
 --- !u!1 &1623477461
