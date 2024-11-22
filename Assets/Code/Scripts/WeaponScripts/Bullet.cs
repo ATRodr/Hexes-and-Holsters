@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
+            
             Enemy enemyComponent = collision.gameObject.GetComponent<Enemy>();
             if (enemyComponent.isMagic && !isFireBolt || isFireBolt && !enemyComponent.isMagic)
             {
