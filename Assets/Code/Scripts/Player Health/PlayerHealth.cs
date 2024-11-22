@@ -28,5 +28,4 @@ public class PlayerHealth : MonoBehaviour
             OnPlayerDeath?.Invoke();
         }
     }
-
 }

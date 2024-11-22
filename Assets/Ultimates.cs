@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Ultimates : MonoBehaviour
@@ -19,8 +20,11 @@ public class Ultimates : MonoBehaviour
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
 
+    private PlayerHealth playerHealth;
+
     public void Start()
     {
+        playerHealth = GetComponent<PlayerHealth>();
         aimSystem = GetComponent<AimSystem>();
         cowboyUltCooldown = COWBOY_COOLDOWN;
         wizardUltCooldown = WIZARD_COOLDOWN;
@@ -28,6 +32,8 @@ public class Ultimates : MonoBehaviour
         
         hadar = Resources.Load<GameObject>("Hadar");
         wave = Resources.Load<GameObject>("DestructiveWave");
+        if(hadar == null)
+            Debug.LogError("hadar not found");
         if(wave == null)
             Debug.LogError("Wave not found");
     }
@@ -77,6 +83,7 @@ public class Ultimates : MonoBehaviour
                             break;
                         case 2:
                             Debug.Log("Power Word Heal");
+                            StartCoroutine(PowerWordHeal());
                             break;
                         case 3:
                             Debug.Log("Hunger of Hadar");
@@ -117,6 +124,15 @@ public class Ultimates : MonoBehaviour
             Debug.Log("Wizard Ult: " + wizardUlt);
         }
     }
+    IEnumerator PowerWordHeal()
+    {
+        // heal player
+        if(Random.Range(1, 3) == 1)
+            playerHealth.maxHealth += 1f;
+        playerHealth.health = playerHealth.maxHealth;
+        playerHealth.TakeDamage(0f);                  //this sucks but we must call it to update hearts.
+        yield return new WaitForSeconds(0.1f);
+    }
     IEnumerator DestructiveWave()
         {
             Instantiate(wave, transform.position, transform.rotation);
@@ -136,5 +152,14 @@ public class Ultimates : MonoBehaviour
     {
         Instantiate(hadar, transform.position, transform.rotation);
         yield return new WaitForSeconds(0.25f);
+    }
+    IEnumerator RussianRoulete()
+    {
+        if(Random.Range(1, 3) == 1)
+            playerHealth.TakeDamage(1f);
+        else    
+            playerHealth.isInvincible = true;
+        yield return new WaitForSeconds(3f);
+        playerHealth.isInvincible = false;
     }
 }
