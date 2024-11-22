@@ -13,7 +13,7 @@ public class AimSystem : MonoBehaviour
     [SerializeField]
     public float swappingDelay = 0.5f;
     public bool isCowboy = true;
-    public bool swapping;
+    public bool swapping = false;
     public bool goldenGunActive = false;
     //gun is cowboys weapon orb is wizrd weapon.
     //Weapon is singleton/parent which takes on the current weapon based on which character is currently being played
@@ -25,7 +25,7 @@ public class AimSystem : MonoBehaviour
     //orb (orb child) is what we need to change layers of animation of
     
     //animation 
-    public Animator animator;
+    //public Animator animator;
     public GameObject orb;
     private GameObject weapon;
     
@@ -41,6 +41,8 @@ public class AimSystem : MonoBehaviour
 
     //animation used when swapping between characters
     public Animator swappingAnimation;
+
+    public bool isWalking = false;
 
     void Start()
     {
@@ -75,15 +77,42 @@ public class AimSystem : MonoBehaviour
         //always update aim 
         Aim(weapon);
         //update walking animation
-        animator.SetFloat("MouseDirectionX", aimDirection.x);
-        animator.SetFloat("MouseDirectionY", aimDirection.y);
+        
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        float speed = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
         //only update body sprite when not swapping
         if(!swapping)
             UpdateBodySprite();
-        if (Time.time >= swappingDelay + lastSwapTime && Input.GetKeyDown(KeyCode.LeftShift))
+            if(speed > 0 && isCowboy){
+
+                /*
+                isWalking = true;
+                foreach(GameObject sprite in bodySprites)
+                {
+                    sprite.SetActive(false);
+                }
+                swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
+                swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
+                swappingAnimation.SetBool("IsWalking", true);
+                StartCoroutine(handleSwapAnimations)
+                */
+                foreach (GameObject sprite in bodySprites)
+                {
+                    sprite.SetActive(false);
+                }
+                StartCoroutine(handleWalkingAnimations(swappingAnimation));
+                
+            }
+            else{
+                isWalking = false;
+                swappingAnimation.SetBool("IsWalking", false);
+            }
+        if(Time.time >= swappingDelay + lastSwapTime && Input.GetKeyDown(KeyCode.LeftShift))
         {
             //protects from mid swap updates
             swapping = true;
+            
 
             //set current set of sprits to invisable so we can switch to other sprites
             foreach (GameObject sprite in bodySprites)
@@ -99,17 +128,38 @@ public class AimSystem : MonoBehaviour
         }
     }
 
+    IEnumerator handleWalkingAnimations(Animator swappingAnimation){
+        isWalking = true;
+        swappingAnimation.SetBool("IsWalking", true); // Trigger the walking animation
+
+        while (isWalking)
+        {
+            Debug.Log("We are enumerating!");
+            swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
+            swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
+            // Keep the walking animation running while the player is moving
+            swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
+            yield return null;
+        }
+
+        swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
+        // Reset walking animation when the coroutine ends
+        
+    }
     IEnumerator handleSwapAnimations(Animator anim,float duration){
+        swappingAnimation.SetBool("IsSwap", true);
         weapon.SetActive(false);
         swappingAnimation.SetBool("isCowboy",isCowboy);
         swappingAnimation.playbackTime = 0;
         swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
         
         yield return new WaitForSeconds(duration);
-        anim.GetComponent<SpriteRenderer>().enabled = false;
+        //anim.GetComponent<SpriteRenderer>().enabled = false;
         weapon.SetActive(true);
         lastSwapTime = Time.time;  //get swap time
         swapping = !swapping;
+        swappingAnimation.SetBool("IsSwap", false);
+        
     }
     void Aim(GameObject weap)
     {
