@@ -138,7 +138,7 @@ public class AimSystem : MonoBehaviour
             swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
             swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
             // Keep the walking animation running while the player is moving
-            //swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
+            swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
             yield return null;
         }
 
@@ -154,7 +154,7 @@ public class AimSystem : MonoBehaviour
         swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
         
         yield return new WaitForSeconds(duration);
-        //anim.GetComponent<SpriteRenderer>().enabled = false;
+        anim.GetComponent<SpriteRenderer>().enabled = false;
         weapon.SetActive(true);
         lastSwapTime = Time.time;  //get swap time
         swapping = !swapping;
@@ -231,23 +231,23 @@ public class AimSystem : MonoBehaviour
         if (angle > -45f && angle <= 45f)
         {
             bodySprites[0].SetActive(true); // Right
-           // weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
 
         }
         else if (angle > 45f && angle <= 135f)
         {
             bodySprites[1].SetActive(true); // Up
-           // weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if ((angle > 135f && angle <= 180) || angle > -180f && angle <= -135)
         {
             bodySprites[2].SetActive(true); // Left
-           // weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if (angle > -135f && angle <= -45f)
         {
             bodySprites[3].SetActive(true); // Down
-           // weapon.GetComponent<SpriteRenderer>().sortingOrder = 7;
+            weapon.GetComponent<SpriteRenderer>().sortingOrder = 7;
             //orb.GetComponent<SpriteRenderer>().sortingOrder = 7;
         }
     }
