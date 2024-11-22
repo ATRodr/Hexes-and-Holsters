@@ -138,7 +138,7 @@ public class AimSystem : MonoBehaviour
             swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
             swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
             // Keep the walking animation running while the player is moving
-            swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
+            //swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
             yield return null;
         }
 
