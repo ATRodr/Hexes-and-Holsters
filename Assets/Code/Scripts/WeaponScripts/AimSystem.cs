@@ -43,6 +43,7 @@ public class AimSystem : MonoBehaviour
     public Animator swappingAnimation;
 
     public bool isWalking = false;
+    public bool isWizWalking = false;
 
     void Start()
     {
@@ -82,83 +83,142 @@ public class AimSystem : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float speed = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
         //only update body sprite when not swapping
-        if(!swapping)
+        if(!swapping && isCowboy){
             UpdateBodySprite();
-            if(speed > 0 && isCowboy){
-
-                /*
+            
+            foreach (GameObject sprite in bodySprites)
+            {
+                sprite.SetActive(false);
+            }
+            StartCoroutine(handleIdleAnimations());
+            if(speed > 0){
                 isWalking = true;
-                foreach(GameObject sprite in bodySprites)
-                {
-                    sprite.SetActive(false);
+                if(isCowboy){
+                    StartCoroutine(handleWalkingAnimations(swappingAnimation));
                 }
-                swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
-                swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
-                swappingAnimation.SetBool("IsWalking", true);
-                StartCoroutine(handleSwapAnimations)
-                */
-                foreach (GameObject sprite in bodySprites)
-                {
-                    sprite.SetActive(false);
-                }
-                StartCoroutine(handleWalkingAnimations(swappingAnimation));
-                
             }
             else{
                 isWalking = false;
                 swappingAnimation.SetBool("IsWalking", false);
             }
-        if(Time.time >= swappingDelay + lastSwapTime && Input.GetKeyDown(KeyCode.LeftShift))
+        }
+        
+        else if(!swapping && !isCowboy){
+            Debug.Log("Wizard and Not Swapping");
+            UpdateBodySprite();
+            
+            foreach (GameObject sprite in bodySprites)
+            {
+                
+                sprite.SetActive(false);
+            }
+            StartCoroutine(handleIdleAnimations());
+            if(speed > 0){
+                Debug.Log("Wizard Speed > 0");
+                isWizWalking = true;
+                if(!isCowboy){
+                    Debug.Log("Attempt start wizwalk coroutine");
+                    StartCoroutine(handleWizWalkingAnimations(swappingAnimation));
+                }
+            }
+            else{
+                isWizWalking = false;
+                swappingAnimation.SetBool("IsWizWalking", false);
+            }
+        }
+        
+        //if(Time.time >= swappingDelay + lastSwapTime && Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             //protects from mid swap updates
+            Debug.Log("Swapped");
             swapping = true;
             
 
-            //set current set of sprits to invisable so we can switch to other sprites
+            /*set current set of sprits to invisable so we can switch to other sprites
             foreach (GameObject sprite in bodySprites)
             {
                 sprite.SetActive(false);
             }
+            */
             //switch body sprites and flip state 
-            bodySprites = isCowboy ? wizardSprites : cowboySprites;
-            isCowboy =!isCowboy;  
+            //bodySprites = isCowboy ? wizardSprites : cowboySprites;
+            isCowboy = !isCowboy;  
 
+            /*Need to figure out how to scale animation seamlessly during swap
+            if(isCowboy){
+                swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
+                StartCoroutine(handleSwapAnimations(swappingAnimation));
+                swappingAnimation.gameObject.transform.localScale = new Vector3(3f, 3f, 1f);
+            
+            }
+            else{
+                swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
+                
+                swappingAnimation.gameObject.transform.localScale = new Vector3(1.6f, 1.6f, 1f);
+            
+            }
+            */
+            StartCoroutine(handleSwapAnimations(swappingAnimation));
             //run swap animation
-            StartCoroutine(handleSwapAnimations(swappingAnimation,0.55f)); 
+             
+            Debug.Log(swapping);
+            Debug.Log(isCowboy);
         }
     }
 
+    IEnumerator handleIdleAnimations(){
+        while(!isWalking){
+            swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
+            swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
+            yield return null;
+        }
+    }
     IEnumerator handleWalkingAnimations(Animator swappingAnimation){
-        isWalking = true;
         swappingAnimation.SetBool("IsWalking", true); // Trigger the walking animation
 
-        while (isWalking)
+        while (isWalking && isCowboy)
         {
             Debug.Log("We are enumerating!");
             swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
             swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
             // Keep the walking animation running while the player is moving
-            swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
+            //swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
+            yield return null;
+        }
+        
+    }
+
+    IEnumerator handleWizWalkingAnimations(Animator swappingAnimation){
+        swappingAnimation.SetBool("IsWizWalking", true); // Trigger the walking animation
+
+        while (isWizWalking)
+        {
+            Debug.Log("We are enumerating!");
+            swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
+            swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
+            // Keep the walking animation running while the player is moving
+            //swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
             yield return null;
         }
 
-        swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
-        // Reset walking animation when the coroutine ends
         
     }
-    IEnumerator handleSwapAnimations(Animator anim,float duration){
+    IEnumerator handleSwapAnimations(Animator anim){
+        swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
         swappingAnimation.SetBool("IsSwap", true);
         weapon.SetActive(false);
         swappingAnimation.SetBool("isCowboy",isCowboy);
-        swappingAnimation.playbackTime = 0;
-        swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
+        //swappingAnimation.playbackTime = 0;
+        //swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
         
-        yield return new WaitForSeconds(duration);
-        anim.GetComponent<SpriteRenderer>().enabled = false;
+        //yield return new WaitForSeconds(duration);
+        //anim.GetComponent<SpriteRenderer>().enabled = false;
         weapon.SetActive(true);
-        lastSwapTime = Time.time;  //get swap time
-        swapping = !swapping;
+        //lastSwapTime = Time.time;  //get swap time
+        swapping = false;
         swappingAnimation.SetBool("IsSwap", false);
+        yield return null;
         
     }
     void Aim(GameObject weap)
@@ -221,33 +281,35 @@ public class AimSystem : MonoBehaviour
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
         // Deactivate all body sprites
+        /*
         foreach (GameObject sprite in bodySprites)
         {
             sprite.SetActive(false);
         }
+        */
 
         //Debug.Log(angle);
         // Activate the correct sprite based on angle (quad directions)
         if (angle > -45f && angle <= 45f)
         {
-            bodySprites[0].SetActive(true); // Right
-            weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            //bodySprites[0].SetActive(true); // Right
+            //weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
 
         }
         else if (angle > 45f && angle <= 135f)
         {
-            bodySprites[1].SetActive(true); // Up
-            weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            //bodySprites[1].SetActive(true); // Up
+            //weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if ((angle > 135f && angle <= 180) || angle > -180f && angle <= -135)
         {
-            bodySprites[2].SetActive(true); // Left
-            weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            //bodySprites[2].SetActive(true); // Left
+            //weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else if (angle > -135f && angle <= -45f)
         {
-            bodySprites[3].SetActive(true); // Down
-            weapon.GetComponent<SpriteRenderer>().sortingOrder = 7;
+            //bodySprites[3].SetActive(true); // Down
+            //weapon.GetComponent<SpriteRenderer>().sortingOrder = 7;
             //orb.GetComponent<SpriteRenderer>().sortingOrder = 7;
         }
     }
