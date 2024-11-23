@@ -7,19 +7,19 @@ public class TriggerZoneScript : MonoBehaviour
     private List<GameObject> objectsInTrigger = new List<GameObject>();
     public List<GameObject> ObjectsInTrigger => objectsInTrigger;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D other)  
     {
-        if (!objectsInTrigger.Contains(collision.gameObject))
+        if (!objectsInTrigger.Contains(other.gameObject))
         {
-            objectsInTrigger.Add(collision.gameObject);
+            objectsInTrigger.Add(other.gameObject);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D col)
     {
-        if (objectsInTrigger.Contains(collision.gameObject))
+        if (objectsInTrigger.Contains(col.gameObject))
         {
-            objectsInTrigger.Remove(collision.gameObject);
+            objectsInTrigger.Remove(col.gameObject);
         }
     }
 }

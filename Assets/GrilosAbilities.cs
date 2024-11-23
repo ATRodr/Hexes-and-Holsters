@@ -34,7 +34,7 @@ public class GrilosAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if one or less skeleton alive, 50% chance to raise dead
+        // if one or less goon alive, 50% chance to raise dead
         // every 30 seconds
 
         if (Time.time - lastRaiseDeadTime > raiseDeadCooldown)
@@ -46,6 +46,7 @@ public class GrilosAbilities : MonoBehaviour
             }
             // check amount of Enemy game objects
             int count = 0;
+            Debug.Log("Objects in trigger: " + triggerZoneScript.ObjectsInTrigger.Count);
             foreach (GameObject enemy in triggerZoneScript.ObjectsInTrigger)
             {
                 if (LayerMask.NameToLayer("Enemy") == enemy.layer)
@@ -55,7 +56,9 @@ public class GrilosAbilities : MonoBehaviour
             }
             Debug.Log("Count: " + count);
             // if one or less skeleton alive, 50% chance to raise dead
-            if (count <= 1 && Random.Range(0, 2) == 1)
+            // (count is 3 because boss and dawn ability is in room all on
+            // enemy layer)
+            if (count <= 3 && Random.Range(0, 2) == 1)
             {
                 lastRaiseDeadTime = Time.time;
                 StartCoroutine(RaiseDead());
