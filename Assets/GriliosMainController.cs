@@ -6,6 +6,20 @@ using UnityEngine.AI;
 public class GriliosMainController : MonoBehaviour
 {
     
+    private PlayerController playerController;
+
+    private float lastAbilityActivationTime = 0f;
+
+    void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
+
+    void Update()
+    {
+        // if (Time.time - lastAbilityActivationTime < cooldown) return;
+
+    }
     
 }
 

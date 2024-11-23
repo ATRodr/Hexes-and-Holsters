@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6858572624129638260}
   - component: {fileID: 6387859336111140937}
   m_Layer: 6
-  m_Name: Ranged Enemy 1
+  m_Name: RangedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,9 +77,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 54392429
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.4009434, b: 0.85205173, a: 1}
   m_FlipX: 0
@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  health: 6
+  health: 4
   maxHealth: 6
-  attackRate: 1
-  isMelle: 0
-  isMagic: 0
+  attackRate: 2
+  isMelle: 1
+  isMagic: 1
   agent: {fileID: 0}
 --- !u!61 &2424757223712046673
 BoxCollider2D:

@@ -10,9 +10,9 @@ public class Enemy : MonoBehaviour
     private bool hasLOS = false;
     public bool HasLOS => HasLOS;
     [SerializeField] Transform target;
-    [SerializeField] float health, maxHealth = 4f;
-    [SerializeField] float attackRate = 1f;
-    [SerializeField] bool isMelle = false;
+    [SerializeField] public float health, maxHealth = 4f;
+    [SerializeField] public float attackRate = 1f;
+    [SerializeField] public bool isMelle = false;
     [SerializeField] public bool isMagic = false;
         
     float nextAttack = 0f;
