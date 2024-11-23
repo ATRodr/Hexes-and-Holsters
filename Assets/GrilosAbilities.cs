@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +14,11 @@ public class GrilosAbilities : MonoBehaviour
 
     private float lastRaiseDeadTime = 0f;
 
-    [SerializeField] private float abilityCooldown = 10f;
+    private DawnScript dawnScript;
+
+    private bool playerInRoom = false;
+
+    [SerializeField] private float abilityCooldown = 15f;
     [SerializeField] private float raiseDeadCooldown = 30f;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject enemyPrefab;
@@ -21,6 +26,8 @@ public class GrilosAbilities : MonoBehaviour
     void Start()
     {
         triggerZoneScript = GameObject.Find("TriggerZone").GetComponent<TriggerZoneScript>();
+        dawnScript = GameObject.Find("DawnCollider").GetComponent<DawnScript>();
+        playerController = GameObject.Find("REALPlayerPrefab").GetComponent<PlayerController>();
         SpriteRenderer sprite = enemyPrefab.GetComponent<SpriteRenderer>();
         sprite.sortingLayerName = "Player";
         sprite.sortingOrder = 0;
@@ -34,46 +41,46 @@ public class GrilosAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if one or less goon alive, 50% chance to raise dead
-        // every 30 seconds
-
-        if (Time.time - lastRaiseDeadTime > raiseDeadCooldown)
+        if (triggerZoneScript == null)
         {
-            if (triggerZoneScript == null)
+            Debug.LogError("TriggerZoneScript is null");
+            return;
+        }
+        if (!triggerZoneScript.playerInRoom)
+        {
+            return;
+        }
+
+        // if one or less goon alive, 50% chance to raise dead
+        // every some seconds (count is 2 because boss is also in the trigger)
+
+        if (Time.time - lastRaiseDeadTime > raiseDeadCooldown && triggerZoneScript.enimiesInRoom <= 2)
+        {
+            lastRaiseDeadTime = Time.time;
+            if (Random.Range(0, 2) == 1)
             {
-                Debug.LogError("TriggerZoneScript is null");
-                return;
-            }
-            // check amount of Enemy game objects
-            int count = 0;
-            Debug.Log("Objects in trigger: " + triggerZoneScript.ObjectsInTrigger.Count);
-            foreach (GameObject enemy in triggerZoneScript.ObjectsInTrigger)
-            {
-                if (LayerMask.NameToLayer("Enemy") == enemy.layer)
-                {
-                    count++;
-                }
-            }
-            Debug.Log("Count: " + count);
-            // if one or less skeleton alive, 50% chance to raise dead
-            // (count is 3 because boss and dawn ability is in room all on
-            // enemy layer)
-            if (count <= 3 && Random.Range(0, 2) == 1)
-            {
-                lastRaiseDeadTime = Time.time;
                 StartCoroutine(RaiseDead());
             }
         }
 
         if (Time.time - lastAbilityActivationTime < abilityCooldown) return;
 
+        int randomAttack = Random.Range(0, 0);
+        switch (randomAttack)
+        {
+            case 0:
+                StartCoroutine(Dawn());
+                break;
+        }
+        lastAbilityActivationTime = Time.time;
+
     }
 
     IEnumerator Dawn()
     {
         // Dawn ability
-
-        yield return null;
+        dawnScript.ActivateDawn(playerController.GameObject().transform.position);
+        yield break;
     }
 
     IEnumerator RaiseDead()
