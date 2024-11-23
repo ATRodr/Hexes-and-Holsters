@@ -5,7 +5,7 @@ using UnityEngine;
 public class DawnScript : MonoBehaviour
 {
     public float speed = 10f; // Speed of the swoop
-    
+    public float dawnTickRate = 0.5f; // Time between hits
     private Vector3 startPoint; // Start position
     private Vector3 endPoint;   // End position
     private SpriteRenderer spriteRenderer;
@@ -14,6 +14,7 @@ public class DawnScript : MonoBehaviour
     private float elapsedTime = 0f;
     private float duration;
     private bool isActive = false;
+    private float lastDawnHit = 0f;
 
     void Start()
     {
@@ -95,5 +96,22 @@ public class DawnScript : MonoBehaviour
     private Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2)
     {
         return (1 - t) * (1 - t) * p0 + 2 * (1 - t) * t * p1 + t * t * p2;
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            // player should not take damage if they were hit by Dawn in the last dawnTickRate seconds
+            if (Time.time - lastDawnHit < dawnTickRate)
+            {
+                return;
+            }
+            lastDawnHit = Time.time;
+            
+            Debug.Log("Player hit by Dawn");
+            
+            other.GetComponent<PlayerHealth>().TakeDamage(1f);
+        }
     }
 }
