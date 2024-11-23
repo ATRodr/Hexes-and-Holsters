@@ -45,12 +45,22 @@ public class AimSystem : MonoBehaviour
     public bool isWalking = false;
     public bool isWizWalking = false;
 
+    private Vector3 defaultScale = new Vector3(1f, 1f, 1f);
+    private Vector3 wizScale = new Vector3(0.53f, 0.53f, 1f);
+    private Vector3 targetScale;
+    private Transform characterTransform;
+    
+
     void Start()
     {
         controller = GetComponent<PlayerController>();
         GoldenGun = GameObject.Find("GoldenGun");
         //start as cowboy and assign sprites
         swappingAnimation.SetBool("isCowboy",isCowboy);
+
+        characterTransform = transform;
+
+
         bodySprites = cowboySprites;
         
         mainCamera = Camera.main;   
@@ -69,6 +79,11 @@ public class AimSystem : MonoBehaviour
 
     void Update()
     {
+        targetScale = defaultScale;
+
+        if(!isCowboy){
+            characterTransform.localScale = wizScale;
+        }
         if (mainCamera == null)
         {
             mainCamera = Camera.main;
@@ -78,7 +93,20 @@ public class AimSystem : MonoBehaviour
         //always update aim 
         Aim(weapon);
         //update walking animation
+        AnimatorStateInfo stateInfo = swappingAnimation.GetCurrentAnimatorStateInfo(0);
         
+        if((stateInfo.IsName("wizard") || stateInfo.IsName("wizard walk")) ){
+            swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
+            
+            characterTransform.localScale = wizScale;
+            
+            swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else{
+            swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
+            characterTransform.localScale = defaultScale;
+            swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
+        }
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         float speed = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
@@ -104,6 +132,7 @@ public class AimSystem : MonoBehaviour
         }
         
         else if(!swapping && !isCowboy){
+
             Debug.Log("Wizard and Not Swapping");
             UpdateBodySprite();
             
@@ -205,10 +234,12 @@ public class AimSystem : MonoBehaviour
         
     }
     IEnumerator handleSwapAnimations(Animator anim){
-        swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
         swappingAnimation.SetBool("IsSwap", true);
         weapon.SetActive(false);
         swappingAnimation.SetBool("isCowboy",isCowboy);
+        if(swappingAnimation.GetBool("isCowboy") == true){
+            swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
+        }
         //swappingAnimation.playbackTime = 0;
         //swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
         
