@@ -58,7 +58,8 @@ namespace Code.Scripts.SkillTreeSystem
     public class PlayerSkillManager : MonoBehaviour
     {
         // Start is called before the first frame update
-
+        private GameObject ShieldOfFaithParti;
+        private GameObject RussianRouletteParti;
         // unlockable abilities
         private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel;
         private int skillPoints;
@@ -71,6 +72,7 @@ namespace Code.Scripts.SkillTreeSystem
         public int ShieldOfFaith => shieldOfFaithLevel;
         
         public int SkillPoints => skillPoints;
+        private PlayerHealth playerHealth;
 
         public UnityAction OnSkillPointsChanged;
 
@@ -81,6 +83,7 @@ namespace Code.Scripts.SkillTreeSystem
         
         private void Start()
         {
+            playerHealth = GetComponent<PlayerHealth>();
             playerController = GetComponent<PlayerController>();
             activeCowboySkills = new LRUCache();
             activeWizardSkills = new LRUCache();
@@ -91,7 +94,12 @@ namespace Code.Scripts.SkillTreeSystem
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
             Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
-
+            ShieldOfFaithParti = Resources.Load<GameObject>("ShieldOfFaithParti");
+            RussianRouletteParti = Resources.Load<GameObject>("RussianRouletteParti");
+            if(ShieldOfFaithParti == null)
+                Debug.LogError("ShieldOfFaithParti not found");
+            if(RussianRouletteParti == null)
+                Debug.LogError("RussianRouletteParti not found");
         }
         
         public void GainSkillPoint()
@@ -188,11 +196,50 @@ namespace Code.Scripts.SkillTreeSystem
             playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color = originalColor;
             playerController.aimSystem.goldenGunActive = false;
         }
+        IEnumerator RussianRoulette()
+        {
+            if(UnityEngine.Random.Range(1, 3) == 1)
+            {
+                playerHealth.TakeDamage(1f);
+                //find cam script and shake it. Yes this is messy but oh well
+                 GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+
+                if (cameraObject != null)
+                {
+                    // Get the CameraShake script attached to the camera
+                    CameraFollow cameraShake = cameraObject.GetComponent<CameraFollow>();
+
+                    if (cameraShake != null)
+                    {
+                        // Call the Shake function
+                        StartCoroutine(cameraShake.Shake(0.2f, 1.5f)); // 0.2 seconds, 3 magnitude
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Main Camera not found!");
+                }
+            }
+            else
+            {
+                playerController.weapon.setDamageMultiplier(2);
+                playerHealth.isInvincible = true;
+                GameObject rrEffect = Instantiate(RussianRouletteParti, transform.position, transform.rotation);
+                rrEffect.transform.SetParent(transform);
+                yield return new WaitForSeconds(5f);
+                playerHealth.isInvincible = false;
+                Destroy(rrEffect); // Destroys the particle effect after waut finished  
+                playerController.weapon.setDamageMultiplier(1);
+            }    
+        }
         IEnumerator shieldOfFaith()
         {
             playerController.playerHealth.isInvincible = true;
             playerController.healthBar.DrawHearts();
+            GameObject shieldEffect = Instantiate(ShieldOfFaithParti, transform.position, transform.rotation);
+            shieldEffect.transform.SetParent(transform);
             yield return new WaitForSeconds(5);
+            Destroy(shieldEffect); // Destroys the particle effect after waut finished
             playerController.playerHealth.isInvincible = false;
             playerController.healthBar.DrawHearts();
         }
@@ -229,7 +276,8 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "dynamitedash":
-                    StartCoroutine(dynamiteDash());
+                    StartCoroutine(RussianRoulette()); //testing stand in. delete. remove.
+                    //StartCoroutine(dynamiteDash());
                     Debug.Log("DynoDashh");
                     break;
                 case "goldengun":

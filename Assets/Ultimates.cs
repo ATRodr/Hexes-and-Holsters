@@ -153,13 +153,4 @@ public class Ultimates : MonoBehaviour
         Instantiate(hadar, transform.position, transform.rotation);
         yield return new WaitForSeconds(0.25f);
     }
-    IEnumerator RussianRoulete()
-    {
-        if(Random.Range(1, 3) == 1)
-            playerHealth.TakeDamage(1f);
-        else    
-            playerHealth.isInvincible = true;
-        yield return new WaitForSeconds(3f);
-        playerHealth.isInvincible = false;
-    }
 }

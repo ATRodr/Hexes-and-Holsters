@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //for some reason it's not 1 to begin with so this needs to be here
+        weapon.setDamageMultiplier(1);
         //Get the dynamite and explosion prefabs from resources
         dynamite = Resources.Load<GameObject>("Dynamite");
         explosion = Resources.Load<GameObject>("Explosion");
@@ -47,7 +49,6 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("Dynamite not found");
         if(explosion == null)
             Debug.LogError("Explosion not found");
-        
         skillManager = GetComponent<PlayerSkillManager>();
         healthBar = GameObject.FindObjectOfType<HealthBar>();
         playerHealth = GetComponent<PlayerHealth>();
