@@ -14,11 +14,14 @@ public class FireAtPlayer : MonoBehaviour
 
     private int PlayerLayer; //not hardcoded for Wizard ult so we can switch which enemies the enemy shoots.
     private int EnemyLayer; //needed in future to implement wizard ult(enemy shot should witch layers and shoot other enemies)
+    private int ForegroundLayer;
+    
     void Start()
     {
         player  = GameObject.FindGameObjectWithTag("Player");
 
-        PlayerLayer = LayerMask.NameToLayer("Player");
+        PlayerLayer = LayerMask.GetMask("Player");
+        ForegroundLayer = LayerMask.GetMask("Foreground");
         EnemyLayer = LayerMask.NameToLayer("Enemy");
     }
 
@@ -33,13 +36,20 @@ public class FireAtPlayer : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= 1/fireRate)
         {
-            RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, distance:Mathf.Infinity, 1 << PlayerLayer);
+            // see if enemy has LOS of player
+            RaycastHit2D ray = Physics2D.Raycast(
+                transform.position,
+                player.transform.position - transform.position,
+                Mathf.Infinity,
+                PlayerLayer | ForegroundLayer
+            );
             if (ray.collider != null)
             {
-                //Debug.Log("Ray collider not null");
                 hasLOS = ray.collider.CompareTag("Player");
                 if (hasLOS)
                 {
+                    Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+
                     timer = 0;
                     shoot();
                 }
@@ -47,10 +57,6 @@ public class FireAtPlayer : MonoBehaviour
                 {
                     Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
                 }
-            }
-            else
-            {
-                // Debug.Log("raycast null");
             }
         } 
     }

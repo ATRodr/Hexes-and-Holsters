@@ -24,9 +24,8 @@ public class PlayerHealth : MonoBehaviour
 
         if(health <= 0){
             health = 0;
-            Debug.Log("You Ded");
+            // Debug.Log("You Ded");
             OnPlayerDeath?.Invoke();
         }
     }
-
 }
