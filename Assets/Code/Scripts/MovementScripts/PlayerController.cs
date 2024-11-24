@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical"); 
 
         //normal bullet
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) && aimSystem.canShoot){
             weapon.Fire();
         } 
         
@@ -122,8 +122,8 @@ public class PlayerController : MonoBehaviour
     }
     private void ToggleSkillTree()
     {
+        aimSystem.canShoot = isPaused;
         isPaused = !isPaused;
-
         // Show or hide the root element
         root.visible = isPaused;
         
@@ -139,12 +139,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public IEnumerator Dash(float duration,float speed){
+        aimSystem.canShoot = false;
         canDash = false;
         isDash = true;
         rb.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
         
         yield return new WaitForSeconds(duration);
         isDash = false;
+        aimSystem.canShoot = true;
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
     }
