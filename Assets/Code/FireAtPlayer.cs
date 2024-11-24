@@ -8,10 +8,11 @@ public class FireAtPlayer : MonoBehaviour
     [SerializeField] private float fireRate;
     public GameObject bullet;
     public Transform bulletPos;
+    public bool firingEnabled = true;
+
     private float timer;
     private GameObject player;
     private bool hasLOS = false;
-
     private int PlayerLayer; //not hardcoded for Wizard ult so we can switch which enemies the enemy shoots.
     private int EnemyLayer; //needed in future to implement wizard ult(enemy shot should witch layers and shoot other enemies)
     private int ForegroundLayer;
@@ -46,7 +47,7 @@ public class FireAtPlayer : MonoBehaviour
             if (ray.collider != null)
             {
                 hasLOS = ray.collider.CompareTag("Player");
-                if (hasLOS)
+                if (hasLOS && firingEnabled)
                 {
                     Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
 

@@ -27,7 +27,6 @@ public class DawnScript : MonoBehaviour
         if (isActive)
         {
             UpdatePosition();
-            UpdateVisibility();
         }
         else
         {
@@ -50,8 +49,6 @@ public class DawnScript : MonoBehaviour
 
         elapsedTime = 0f;
         isActive = true;
-        spriteRenderer.enabled = true;
-        GetComponent<Collider2D>().enabled = true;
     }
 
     private void ResetDawn()
@@ -76,6 +73,9 @@ public class DawnScript : MonoBehaviour
         // Calculate the position along the quadratic Bezier curve
         Vector3 newPosition = CalculateBezierPoint(t, startPoint, controlPoint, endPoint);
 
+        spriteRenderer.enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        
         // Update position
         transform.position = newPosition;
 
@@ -84,12 +84,6 @@ public class DawnScript : MonoBehaviour
         {
             ResetDawn();
         }
-    }
-
-    private void UpdateVisibility()
-    {
-        // You could add more checks for sprite visibility here if needed
-        spriteRenderer.enabled = true;
     }
 
     // Quadratic Bezier curve calculation
