@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     public bool isChasing = false;
     public bool isMoving = false; //movement for animation
+    [SerializeField] public bool isGrillos;
     private bool hasLOS = false;
     public bool HasLOS => HasLOS;
     [SerializeField] Transform target;
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = false;
         rb = GetComponent<Rigidbody2D>();
         
         target = GameObject.Find("REALPlayerPrefab").transform;
