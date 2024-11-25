@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -102,9 +103,13 @@ namespace Code.Scripts.SkillTreeSystem
                 Debug.LogError("RussianRouletteParti not found");
         }
         
-        public void GainSkillPoint()
+        public void GainSkillPoint(int amount)
         {
-            skillPoints++;
+            //shouldn't ever give negative skill points
+            if(amount < 0) return; 
+
+            skillPoints += amount;
+            Debug.Log(amount + " of skill point gained from killing Enemy. Total skill points: " + skillPoints);
             OnSkillPointsChanged?.Invoke();
         }
 
@@ -276,13 +281,16 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "dynamitedash":
-                    StartCoroutine(RussianRoulette()); //testing stand in. delete. remove.
-                    //StartCoroutine(dynamiteDash());
+                    StartCoroutine(dynamiteDash()); 
                     Debug.Log("DynoDashh");
                     break;
                 case "goldengun":
                     StartCoroutine(ActivateGoldenGun());
                     Debug.Log("Golden Gun");
+                    break;
+                case"russianroulette":
+                    StartCoroutine(RussianRoulette());
+                    Debug.Log("Russian Roulette");
                     break;
             }
         }

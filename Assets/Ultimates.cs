@@ -16,7 +16,7 @@ public class Ultimates : MonoBehaviour
     private float cowboyUltCooldown;
     private float wizardUltCooldown;
     public const float COWBOY_COOLDOWN = 3f;
-    public const float WIZARD_COOLDOWN = 0f; //CHANGE BACK TO WHATEVER IT WAS
+    public const float WIZARD_COOLDOWN = 3f;
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
 

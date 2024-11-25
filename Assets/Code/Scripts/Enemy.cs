@@ -14,14 +14,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float attackRate = 1f;
     [SerializeField] public bool isMelle = false;
     [SerializeField] public bool isMagic = false;
+    
         
+    [SerializeField]
+    public int xpValue = 1;
     float nextAttack = 0f;
 
     public NavMeshAgent agent;
+    private PlayerController playerController;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerController = GameObject.Find("REALPlayerPrefab").GetComponent<PlayerController>();
         target = GameObject.Find("REALPlayerPrefab").transform;
         health = maxHealth;
         agent = GetComponent<NavMeshAgent>();
@@ -72,6 +77,7 @@ public class Enemy : MonoBehaviour
         Destroy(Bullet);
 
         if(health <= 0){
+            givePoints(xpValue);
             Destroy(gameObject);
         }
     }
@@ -80,8 +86,11 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageAmt){
         health -= damageAmt;
         if(health <= 0){
+            givePoints(xpValue);
             Destroy(gameObject);
         }
     }
-    
+    public void givePoints(int points){
+        playerController.skillManager.GainSkillPoint(points);
+    }
 }

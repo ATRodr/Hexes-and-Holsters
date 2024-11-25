@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
     public HealthBar healthBar;
     public Weapon weapon;
     Vector2 moveDirection;
-    private PlayerSkillManager skillManager;
+    
+    //public so that enemy can access it to add skill points on death
+    public PlayerSkillManager skillManager;
 
     [Header("Dash Settings")]  // This is the attribute causing the error
     [SerializeField] float dashSpeed = 15f;
