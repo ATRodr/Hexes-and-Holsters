@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private bool isChasing = false;
+    public bool isChasing = false;
+    public bool isMoving = false; //movement for animation
     private bool hasLOS = false;
     public bool HasLOS => HasLOS;
     [SerializeField] Transform target;
@@ -21,7 +22,9 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<SpriteRenderer>().enabled = false;
         rb = GetComponent<Rigidbody2D>();
+        
         target = GameObject.Find("REALPlayerPrefab").transform;
         health = maxHealth;
         agent = GetComponent<NavMeshAgent>();
@@ -40,6 +43,18 @@ public class Enemy : MonoBehaviour
         {
             agent.SetDestination(target.position);
         }
+
+        Vector3 agentVelocity = agent.velocity; // NavMeshAgent velocity is in 3D
+        if (agentVelocity.magnitude > 0.1f) // Adjust the threshold as needed
+        {
+            Debug.Log("Enemy is moving");
+            isMoving = true;
+        }
+        else
+        {
+            Debug.Log("Enemy is stationary.");
+            isMoving = false;
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -57,6 +72,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
             isChasing = true;
+        
     }
     
     private void OnTriggerExit2D(Collider2D collision)
