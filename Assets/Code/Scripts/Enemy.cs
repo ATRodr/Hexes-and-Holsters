@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
-        //agent.updateUpAxis = false;
+        agent.updateUpAxis = false;
     }
 
     private void Update()
