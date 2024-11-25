@@ -19,6 +19,7 @@ public class FireAtPlayer : MonoBehaviour
     void Start()
     {
         player  = GameObject.FindGameObjectWithTag("Player");
+
         PlayerLayer = LayerMask.GetMask("Player");
         ForegroundLayer = LayerMask.GetMask("Foreground");
         EnemyLayer = LayerMask.NameToLayer("Enemy");

@@ -69,9 +69,5 @@ public class Weapon : MonoBehaviour
         bullet2.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * 5, ForceMode2D.Impulse);
         bullet3.GetComponent<Rigidbody2D>().AddForce((gunFirePoint.right + offset2) * 5 + offset2, ForceMode2D.Impulse);
     }
-    public void setDamageMultiplier(int damageMultiplier){
-        Debug.Log("Setting damage multiplier to: " + damageMultiplier);
-        bulletPrefab.GetComponent<Bullet>().damageMultiplier = damageMultiplier;
-    }
 }
 

@@ -13,7 +13,6 @@ public class AimSystem : MonoBehaviour
     [SerializeField]
     public float swappingDelay = 0.5f;
     public bool isCowboy = true;
-    public bool canShoot = true;
     public bool swapping = false;
     public bool goldenGunActive = false;
     //gun is cowboys weapon orb is wizrd weapon.
@@ -35,6 +34,7 @@ public class AimSystem : MonoBehaviour
     public GameObject[] bodySprites; 
     public GameObject[] cowboySprites;
     public GameObject[] wizardSprites;
+
 
     private Camera mainCamera;
     private Vector2 aimDirection;
@@ -95,10 +95,6 @@ public class AimSystem : MonoBehaviour
 
         //always update aim 
         Aim(weapon);
-        if((Time.time >= (swappingDelay + lastSwapTime)))
-        {
-            canShoot = true;
-        }
         //update walking animation
         AnimatorStateInfo stateInfo = swappingAnimation.GetCurrentAnimatorStateInfo(0);
         
@@ -175,7 +171,6 @@ public class AimSystem : MonoBehaviour
         
         if((Time.time >= (swappingDelay + lastSwapTime)) && Input.GetKeyDown(KeyCode.LeftShift))
         {
-            canShoot = false;
             //protects from mid swap updates
             //Debug.Log("Swapped");
             swapping = true;

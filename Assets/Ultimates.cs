@@ -16,7 +16,7 @@ public class Ultimates : MonoBehaviour
     private float cowboyUltCooldown;
     private float wizardUltCooldown;
     public const float COWBOY_COOLDOWN = 3f;
-    public const float WIZARD_COOLDOWN = 3f;
+    public const float WIZARD_COOLDOWN = 0f; //CHANGE BACK TO WHATEVER IT WAS
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
 
@@ -152,5 +152,14 @@ public class Ultimates : MonoBehaviour
     {
         Instantiate(hadar, transform.position, transform.rotation);
         yield return new WaitForSeconds(0.25f);
+    }
+    IEnumerator RussianRoulete()
+    {
+        if(Random.Range(1, 3) == 1)
+            playerHealth.TakeDamage(1f);
+        else    
+            playerHealth.isInvincible = true;
+        yield return new WaitForSeconds(3f);
+        playerHealth.isInvincible = false;
     }
 }

@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFireBolt: 1
-  damageMultiplier: 1
 --- !u!50 &-2840962989223638617
 Rigidbody2D:
   serializedVersion: 4
