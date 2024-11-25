@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 public class UIStatPanel : MonoBehaviour
 {
-    private Label destructiveWaveLabel, dynamiteDashLabel, goldenGunLabel;
+    private Label shieldOfFaithLabel, dynamiteDashLabel, goldenGunLabel, russianRouletteLabel;
     private Label skillPointsLabel;
 
     private UIManager uiManager;
@@ -27,17 +27,19 @@ public class UIStatPanel : MonoBehaviour
     private void GatherLabelReferences()
     {
         // NEED TO UPDATE THIS FOR ALL ABILITIES LATER
-        destructiveWaveLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("DestructiveWave");
+        shieldOfFaithLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("ShieldOfFaith");
         dynamiteDashLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("DynamiteDash");
         goldenGunLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("GoldenGun");
+        russianRouletteLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("RussianRoullete");
         skillPointsLabel = uiManager.UIDocument.rootVisualElement.Q<Label>("SkillPoints");
     }
 
     private void PopulateLabelText()
     {
         skillPointsLabel.text = "Skill Points: " + uiManager.PlayerSkillManager.SkillPoints.ToString();
-        destructiveWaveLabel.text = "Destructive Wave: " + (uiManager.PlayerSkillManager.DestructiveWave > 0 ? "Level " + uiManager.PlayerSkillManager.DestructiveWave.ToString() : "Locked");
+        shieldOfFaithLabel.text = "Shield of Faith: " + (uiManager.PlayerSkillManager.ShieldOfFaith > 0 ? "Level " + uiManager.PlayerSkillManager.ShieldOfFaith.ToString() : "Locked");
         dynamiteDashLabel.text = "Dynamite Dash: " + (uiManager.PlayerSkillManager.DynamiteDash > 0 ? "Level " + uiManager.PlayerSkillManager.DynamiteDash.ToString() : "Locked");
         goldenGunLabel.text = "Golden Gun: " + (uiManager.PlayerSkillManager.GoldenGun > 0 ? "Level " + uiManager.PlayerSkillManager.GoldenGun.ToString() : "Locked");
+        russianRouletteLabel.text = "Russian Roulette: " + (uiManager.PlayerSkillManager.russianRoulette > 0 ? "Level " + uiManager.PlayerSkillManager.russianRoulette.ToString() : "Locked");
     }
 }

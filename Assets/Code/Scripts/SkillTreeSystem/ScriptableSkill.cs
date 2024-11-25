@@ -33,8 +33,7 @@ namespace Code.Scripts.SkillTreeSystem
 
     public enum StatTypes
     {
-        chainLightning, 
-        destructiveWave, 
+        russianRoulette,
         dynamiteDash, 
         goldenGun,
         shieldOfFaith

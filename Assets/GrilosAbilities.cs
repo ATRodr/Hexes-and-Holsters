@@ -17,6 +17,8 @@ public class GrilosAbilities : MonoBehaviour
     private DawnScript dawnScript;
 
     private bool playerInRoom = false;
+
+    private FireAtPlayer fireAtPlayer;
     
     [SerializeField] private float abilityCooldown = 15f;
     [SerializeField] private float raiseDeadCooldown = 30f;
@@ -31,6 +33,7 @@ public class GrilosAbilities : MonoBehaviour
         triggerZoneScript = GameObject.Find("TriggerZone").GetComponent<TriggerZoneScript>();
         dawnScript = GameObject.Find("DawnCollider").GetComponent<DawnScript>();
         playerController = GameObject.Find("REALPlayerPrefab").GetComponent<PlayerController>();
+        fireAtPlayer = GetComponent<FireAtPlayer>();
         SpriteRenderer sprite = enemyPrefab.GetComponent<SpriteRenderer>();
         sprite.sortingLayerName = "Player";
         sprite.sortingOrder = 0;
@@ -102,6 +105,7 @@ public class GrilosAbilities : MonoBehaviour
 
     IEnumerator bullletCircle()
     {
+        fireAtPlayer.firingEnabled = false;
         // Bullet Circle ability
 
         // allternate between firing bullet at
@@ -153,6 +157,7 @@ public class GrilosAbilities : MonoBehaviour
             }
         }
 
+        fireAtPlayer.firingEnabled = true;
         yield break;
     }
 

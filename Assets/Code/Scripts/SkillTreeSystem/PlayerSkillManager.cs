@@ -62,16 +62,14 @@ namespace Code.Scripts.SkillTreeSystem
         private GameObject ShieldOfFaithParti;
         private GameObject RussianRouletteParti;
         // unlockable abilities
-        private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel;
+        private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel;
         private int skillPoints;
         private LRUCache activeCowboySkills;
         private LRUCache activeWizardSkills;        
-        public int ChainLightning => chainLightningLevel;
-        public int DestructiveWave => destructiveWaveLevel;
         public int DynamiteDash => dynamiteDashLevel;
         public int GoldenGun => goldenGunLevel;
         public int ShieldOfFaith => shieldOfFaithLevel;
-        
+        public int russianRoulette => russianRoulleteLevel;
         public int SkillPoints => skillPoints;
         private PlayerHealth playerHealth;
 
@@ -89,11 +87,10 @@ namespace Code.Scripts.SkillTreeSystem
             activeCowboySkills = new LRUCache();
             activeWizardSkills = new LRUCache();
             skillPoints = 10;
-            chainLightningLevel = 0;
-            destructiveWaveLevel = 0;
             dynamiteDashLevel = 0;
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
+            russianRoulleteLevel = 0;
             Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
             ShieldOfFaithParti = Resources.Load<GameObject>("ShieldOfFaithParti");
             RussianRouletteParti = Resources.Load<GameObject>("RussianRouletteParti");
@@ -133,12 +130,6 @@ namespace Code.Scripts.SkillTreeSystem
             {
                 switch (data.StatType)
                 {
-                    case StatTypes.chainLightning:
-                        ModifyStat(ref chainLightningLevel, data);
-                        break;
-                    case StatTypes.destructiveWave:
-                        ModifyStat(ref destructiveWaveLevel, data);
-                        break;
                     case StatTypes.dynamiteDash:
                         ModifyStat(ref dynamiteDashLevel, data);
                         break;
@@ -147,6 +138,9 @@ namespace Code.Scripts.SkillTreeSystem
                         break;
                     case StatTypes.shieldOfFaith:
                         ModifyStat(ref shieldOfFaithLevel, data);
+                        break;
+                    case StatTypes.russianRoulette:
+                        ModifyStat(ref russianRoulleteLevel, data);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -205,6 +199,7 @@ namespace Code.Scripts.SkillTreeSystem
         {
             if(UnityEngine.Random.Range(1, 3) == 1)
             {
+                Debug.Log("HIT RR BAD NO GOOD");
                 playerHealth.TakeDamage(1f);
                 //find cam script and shake it. Yes this is messy but oh well
                  GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
@@ -277,6 +272,7 @@ namespace Code.Scripts.SkillTreeSystem
 
             lastTimeActivated = Time.time;
 
+            Debug.Log("Skill Name: " + skillName.ToLower().Replace(" ", ""));
             // switch on the skill name and normalize it
             switch (skillName.ToLower().Replace(" ", ""))
             {
@@ -288,7 +284,8 @@ namespace Code.Scripts.SkillTreeSystem
                     StartCoroutine(ActivateGoldenGun());
                     Debug.Log("Golden Gun");
                     break;
-                case"russianroulette":
+                case"russianroullete":
+                    Debug.Log("Russian Roulette FOUND");
                     StartCoroutine(RussianRoulette());
                     Debug.Log("Russian Roulette");
                     break;
