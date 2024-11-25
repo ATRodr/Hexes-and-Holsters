@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
             }else{
-                bulletPrefab.GetComponent<SpriteRenderer>().color = Color.gray;
+                bulletPrefab.GetComponent<SpriteRenderer>().color = Color.red;
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
             }
