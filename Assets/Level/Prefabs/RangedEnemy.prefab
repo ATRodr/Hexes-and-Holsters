@@ -143,6 +143,7 @@ MonoBehaviour:
   fireRate: 2
   bullet: {fileID: 6756061119310239216, guid: db5d6e746abef4d7d9f6427aff4d260b, type: 3}
   bulletPos: {fileID: 7492757393861873714}
+  firingEnabled: 1
 --- !u!50 &6858572624129638260
 Rigidbody2D:
   serializedVersion: 4
@@ -245,7 +246,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 54392429
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 7320663792c347749977f81c1bf0a00e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

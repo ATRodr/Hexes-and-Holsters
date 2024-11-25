@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = true;
         rb = GetComponent<Rigidbody2D>();
         
         target = GameObject.Find("REALPlayerPrefab").transform;
@@ -47,12 +47,12 @@ public class Enemy : MonoBehaviour
         Vector3 agentVelocity = agent.velocity; // NavMeshAgent velocity is in 3D
         if (agentVelocity.magnitude > 0.1f) // Adjust the threshold as needed
         {
-            Debug.Log("Enemy is moving");
+            // Debug.Log("Enemy is moving");
             isMoving = true;
         }
         else
         {
-            Debug.Log("Enemy is stationary.");
+            // Debug.Log("Enemy is stationary.");
             isMoving = false;
         }
     }

@@ -17,7 +17,7 @@ public class GrilosAbilities : MonoBehaviour
     private DawnScript dawnScript;
 
     private bool playerInRoom = false;
-
+    
     [SerializeField] private float abilityCooldown = 15f;
     [SerializeField] private float raiseDeadCooldown = 30f;
     [SerializeField] private Transform[] spawnPoints;
@@ -34,11 +34,6 @@ public class GrilosAbilities : MonoBehaviour
         SpriteRenderer sprite = enemyPrefab.GetComponent<SpriteRenderer>();
         sprite.sortingLayerName = "Player";
         sprite.sortingOrder = 0;
-        Enemy enemyScript = enemyPrefab.GetComponent<Enemy>();
-        enemyScript.isMelle = true;
-        enemyScript.isMagic = true;
-        enemyScript.attackRate = 2f;
-        enemyScript.health = 4f;
     }
 
     // Update is called once per frame
@@ -68,7 +63,6 @@ public class GrilosAbilities : MonoBehaviour
 
         if (Time.time - lastAbilityActivationTime < abilityCooldown) return;
 
-        freezeMovement();
         int randomAttack = Random.Range(0, 2);
         switch (randomAttack)
         {
@@ -80,7 +74,6 @@ public class GrilosAbilities : MonoBehaviour
                 break;
         }
         lastAbilityActivationTime = Time.time;
-        unfreezeMovement();
     }
 
     IEnumerator Dawn()
@@ -92,8 +85,8 @@ public class GrilosAbilities : MonoBehaviour
 
     IEnumerator RaiseDead()
     {
-        freezeMovement();
         // Raise Dead ability
+        Debug.Log("Raise Dead");
         for (int i = 0; i < 4; i++)
         {
             Transform spawnpoint = spawnPoints[i];
@@ -104,7 +97,6 @@ public class GrilosAbilities : MonoBehaviour
                 agent.enabled = true;
             }
         }
-        unfreezeMovement();
         yield return null;
     }
 
@@ -112,15 +104,11 @@ public class GrilosAbilities : MonoBehaviour
     {
         // Bullet Circle ability
 
-        FireAtPlayer firingScript = GetComponent<FireAtPlayer>();
-        firingScript.firingEnabled = false;
         // allternate between firing bullet at
         // points 0-3 and 4-7
 
         for (int i = 0; i < bullletCircleCycles; i++)
         {
-            Debug.Log("Bullet Circle");
-
             // First set of firing 
             for (int j = 0; j < 5; j++)
             {
@@ -165,19 +153,7 @@ public class GrilosAbilities : MonoBehaviour
             }
         }
 
-        firingScript.firingEnabled = true;
         yield break;
     }
 
-    void freezeMovement()
-    {
-        GetComponent<NavMeshAgent>().enabled = false;
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        GetComponent<Rigidbody2D>().angularVelocity = 0f;
-    }
-
-    void unfreezeMovement()
-    {
-        GetComponent<NavMeshAgent>().enabled = true;
-    }
 }

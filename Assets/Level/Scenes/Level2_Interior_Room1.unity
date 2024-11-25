@@ -277,6 +277,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1602127282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -42.148}
+--- !u!1001 &530888209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5227934475121093548, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.3941035
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.616236
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362615061959148138, guid: bafae02d8838747aab61092e52a38648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bafae02d8838747aab61092e52a38648, type: 3}
 --- !u!1 &579551809
 GameObject:
   m_ObjectHideFlags: 0
@@ -79954,7 +80011,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 54392429
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: 7320663792c347749977f81c1bf0a00e, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -80014,14 +80071,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eafd47feae84d74b74b6414e9515e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooldown: 5
-  raiseDeadCooldown: 200
+  abilityCooldown: 15
+  raiseDeadCooldown: 25
   spawnPoints:
   - {fileID: 1453030041}
   - {fileID: 1237555973}
   - {fileID: 414897445}
   - {fileID: 672922162}
-  enemyPrefab: {fileID: 387933211250090344, guid: e8ad755a7260b470b8b5f58437dd02b6, type: 3}
+  enemyPrefab: {fileID: 5227934475121093548, guid: bafae02d8838747aab61092e52a38648, type: 3}
   enemyBullet: {fileID: 6756061119310239216, guid: db5d6e746abef4d7d9f6427aff4d260b, type: 3}
   bulletSpawnPoints:
   - {fileID: 317453809}
@@ -80032,7 +80089,7 @@ MonoBehaviour:
   - {fileID: 435988614}
   - {fileID: 627105426}
   - {fileID: 367126542}
-  bullletCircleCycles: 3
+  bullletCircleCycles: 2
 --- !u!195 &1602127285
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -80177,11 +80234,11 @@ MonoBehaviour:
   isChasing: 0
   isMoving: 0
   target: {fileID: 0}
-  health: 0
-  maxHealth: 4
-  attackRate: 1
+  health: 60
+  maxHealth: 60
+  attackRate: 3
   isMelle: 0
-  isMagic: 0
+  isMagic: 1
   agent: {fileID: 0}
 --- !u!114 &1602127291
 MonoBehaviour:
@@ -80563,3 +80620,4 @@ SceneRoots:
   - {fileID: 1237555973}
   - {fileID: 414897445}
   - {fileID: 672922162}
+  - {fileID: 530888209}
