@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
             }else{
-                bulletPrefab.GetComponent<SpriteRenderer>().color = Color.gray;
+                bulletPrefab.GetComponent<SpriteRenderer>().color = Color.red;
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
             }
@@ -68,6 +68,10 @@ public class Weapon : MonoBehaviour
         bullet1.GetComponent<Rigidbody2D>().AddForce((gunFirePoint.right + offset1) * 5, ForceMode2D.Impulse);
         bullet2.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * 5, ForceMode2D.Impulse);
         bullet3.GetComponent<Rigidbody2D>().AddForce((gunFirePoint.right + offset2) * 5 + offset2, ForceMode2D.Impulse);
+    }
+    public void setDamageMultiplier(int damageMultiplier){
+        Debug.Log("Setting damage multiplier to: " + damageMultiplier);
+        bulletPrefab.GetComponent<Bullet>().damageMultiplier = damageMultiplier;
     }
 }
 

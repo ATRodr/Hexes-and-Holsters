@@ -13,6 +13,7 @@ public class AimSystem : MonoBehaviour
     [SerializeField]
     public float swappingDelay = 0.5f;
     public bool isCowboy = true;
+    public bool canShoot = true;
     public bool swapping = false;
     public bool goldenGunActive = false;
     //gun is cowboys weapon orb is wizrd weapon.
@@ -34,7 +35,6 @@ public class AimSystem : MonoBehaviour
     public GameObject[] bodySprites; 
     public GameObject[] cowboySprites;
     public GameObject[] wizardSprites;
-
 
     private Camera mainCamera;
     private Vector2 aimDirection;
@@ -95,30 +95,34 @@ public class AimSystem : MonoBehaviour
 
         //always update aim 
         Aim(weapon);
+        if((Time.time >= (swappingDelay + lastSwapTime)))
+        {
+            canShoot = true;
+        }
         //update walking animation
         AnimatorStateInfo stateInfo = swappingAnimation.GetCurrentAnimatorStateInfo(0);
         
         if((stateInfo.IsName("wizard") || stateInfo.IsName("wizard walk"))){
             swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
             weapon.SetActive(false);
-            Debug.Log("sprite disabled");
+            //Debug.Log("sprite disabled");
             
-            Debug.Log("Scale changed");
+            //Debug.Log("Scale changed");
             weapon.SetActive(true);
             swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
-            Debug.Log("Sprite enabled");
+            //Debug.Log("Sprite enabled");
             characterTransform.localScale = wizScale;
         }
         if((stateInfo.IsName("cowboy idle") || stateInfo.IsName("cowboy walk"))){
             swappingAnimation.GetComponent<SpriteRenderer>().enabled = false;
             weapon.SetActive(false);
-            Debug.Log("sprite disabled");
+            //Debug.Log("sprite disabled");
             
             characterTransform.localScale = defaultScale;
-            Debug.Log("Scale changed");
+            //Debug.Log("Scale changed");
             weapon.SetActive(true);
             swappingAnimation.GetComponent<SpriteRenderer>().enabled = true;
-            Debug.Log("Sprite enabled");
+            //Debug.Log("Sprite enabled");
         }
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -147,7 +151,7 @@ public class AimSystem : MonoBehaviour
         
         else if(!swapping && !isCowboy){
             
-            Debug.Log("Wizard and Not Swapping");
+            //Debug.Log("Wizard and Not Swapping");
             UpdateBodySprite();
             weapon.SetActive(true);
             foreach (GameObject sprite in bodySprites)
@@ -156,10 +160,10 @@ public class AimSystem : MonoBehaviour
             }
             StartCoroutine(handleIdleAnimations());
             if(speed > 0){
-                Debug.Log("Wizard Speed > 0");
+                //Debug.Log("Wizard Speed > 0");
                 isWizWalking = true;
                 if(!isCowboy){
-                    Debug.Log("Attempt start wizwalk coroutine");
+                    //Debug.Log("Attempt start wizwalk coroutine");
                     StartCoroutine(handleWizWalkingAnimations(swappingAnimation));
                 }
             }
@@ -171,16 +175,17 @@ public class AimSystem : MonoBehaviour
         
         if((Time.time >= (swappingDelay + lastSwapTime)) && Input.GetKeyDown(KeyCode.LeftShift))
         {
+            canShoot = false;
             //protects from mid swap updates
-            Debug.Log("Swapped");
+            //Debug.Log("Swapped");
             swapping = true;
             
             isCowboy = !isCowboy;  
 
             StartCoroutine(handleSwapAnimations(swappingAnimation));
             
-            Debug.Log(swapping);
-            Debug.Log(isCowboy);
+            //Debug.Log(swapping);
+            //Debug.Log(isCowboy);
         }
     }
 
@@ -196,7 +201,7 @@ public class AimSystem : MonoBehaviour
 
         while (isWalking && isCowboy)
         {
-            Debug.Log("We are enumerating!");
+            //Debug.Log("We are enumerating!");
             swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
             swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
             
@@ -210,7 +215,7 @@ public class AimSystem : MonoBehaviour
 
         while (isWizWalking)
         {
-            Debug.Log("We are enumerating!");
+            //Debug.Log("We are enumerating!");
             swappingAnimation.SetFloat("MouseDirectionX", aimDirection.x);
             swappingAnimation.SetFloat("MouseDirectionY", aimDirection.y);
             

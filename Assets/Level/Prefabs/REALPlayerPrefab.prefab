@@ -546,7 +546,7 @@ MonoBehaviour:
   fireBoltPrefab: {fileID: 6319299284404186939, guid: 1d90d94f4011a40d387234dd7d9ae0bd, type: 3}
   gunFirePoint: {fileID: 2996072542822455288}
   orbFirePoint: {fileID: 6793416048020114535}
-  fireForce: 30
+  fireForce: 15
 --- !u!1 &5912388258320384121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2909832792844064289}
-  - component: {fileID: 413785821883167269}
+  - component: {fileID: 6143482716490485116}
   m_Layer: 7
   m_Name: orbParent
   m_TagString: Untagged
@@ -1460,7 +1460,7 @@ Transform:
   - {fileID: 6793416048020114535}
   m_Father: {fileID: 4205795363308793979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &413785821883167269
+--- !u!212 &6143482716490485116
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
