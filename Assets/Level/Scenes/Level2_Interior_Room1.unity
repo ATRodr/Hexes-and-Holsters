@@ -80700,8 +80700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eafd47feae84d74b74b6414e9515e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooldown: 10
-  raiseDeadCooldown: 15
+  abilityCooldown: 8
+  raiseDeadCooldown: 10
   spawnPoints:
   - {fileID: 1453030041}
   - {fileID: 1237555973}
