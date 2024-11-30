@@ -794,15 +794,15 @@ MonoBehaviour:
   abilityImage1: {fileID: 1628811477}
   cooldown1: 5
   isCooldown1: 0
-  ability1Key: 0
+  ability1Key: 101
   abilityImage2: {fileID: 1269155379}
   cooldown2: 5
   isCooldown2: 0
-  ability2Key: 0
+  ability2Key: 102
   ultimateImage: {fileID: 104986332}
   cooldown3: 5
   isCooldown3: 0
-  ultimateKey: 0
+  ultimateKey: 113
 --- !u!114 &1868567095
 MonoBehaviour:
   m_ObjectHideFlags: 0
