@@ -11,11 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] public bool isGrillos;
     private bool hasLOS = false;
     public bool HasLOS => HasLOS;
-    [SerializeField] Transform target;
+    [SerializeField] GameObject target;
     [SerializeField] public float health, maxHealth = 4f;
     [SerializeField] public float attackRate = 1f;
     [SerializeField] public bool isMelle = false;
     [SerializeField] public bool isMagic = false;
+    public bool isTamed = false;
         
     float nextAttack = 0f;
 
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         rb = GetComponent<Rigidbody2D>();
         
-        target = GameObject.Find("REALPlayerPrefab").transform;
+        target = GameObject.Find("REALPlayerPrefab");
         health = maxHealth;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -35,14 +36,18 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if(isTamed)
+            target = FindSecondClosestEnemy();
+        else    
+            target = GameObject.Find("REALPlayerPrefab");
         if (target == null)
         {
-            target = GameObject.Find("REALPlayerPrefab").transform;
+            target = GameObject.Find("REALPlayerPrefab");
         }
 
         if (isChasing)
         {
-            agent.SetDestination(target.position);
+            agent.SetDestination(target.transform.position);
         }
 
         Vector3 agentVelocity = agent.velocity; // NavMeshAgent velocity is in 3D
@@ -57,10 +62,29 @@ public class Enemy : MonoBehaviour
             isMoving = false;
         }
     }
-
+    GameObject FindSecondClosestEnemy(){
+        GameObject[] enemies;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject enemy in enemies){
+            //if the enemy is the one shooting the bullet, skip it. Or the closest enemy to the bullet will be enemy shooting it
+            if(enemy.transform.position == position){
+                continue;
+            }
+            Vector3 diff = enemy.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance){
+                closest = enemy;
+                distance = curDistance;
+            }
+        }
+        return closest;
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!isMelle) return;
+        if (!isMelle || isTamed) return;
         
         if(collision.gameObject.CompareTag("Player") && Time.time > nextAttack)
         {

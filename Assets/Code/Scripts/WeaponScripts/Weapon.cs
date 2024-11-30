@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     public Transform orbFirePoint;
 
     public float fireForce = 30f;
+    public bool isPolyShot = false;
 
 
     private void Start()
@@ -39,7 +40,9 @@ public class Weapon : MonoBehaviour
                 bulletPrefab.GetComponent<SpriteRenderer>().color = Color.yellow;
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
-            }else{
+            }
+            else
+            {
                 bulletPrefab.GetComponent<SpriteRenderer>().color = Color.red;
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
