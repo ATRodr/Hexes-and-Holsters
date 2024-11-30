@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AimSystem : MonoBehaviour
@@ -9,6 +10,7 @@ public class AimSystem : MonoBehaviour
 
     // need player controller to know if game is paused
     private PlayerController controller;
+    private CooldownUIController cooldownUIController;
 
     [SerializeField]
     public float swappingDelay = 0.5f;
@@ -54,6 +56,7 @@ public class AimSystem : MonoBehaviour
     void Start()
     {
         controller = GetComponent<PlayerController>();
+        cooldownUIController = GameObject.Find("AbilityCooldowns").GetComponent<CooldownUIController>();
         GoldenGun = GameObject.Find("GoldenGun");
         //start as cowboy and assign sprites
         swappingAnimation.SetBool("isCowboy",isCowboy);
@@ -180,7 +183,11 @@ public class AimSystem : MonoBehaviour
             //Debug.Log("Swapped");
             swapping = true;
             
-            isCowboy = !isCowboy;  
+            isCowboy = !isCowboy;
+
+            cooldownUIController.UpdateCooldowns();
+            
+            // cooldownUIController.UpdateCooldowns();  
 
             StartCoroutine(handleSwapAnimations(swappingAnimation));
             

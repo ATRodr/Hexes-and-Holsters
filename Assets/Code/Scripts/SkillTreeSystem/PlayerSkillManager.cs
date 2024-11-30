@@ -15,7 +15,7 @@ namespace Code.Scripts.SkillTreeSystem
     // activated and replaces it with new skill activated if player has
     // > 2 skills activated, also keeps track of the skill's ability number
     // to know which ability to fire
-    class LRUCache
+    public class LRUCache
     {
         public int capacity;
         public Dictionary<ScriptableSkill, int> cache;
@@ -58,14 +58,16 @@ namespace Code.Scripts.SkillTreeSystem
     }
     public class PlayerSkillManager : MonoBehaviour
     {
-        // Start is called before the first frame update
+        private CooldownUIController cooldownUIController;
         private GameObject ShieldOfFaithParti;
         private GameObject RussianRouletteParti;
         // unlockable abilities
         private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel;
         private int skillPoints;
         private LRUCache activeCowboySkills;
-        private LRUCache activeWizardSkills;        
+        private LRUCache activeWizardSkills;
+        public LRUCache ActiveCowboySkills => activeCowboySkills;
+        public LRUCache ActiveWizardSkills => activeWizardSkills;        
         public int DynamiteDash => dynamiteDashLevel;
         public int GoldenGun => goldenGunLevel;
         public int ShieldOfFaith => shieldOfFaithLevel;
@@ -84,6 +86,7 @@ namespace Code.Scripts.SkillTreeSystem
         {
             playerHealth = GetComponent<PlayerHealth>();
             playerController = GetComponent<PlayerController>();
+            cooldownUIController = GameObject.Find("AbilityCooldowns").GetComponent<CooldownUIController>();
             activeCowboySkills = new LRUCache();
             activeWizardSkills = new LRUCache();
             skillPoints = 10;
@@ -179,7 +182,9 @@ namespace Code.Scripts.SkillTreeSystem
             if (skill.isCowboySkill)
                 activeCowboySkills.Add(skill);
             else
-                activeWizardSkills.Add(skill);            
+                activeWizardSkills.Add(skill);   
+
+            cooldownUIController.UpdateCooldowns();         
         }
         IEnumerator ActivateGoldenGun()
         {
@@ -290,6 +295,11 @@ namespace Code.Scripts.SkillTreeSystem
                     Debug.Log("Russian Roulette");
                     break;
             }
+
+            if (number == 1)
+                cooldownUIController.isCooldown1 = true;
+            else
+                cooldownUIController.isCooldown2 = true;
         }
         public void castWizardAbility(int number, ref float lastTimeActivated)
         {
@@ -312,6 +322,11 @@ namespace Code.Scripts.SkillTreeSystem
                     Debug.Log("Shield of Faith");
                     break;
             }
+
+            if (number == 1)
+                cooldownUIController.isCooldown1 = true;
+            else
+                cooldownUIController.isCooldown2 = true;
         }
     }
 }
