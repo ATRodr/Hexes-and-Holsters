@@ -19,19 +19,16 @@ public class CooldownUIController : MonoBehaviour
     public Image abilityImage1;
     public float cooldown1 = 0;
     public bool isCooldown1 = false;
-    public KeyCode ability1Key;
 
     [Header("Ability 2")]
     public Image abilityImage2;
     public float cooldown2 = 0;
     public bool isCooldown2 = false;
-    public KeyCode ability2Key;
 
     [Header("Ultimate")]
     public Image ultimateImage;
     public float cooldown3 = 0;
     public bool isCooldown3 = false;
-    public KeyCode ultimateKey;
     
     void Start()
     {

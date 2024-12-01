@@ -210,7 +210,6 @@ namespace Code.Scripts.SkillTreeSystem
         {
             if(UnityEngine.Random.Range(1, 3) == 1)
             {
-                Debug.Log("HIT RR BAD NO GOOD");
                 playerHealth.TakeDamage(1f);
                 //find cam script and shake it. Yes this is messy but oh well
                  GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
@@ -264,7 +263,6 @@ namespace Code.Scripts.SkillTreeSystem
         {
             Vector2 pos = transform.position;
             Quaternion rot = transform.rotation;
-            Debug.Log("Dynamite Dash");
             Instantiate(playerController.dynamite, pos, rot);
             StartCoroutine(playerController.Dash(0.16f, 27f));
             yield return new WaitForSeconds(0.5f);
@@ -302,16 +300,15 @@ namespace Code.Scripts.SkillTreeSystem
                     Debug.Log("Golden Gun");
                     break;
                 case"russianroullete":
-                    Debug.Log("Russian Roulette FOUND");
                     StartCoroutine(RussianRoulette());
                     Debug.Log("Russian Roulette");
                     break;
             }
 
             if (number == 1)
-                cooldownUIController.isCooldown1 = true;
+                cooldownUIController.isCooldown1 = false;
             else
-                cooldownUIController.isCooldown2 = true;
+                cooldownUIController.isCooldown2 = false;
         }
         public void castWizardAbility(int number, ref float lastTimeActivated)
         {
@@ -330,16 +327,16 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "shieldoffaith":
-                    //StartCoroutine(shieldOfFaith()); 
-                    PolyMorph(); //remove and uncomment, delete, temporary testing
+                    StartCoroutine(shieldOfFaith()); 
+                    // PolyMorph(); //remove and uncomment, delete, temporary testing
                     Debug.Log("Shield of Faith");
                     break;
             }
 
             if (number == 1)
-                cooldownUIController.isCooldown1 = true;
+                cooldownUIController.isCooldown1 = false;
             else
-                cooldownUIController.isCooldown2 = true;
+                cooldownUIController.isCooldown2 = false;
         }
     }
 }

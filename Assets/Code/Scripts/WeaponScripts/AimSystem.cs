@@ -187,8 +187,6 @@ public class AimSystem : MonoBehaviour
 
             cooldownUIController.UpdateCooldowns();
             
-            // cooldownUIController.UpdateCooldowns();  
-
             StartCoroutine(handleSwapAnimations(swappingAnimation));
             
             //Debug.Log(swapping);
