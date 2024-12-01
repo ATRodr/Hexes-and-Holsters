@@ -16,6 +16,7 @@ TagManager:
   - SpawnPoint_6
   - SpawnPoint_7
   - Enemy
+  - SpawnPoint_Main
   layers:
   - Default
   - TransparentFX

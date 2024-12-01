@@ -3918,6 +3918,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Fence_TL
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 694
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aed39ef55c0c0524cb372c7d5066f95d
+      internalID: -2123128162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_TR
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 694
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a93756523223d9468403813cd67a5e7
+      internalID: 630427525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence_T
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 694
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56eca7a2347ffe14489e4637619f6513
+      internalID: -124133648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -3953,6 +4016,9 @@ TextureImporter:
       Fence_Side: 409210450
       Fence_Side_Left: 1432140920
       Fence_Side_Right: 447613584
+      Fence_T: -124133648
+      Fence_TL: -2123128162
+      Fence_TR: 630427525
       Gallows: 1291989373
       Log: -1083143675
       Post_BL: 1880704826
