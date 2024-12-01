@@ -61,6 +61,7 @@ namespace Code.Scripts.SkillTreeSystem
         private CooldownUIController cooldownUIController;
         private GameObject ShieldOfFaithParti;
         private GameObject RussianRouletteParti;
+        private GameObject PolyBullet;
         // unlockable abilities
         private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel;
         private int skillPoints;
@@ -89,7 +90,7 @@ namespace Code.Scripts.SkillTreeSystem
             cooldownUIController = GameObject.Find("AbilityCooldowns").GetComponent<CooldownUIController>();
             activeCowboySkills = new LRUCache();
             activeWizardSkills = new LRUCache();
-            skillPoints = 10;
+            skillPoints = 100;
             dynamiteDashLevel = 0;
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
@@ -97,10 +98,13 @@ namespace Code.Scripts.SkillTreeSystem
             Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
             ShieldOfFaithParti = Resources.Load<GameObject>("ShieldOfFaithParti");
             RussianRouletteParti = Resources.Load<GameObject>("RussianRouletteParti");
+            PolyBullet = Resources.Load<GameObject>("PolyBullet");
             if(ShieldOfFaithParti == null)
                 Debug.LogError("ShieldOfFaithParti not found");
             if(RussianRouletteParti == null)
                 Debug.LogError("RussianRouletteParti not found");
+            if(PolyBullet == null)
+                Debug.LogError("PolyBullet not found");
         }
         
         public void GainSkillPoint(int amount)
@@ -189,6 +193,7 @@ namespace Code.Scripts.SkillTreeSystem
         IEnumerator ActivateGoldenGun()
         {
             playerController.aimSystem.goldenGunActive = true;
+            playerController.weapon.setDamageMultiplier(4);
             Color originalColor = playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color;
             yield return new WaitForSeconds(3f);
 
@@ -198,6 +203,7 @@ namespace Code.Scripts.SkillTreeSystem
                 yield return new WaitForSeconds(0.05f);
             }
             playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color = originalColor;
+            playerController.weapon.setDamageMultiplier(4);
             playerController.aimSystem.goldenGunActive = false;
         }
         IEnumerator RussianRoulette()
@@ -233,9 +239,15 @@ namespace Code.Scripts.SkillTreeSystem
                 rrEffect.transform.SetParent(transform);
                 yield return new WaitForSeconds(5f);
                 playerHealth.isInvincible = false;
-                Destroy(rrEffect); // Destroys the particle effect after waut finished  
+                Destroy(rrEffect); // Destroys the particle effect after wait finished  
                 playerController.weapon.setDamageMultiplier(1);
             }    
+        }
+        void PolyMorph()
+        {
+            //FirePolyBullet. Maybe add heat seeking if possible
+            GameObject PolyShot = Instantiate(PolyBullet, transform.position, transform.rotation);
+            PolyShot.GetComponent<Rigidbody2D>().AddForce(playerController.weapon.orbFirePoint.right * 10, ForceMode2D.Impulse);
         }
         IEnumerator shieldOfFaith()
         {
@@ -282,7 +294,7 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "dynamitedash":
-                    StartCoroutine(dynamiteDash()); 
+                    StartCoroutine(dynamiteDash());
                     Debug.Log("DynoDashh");
                     break;
                 case "goldengun":
@@ -318,7 +330,8 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "shieldoffaith":
-                    StartCoroutine(shieldOfFaith());
+                    //StartCoroutine(shieldOfFaith()); 
+                    PolyMorph(); //remove and uncomment, delete, temporary testing
                     Debug.Log("Shield of Faith");
                     break;
             }
