@@ -29,6 +29,8 @@ public class MorphBullet : MonoBehaviour
     }
     IEnumerator handleTame(Enemy enemy)
     {
+        if(enemy.isGrillos) 
+            yield break;
         GameObject parti = Instantiate(PolyParti, enemy.transform.position, enemy.transform.rotation);
         parti.transform.SetParent(enemy.transform);
         enemy.GetComponent<FireAtPlayer>().isTamed = true;
