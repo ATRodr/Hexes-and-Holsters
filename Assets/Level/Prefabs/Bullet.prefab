@@ -101,7 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFireBolt: 0
   damageMultiplier: 1
-  isPolyShot: 0
 --- !u!50 &-2840962989223638617
 Rigidbody2D:
   serializedVersion: 4
