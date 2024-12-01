@@ -6,8 +6,7 @@ public class Bullet : MonoBehaviour
 {
     
     public bool isFireBolt = false;
-    public int damageMultiplier = 1;
-    
+    public int damageMultiplier = 1;    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))

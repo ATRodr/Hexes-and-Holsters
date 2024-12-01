@@ -61,17 +61,16 @@ namespace Code.Scripts.SkillTreeSystem
         // Start is called before the first frame update
         private GameObject ShieldOfFaithParti;
         private GameObject RussianRouletteParti;
+        private GameObject PolyBullet;
         // unlockable abilities
-        private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel;
+        private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel;
         private int skillPoints;
         private LRUCache activeCowboySkills;
         private LRUCache activeWizardSkills;        
-        public int ChainLightning => chainLightningLevel;
-        public int DestructiveWave => destructiveWaveLevel;
         public int DynamiteDash => dynamiteDashLevel;
         public int GoldenGun => goldenGunLevel;
         public int ShieldOfFaith => shieldOfFaithLevel;
-        
+        public int russianRoulette => russianRoulleteLevel;
         public int SkillPoints => skillPoints;
         private PlayerHealth playerHealth;
 
@@ -88,19 +87,21 @@ namespace Code.Scripts.SkillTreeSystem
             playerController = GetComponent<PlayerController>();
             activeCowboySkills = new LRUCache();
             activeWizardSkills = new LRUCache();
-            skillPoints = 10;
-            chainLightningLevel = 0;
-            destructiveWaveLevel = 0;
+            skillPoints = 100;
             dynamiteDashLevel = 0;
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
+            russianRoulleteLevel = 0;
             Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
             ShieldOfFaithParti = Resources.Load<GameObject>("ShieldOfFaithParti");
             RussianRouletteParti = Resources.Load<GameObject>("RussianRouletteParti");
+            PolyBullet = Resources.Load<GameObject>("PolyBullet");
             if(ShieldOfFaithParti == null)
                 Debug.LogError("ShieldOfFaithParti not found");
             if(RussianRouletteParti == null)
                 Debug.LogError("RussianRouletteParti not found");
+            if(PolyBullet == null)
+                Debug.LogError("PolyBullet not found");
         }
         
         public void GainSkillPoint(int amount)
@@ -133,12 +134,6 @@ namespace Code.Scripts.SkillTreeSystem
             {
                 switch (data.StatType)
                 {
-                    case StatTypes.chainLightning:
-                        ModifyStat(ref chainLightningLevel, data);
-                        break;
-                    case StatTypes.destructiveWave:
-                        ModifyStat(ref destructiveWaveLevel, data);
-                        break;
                     case StatTypes.dynamiteDash:
                         ModifyStat(ref dynamiteDashLevel, data);
                         break;
@@ -147,6 +142,9 @@ namespace Code.Scripts.SkillTreeSystem
                         break;
                     case StatTypes.shieldOfFaith:
                         ModifyStat(ref shieldOfFaithLevel, data);
+                        break;
+                    case StatTypes.russianRoulette:
+                        ModifyStat(ref russianRoulleteLevel, data);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -190,6 +188,7 @@ namespace Code.Scripts.SkillTreeSystem
         IEnumerator ActivateGoldenGun()
         {
             playerController.aimSystem.goldenGunActive = true;
+            playerController.weapon.setDamageMultiplier(4);
             Color originalColor = playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color;
             yield return new WaitForSeconds(3f);
 
@@ -199,12 +198,14 @@ namespace Code.Scripts.SkillTreeSystem
                 yield return new WaitForSeconds(0.05f);
             }
             playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color = originalColor;
+            playerController.weapon.setDamageMultiplier(4);
             playerController.aimSystem.goldenGunActive = false;
         }
         IEnumerator RussianRoulette()
         {
             if(UnityEngine.Random.Range(1, 3) == 1)
             {
+                Debug.Log("HIT RR BAD NO GOOD");
                 playerHealth.TakeDamage(1f);
                 //find cam script and shake it. Yes this is messy but oh well
                  GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
@@ -233,9 +234,15 @@ namespace Code.Scripts.SkillTreeSystem
                 rrEffect.transform.SetParent(transform);
                 yield return new WaitForSeconds(5f);
                 playerHealth.isInvincible = false;
-                Destroy(rrEffect); // Destroys the particle effect after waut finished  
+                Destroy(rrEffect); // Destroys the particle effect after wait finished  
                 playerController.weapon.setDamageMultiplier(1);
             }    
+        }
+        void PolyMorph()
+        {
+            //FirePolyBullet. Maybe add heat seeking if possible
+            GameObject PolyShot = Instantiate(PolyBullet, transform.position, transform.rotation);
+            PolyShot.GetComponent<Rigidbody2D>().AddForce(playerController.weapon.orbFirePoint.right * 10, ForceMode2D.Impulse);
         }
         IEnumerator shieldOfFaith()
         {
@@ -277,18 +284,20 @@ namespace Code.Scripts.SkillTreeSystem
 
             lastTimeActivated = Time.time;
 
+            Debug.Log("Skill Name: " + skillName.ToLower().Replace(" ", ""));
             // switch on the skill name and normalize it
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "dynamitedash":
-                    StartCoroutine(dynamiteDash()); 
+                    StartCoroutine(dynamiteDash());
                     Debug.Log("DynoDashh");
                     break;
                 case "goldengun":
                     StartCoroutine(ActivateGoldenGun());
                     Debug.Log("Golden Gun");
                     break;
-                case"russianroulette":
+                case"russianroullete":
+                    Debug.Log("Russian Roulette FOUND");
                     StartCoroutine(RussianRoulette());
                     Debug.Log("Russian Roulette");
                     break;
@@ -311,7 +320,8 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "shieldoffaith":
-                    StartCoroutine(shieldOfFaith());
+                    //StartCoroutine(shieldOfFaith()); 
+                    PolyMorph(); //remove and uncomment, delete, temporary testing
                     Debug.Log("Shield of Faith");
                     break;
             }

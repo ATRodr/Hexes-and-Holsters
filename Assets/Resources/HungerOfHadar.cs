@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HungerOfHadar : MonoBehaviour
@@ -60,12 +61,15 @@ public class HungerOfHadar : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("within hunger of hadar");
         if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
+            float disFromCenter = (enemyComponent.transform.position - transform.position).magnitude;
+            if(disFromCenter > 2.7)
+                return;
+            Debug.Log("within hunger of hadar");
             if(enemyComponent.agent.isOnNavMesh)
                 enemyComponent.agent.isStopped = true;
-            enemyComponent.TakeDamage(0); //change back to damagePerFrame after testing
+            enemyComponent.TakeDamage(damagePerFrame); //change back to damagePerFrame after testing
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

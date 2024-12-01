@@ -8,14 +8,15 @@ public class FireAtPlayer : MonoBehaviour
     [SerializeField] private float fireRate;
     public GameObject bullet;
     public Transform bulletPos;
+    public bool firingEnabled = true;
+
     private float timer;
     private GameObject player;
     private bool hasLOS = false;
-
     private int PlayerLayer; //not hardcoded for Wizard ult so we can switch which enemies the enemy shoots.
     private int EnemyLayer; //needed in future to implement wizard ult(enemy shot should witch layers and shoot other enemies)
     private int ForegroundLayer;
-    
+    public bool isTamed = false;
     void Start()
     {
         player  = GameObject.FindGameObjectWithTag("Player");
@@ -29,7 +30,7 @@ public class FireAtPlayer : MonoBehaviour
         Vector3 difference = transform.position - player.transform.position;
         difference.Normalize();
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+        //transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
         
 
         timer += Time.deltaTime;
@@ -45,7 +46,7 @@ public class FireAtPlayer : MonoBehaviour
             if (ray.collider != null)
             {
                 hasLOS = ray.collider.CompareTag("Player");
-                if (hasLOS)
+                if (hasLOS && firingEnabled)
                 {
                     Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
 
@@ -62,6 +63,11 @@ public class FireAtPlayer : MonoBehaviour
 
     void shoot()
     {
-        Instantiate(bullet, bulletPos.position, Quaternion.identity);
-    }
+        //should shoot at player if Boolean(shootAtPlayer) in EnemyBulletScript is true. Else, shoot at closest enemy.
+        GameObject bulletInstance = Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        if(isTamed)
+            bulletInstance.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
+        else
+            bulletInstance.GetComponent<EnemyBulletScript>().shootAtPlayer = true;
+    }   
 }
