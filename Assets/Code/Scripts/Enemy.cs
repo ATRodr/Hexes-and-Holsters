@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float attackRate = 1f;
     [SerializeField] public bool isMelle = false;
     [SerializeField] public bool isMagic = false;
+    [SerializeField] public string uniqueID; // unique ID for every enemy
     public bool isTamed = false;
         
     float nextAttack = 0f;
@@ -24,6 +25,20 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        // Persistent Enemy Death Code
+        // Create unique ID for enemy
+        if (string.IsNullOrEmpty(uniqueID))
+        {
+            uniqueID = gameObject.scene.name + "_" + transform.position.ToString();
+        }
+
+        // Check if unique enemy is marked as dead
+        if (PlayerPrefs.GetInt(uniqueID, 0) == 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         GetComponent<SpriteRenderer>().enabled = false;
         rb = GetComponent<Rigidbody2D>();
         
@@ -113,6 +128,7 @@ public class Enemy : MonoBehaviour
         Destroy(Bullet);
 
         if(health <= 0){
+            MarkAsKilled();
             Destroy(gameObject);
         }
     }
@@ -123,6 +139,20 @@ public class Enemy : MonoBehaviour
         if(health <= 0){
             Destroy(gameObject);
         }
+    }
+    private void MarkAsKilled()
+    {
+        // Using PlayerPrefs we mark enemy as dead
+        PlayerPrefs.SetInt(uniqueID, 1);
+
+        // This is so that we can delete only the persistent enemy data later when the game resets
+        string enemyID = PlayerPrefs.GetString("EnemyID", "");
+        if (!enemyID.Contains(uniqueID))
+        {
+            PlayerPrefs.SetString("EnemyID", enemyID + uniqueID + ";");
+        }
+
+        PlayerPrefs.Save();
     }
     
 }
