@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7709921079397155530}
   m_Layer: 6
   m_Name: RangedEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30e9821425a543c2ab266e063796eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isChasing: 0
+  isChasing: 1
   isMoving: 0
   isGrillos: 0
   target: {fileID: 0}
@@ -82,7 +82,9 @@ MonoBehaviour:
   maxHealth: 6
   attackRate: 2
   isMelle: 0
-  isMagic: 1
+  isMagic: 0
+  uniqueID: 
+  isTamed: 0
   agent: {fileID: 0}
 --- !u!61 &2424757223712046673
 BoxCollider2D:
@@ -145,6 +147,7 @@ MonoBehaviour:
   bullet: {fileID: 6756061119310239216, guid: db5d6e746abef4d7d9f6427aff4d260b, type: 3}
   bulletPos: {fileID: 7492757393861873714}
   firingEnabled: 1
+  isTamed: 0
 --- !u!50 &6858572624129638260
 Rigidbody2D:
   serializedVersion: 4

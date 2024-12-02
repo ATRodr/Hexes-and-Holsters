@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        
         // Persistent Enemy Death Code
         // Create unique ID for enemy
         if (string.IsNullOrEmpty(uniqueID))
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        
         if(isTamed)
             target = FindSecondClosestEnemy();
         else    
@@ -129,6 +131,7 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0){
             MarkAsKilled();
+            
             Destroy(gameObject);
         }
     }
@@ -137,6 +140,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageAmt){
         health -= damageAmt;
         if(health <= 0){
+            
             Destroy(gameObject);
         }
     }

@@ -6,24 +6,17 @@ using UnityEngine;
 public class EnemyAnimations : MonoBehaviour
 {
     //private Vector3 defaultScale = new Vector3(1f, 1f, 1f);
-    //private Vector3 grillosScale = new Vector3(2f, 2f, 1f);
-    //private Transform characterTransform;    
+    private Vector3 cowboyEnemyScale = new Vector3(2f, 2f, 1f);
+    private Transform characterTransform;
     private Enemy enemy;
     public Animator enemyAnimations;
     void Start()
     {
+        characterTransform = transform;
         // Get the Enemy component from the parent GameObject
         enemy = GetComponentInParent<Enemy>();
 
-        if (enemy != null)
-        {
-            // Access the 'isMagic' variable from the Enemy script
-            Debug.Log("Is Magic: " + enemy.isMagic);
-        }
-        else
-        {
-            Debug.LogError("Enemy component not found in parent!");
-        }
+        
     }
 
     // Update is called once per frame
@@ -38,12 +31,33 @@ public class EnemyAnimations : MonoBehaviour
             }
             if (enemy.isMagic && !enemy.isGrillos)
             {
-                //characterTransform.localScale = defaultScale;
+                
                 if(!enemy.isMelle){
+                    characterTransform.localScale = new Vector3(1.6f, 1.6f, 1f);
                     enemyAnimations.SetBool("isMelee", false);
                     enemyAnimations.SetBool("isMagic", enemy.isMagic);
                 }
                 else{
+                    characterTransform.localScale = new Vector3(1.9f, 1.9f, 1f);
+                    enemyAnimations.SetBool("isMelee", true);
+                    enemyAnimations.SetBool("isMagic", enemy.isMagic);
+                }
+                if(enemy.isMoving){
+                    enemyAnimations.SetBool("isMoving", true);
+                }
+                else{
+                    enemyAnimations.SetBool("isMoving", false);
+                }
+            }
+            else if(!enemy.isMagic && !enemy.isGrillos){
+                
+                if(!enemy.isMelle){
+                    characterTransform.localScale = new Vector3(3.3f, 3.3f, 1f);
+                    enemyAnimations.SetBool("isMelee", false);
+                    enemyAnimations.SetBool("isMagic", enemy.isMagic);
+                }
+                else{
+                    characterTransform.localScale = new Vector3(2.5f, 2.5f, 1f);
                     enemyAnimations.SetBool("isMelee", true);
                     enemyAnimations.SetBool("isMagic", enemy.isMagic);
                 }
