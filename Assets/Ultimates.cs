@@ -164,6 +164,7 @@ public class Ultimates : MonoBehaviour
     IEnumerator ExplodingBullets()
     {
         weapon.expodingBullets = true;
+        SoundManager.Instance.PlaySoundFXClip(explodingBulletSound, transform, 0.1f);
         yield return new WaitForSeconds(10f);
         weapon.expodingBullets = false;
     }
