@@ -121,10 +121,10 @@ public class GrilosAbilities : MonoBehaviour
                 GameObject b3 = Instantiate(enemyBullet, bulletSpawnPoints[2].position, Quaternion.identity);
                 GameObject b4 = Instantiate(enemyBullet, bulletSpawnPoints[3].position, Quaternion.identity);
 
-                b1.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
-                b2.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
-                b3.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
-                b4.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
+                b1.GetComponent<EnemyBulletScript>().isGrillos = true;
+                b2.GetComponent<EnemyBulletScript>().isGrillos = true;
+                b3.GetComponent<EnemyBulletScript>().isGrillos = true;
+                b4.GetComponent<EnemyBulletScript>().isGrillos = true;
 
                 b1.GetComponent<Rigidbody2D>().AddForce(bulletSpawnPoints[0].up.normalized * 18f, ForceMode2D.Impulse);
                 b2.GetComponent<Rigidbody2D>().AddForce(bulletSpawnPoints[1].right.normalized * 18f, ForceMode2D.Impulse);
@@ -142,10 +142,10 @@ public class GrilosAbilities : MonoBehaviour
                 GameObject b3 = Instantiate(enemyBullet, bulletSpawnPoints[6].position, Quaternion.identity);
                 GameObject b4 = Instantiate(enemyBullet, bulletSpawnPoints[7].position, Quaternion.identity);
 
-                b1.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
-                b2.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
-                b3.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
-                b4.GetComponent<EnemyBulletScript>().shootAtPlayer = false;
+                b1.GetComponent<EnemyBulletScript>().isGrillos = true;
+                b2.GetComponent<EnemyBulletScript>().isGrillos = true;
+                b3.GetComponent<EnemyBulletScript>().isGrillos = true;
+                b4.GetComponent<EnemyBulletScript>().isGrillos = true;
 
                 b1.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1).normalized * 18f, ForceMode2D.Impulse); // Up-left
                 b2.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1).normalized * 18f, ForceMode2D.Impulse);  // Up-right

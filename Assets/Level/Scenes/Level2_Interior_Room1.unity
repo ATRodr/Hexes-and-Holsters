@@ -46566,6 +46566,7 @@ MonoBehaviour:
   attackRate: 3
   isMelle: 0
   isMagic: 1
+  uniqueID: 
   isTamed: 0
   agent: {fileID: 0}
 --- !u!114 &1602127291

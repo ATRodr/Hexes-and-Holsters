@@ -348,7 +348,7 @@ namespace Code.Scripts.SkillTreeSystem
             {
                 case "shieldoffaith":
                     //StartCoroutine(shieldOfFaith()); 
-                    StartCoroutine(slowEnemy()); //remove and uncomment, delete, temporary testing
+                    polyMorph(); //remove and uncomment, delete, temporary testing
                     Debug.Log("Shield of Faith");
                     break;
             }

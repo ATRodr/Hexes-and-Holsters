@@ -24,6 +24,10 @@ public class EnemyAnimations : MonoBehaviour
     {
         if (enemy != null)
         {
+            enemyAnimations.SetBool("isGrillos", enemy.isGrillos);
+            enemyAnimations.SetBool("isMagic", enemy.isMagic); 
+            enemyAnimations.SetBool("isMelee", enemy.isMelle);
+
             if(enemy.isGrillos){
                 enemyAnimations.SetBool("isGrillos", true);
                 enemyAnimations.SetBool("isMagic", true); 

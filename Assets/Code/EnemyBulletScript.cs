@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBulletScript : MonoBehaviour
 {
+    public bool isGrillos = false;
     private Rigidbody2D rb;
     public float force = 20f;
     public bool shootAtPlayer = true; // Determines if the bullet should track the player
@@ -12,11 +13,13 @@ public class EnemyBulletScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if (shootAtPlayer)
-        {
-            FireAtPlayer();
-        }if(!shootAtPlayer){
-            FireAtTarget();
+        if(!isGrillos){
+            if (shootAtPlayer)
+            {
+                FireAtPlayer();
+            }if(!shootAtPlayer){
+                FireAtTarget();
+            }
         }
         
         Destroy(gameObject, 2f);
@@ -47,7 +50,7 @@ public class EnemyBulletScript : MonoBehaviour
     }
     IEnumerator ChangeLayer(){
         yield return new WaitForSeconds(0.05f);
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        gameObject.layer = LayerMask.NameToLayer("Player Bullets");
     }
     GameObject FindSecondClosestEnemy(){
         GameObject[] enemies;
