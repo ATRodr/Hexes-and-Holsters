@@ -12,6 +12,7 @@ public class Ultimates : MonoBehaviour
     private Weapon weapon;
     private GameObject wave;
     private GameObject hadar;
+    private GameObject bwSpin;
     private int cowboyUlt;
     private int wizardUlt;
     private float cowboyUltCooldown;
@@ -30,13 +31,15 @@ public class Ultimates : MonoBehaviour
         cowboyUltCooldown = COWBOY_COOLDOWN;
         wizardUltCooldown = WIZARD_COOLDOWN;
         GameObject.FindObjectOfType<Weapon>();
-        
+        bwSpin = Resources.Load<GameObject>("BullWhipParent");
         hadar = Resources.Load<GameObject>("Hadar");
         wave = Resources.Load<GameObject>("DestructiveWave");
         if(hadar == null)
             Debug.LogError("hadar not found");
         if(wave == null)
             Debug.LogError("Wave not found");
+        if(bwSpin == null)
+            Debug.LogError("Bullwhip not found");
     }
 
     public void Update()
@@ -62,7 +65,7 @@ public class Ultimates : MonoBehaviour
                     switch (cowboyUlt)
                     {
                         case 1:
-                            Debug.Log("Golden Gun");
+                            Debug.Log("Dual Wield"); 
                             break;
                         case 2:
                             Debug.Log("Gatling Gun");
@@ -70,6 +73,7 @@ public class Ultimates : MonoBehaviour
                             break;
                         case 3:
                             Debug.Log("Bullwhip Spin");
+                            StartCoroutine(BullwhipSpin());
                             break;
                     }
                     cowboyUltReady = false;
@@ -155,5 +159,14 @@ public class Ultimates : MonoBehaviour
     {
         Instantiate(hadar, transform.position, transform.rotation);
         yield return new WaitForSeconds(0.25f);
+    }
+    IEnumerator BullwhipSpin()
+    {
+        GameObject spin = Instantiate(bwSpin, transform.position, transform.rotation);
+        spin.transform.SetParent(transform);
+        playerHealth.isInvincible = true;
+        yield return new WaitForSeconds(10f);
+        Destroy(spin);
+        playerHealth.isInvincible = false;
     }
 }

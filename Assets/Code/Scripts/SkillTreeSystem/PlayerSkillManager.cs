@@ -64,7 +64,7 @@ namespace Code.Scripts.SkillTreeSystem
         private GameObject RussianRouletteParti;
         private GameObject PolyBullet;
         // unlockable abilities
-        private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel;
+        private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel, slowEnemyLevel, polyMorphLevel;
         private int skillPoints;
         private LRUCache activeCowboySkills;
         private LRUCache activeWizardSkills;        
@@ -72,6 +72,8 @@ namespace Code.Scripts.SkillTreeSystem
         public int GoldenGun => goldenGunLevel;
         public int ShieldOfFaith => shieldOfFaithLevel;
         public int russianRoulette => russianRoulleteLevel;
+        public int PolyMorph => polyMorphLevel;
+        public int SlowEnemy => slowEnemyLevel;
         public int SkillPoints => skillPoints;
         private PlayerHealth playerHealth;
 
@@ -93,6 +95,8 @@ namespace Code.Scripts.SkillTreeSystem
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
             russianRoulleteLevel = 0;
+            slowEnemyLevel = 0;
+            polyMorphLevel = 0;
             Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
             ShieldOfFaithParti = Resources.Load<GameObject>("ShieldOfFaithParti");
             RussianRouletteParti = Resources.Load<GameObject>("RussianRouletteParti");
@@ -243,7 +247,30 @@ namespace Code.Scripts.SkillTreeSystem
                 playerController.weapon.setDamageMultiplier(1);
             }    
         }
-        void PolyMorph()
+        IEnumerator slowEnemy()
+        {
+            //find list of enemies and slow them down
+            Enemy[] enemies  = FindObjectsOfType<Enemy>();
+            float[] originalSpeeds = new float[enemies.Length];
+            foreach (Enemy enemy in enemies)
+            {
+                //find index of enemy and save that speed at that index so we can reset it back to normal after ability is done
+                originalSpeeds[Array.IndexOf(enemies, enemy)] = enemy.agent.speed;
+                //find nav mesh agent set speed to lower, change it back after.
+                enemy.agent.speed = 1;
+                enemy.attackRate = 2; //slow down attack by a second
+            }
+            yield return new WaitForSeconds(5); //wait some time then unslow them
+            //reset all the speeds back to normal
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                enemies[i].agent.speed = 5;
+                enemies[i].attackRate = 1; //reset attack rate
+            }
+
+
+        }
+        void polyMorph()
         {
             //FirePolyBullet. Maybe add heat seeking if possible
             SoundManager.Instance.PlaySoundFXClip(charmSound, transform, 0.3f);
@@ -329,8 +356,8 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "shieldoffaith":
-                    StartCoroutine(shieldOfFaith()); 
-                    // PolyMorph(); //remove and uncomment, delete, temporary testing
+                    //StartCoroutine(shieldOfFaith()); 
+                    StartCoroutine(slowEnemy()); //remove and uncomment, delete, temporary testing
                     Debug.Log("Shield of Faith");
                     break;
             }
