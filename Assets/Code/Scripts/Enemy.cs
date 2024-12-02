@@ -130,7 +130,7 @@ public class Enemy : MonoBehaviour
         Destroy(Bullet);
 
         if(health <= 0){
-            //MarkAsKilled();
+            MarkAsKilled();
             
             Destroy(gameObject);
         }
