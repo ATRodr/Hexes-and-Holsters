@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7152031207722548585}
   - component: {fileID: 7039699950018932991}
   - component: {fileID: 9081646176596660251}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Enemy Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,3 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 10
+  shootAtPlayer: 1
