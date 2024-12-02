@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 517353111536625721}
   - component: {fileID: -2840962989223638617}
   - component: {fileID: -5540992993270534362}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: fireBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,10 +74,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 54392429
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 7320663792c347749977f81c1bf0a00e, type: 3}
-  m_Color: {r: 1, g: 0.6055647, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.585702, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,7 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c9fcacaafe94f2abd65d59ac9c20ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  correctBulletHitSound: {fileID: 8300000, guid: 39775b2873f334e60aba5e16f832d3c1, type: 3}
+  incorrectBulletHitSound: {fileID: 8300000, guid: c6a82fc8941964022a6627318cb1c431, type: 3}
+  bulletFired: {fileID: 8300000, guid: 24ad904298c0140e09d0abfa1f24d446, type: 3}
+  fireBoltFired: {fileID: 8300000, guid: 49439bfcdc1dc4daa95c4f188ca41e28, type: 3}
   isFireBolt: 1
+  damageMultiplier: 1
 --- !u!50 &-2840962989223638617
 Rigidbody2D:
   serializedVersion: 4
@@ -125,7 +130,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &-5540992993270534362
 CircleCollider2D:

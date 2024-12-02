@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,7 +15,7 @@ namespace Code.Scripts.SkillTreeSystem
     // activated and replaces it with new skill activated if player has
     // > 2 skills activated, also keeps track of the skill's ability number
     // to know which ability to fire
-    class LRUCache
+    public class LRUCache
     {
         public int capacity;
         public Dictionary<ScriptableSkill, int> cache;
@@ -57,20 +58,27 @@ namespace Code.Scripts.SkillTreeSystem
     }
     public class PlayerSkillManager : MonoBehaviour
     {
+        private CooldownUIController cooldownUIController;
         // Start is called before the first frame update
-
+        [SerializeField] private AudioClip dynamiteDashSound, russianRouletteSpinSound, russianRouletteWinSound, russianRouletteFailSound, shieldOfFaithSound, charmSound, timeSlowsound;
+        private GameObject ShieldOfFaithParti;
+        private GameObject RussianRouletteParti;
+        private GameObject PolyBullet;
         // unlockable abilities
-        private int chainLightningLevel, destructiveWaveLevel, dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel;
+        private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel, slowEnemyLevel, polyMorphLevel;
         private int skillPoints;
         private LRUCache activeCowboySkills;
-        private LRUCache activeWizardSkills;        
-        public int ChainLightning => chainLightningLevel;
-        public int DestructiveWave => destructiveWaveLevel;
+        private LRUCache activeWizardSkills;
+        public LRUCache ActiveCowboySkills => activeCowboySkills;
+        public LRUCache ActiveWizardSkills => activeWizardSkills;        
         public int DynamiteDash => dynamiteDashLevel;
         public int GoldenGun => goldenGunLevel;
         public int ShieldOfFaith => shieldOfFaithLevel;
-        
+        public int russianRoulette => russianRoulleteLevel;
+        public int PolyMorph => polyMorphLevel;
+        public int SlowEnemy => slowEnemyLevel;
         public int SkillPoints => skillPoints;
+        private PlayerHealth playerHealth;
 
         public UnityAction OnSkillPointsChanged;
 
@@ -81,22 +89,37 @@ namespace Code.Scripts.SkillTreeSystem
         
         private void Start()
         {
+            playerHealth = GetComponent<PlayerHealth>();
             playerController = GetComponent<PlayerController>();
+            cooldownUIController = GameObject.Find("AbilityCooldowns").GetComponent<CooldownUIController>();
             activeCowboySkills = new LRUCache();
             activeWizardSkills = new LRUCache();
-            skillPoints = 10;
-            chainLightningLevel = 0;
-            destructiveWaveLevel = 0;
+            skillPoints = 100;
             dynamiteDashLevel = 0;
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
+            russianRoulleteLevel = 0;
+            slowEnemyLevel = 0;
+            polyMorphLevel = 0;
             Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
-
+            ShieldOfFaithParti = Resources.Load<GameObject>("ShieldOfFaithParti");
+            RussianRouletteParti = Resources.Load<GameObject>("RussianRouletteParti");
+            PolyBullet = Resources.Load<GameObject>("PolyBullet");
+            if(ShieldOfFaithParti == null)
+                Debug.LogError("ShieldOfFaithParti not found");
+            if(RussianRouletteParti == null)
+                Debug.LogError("RussianRouletteParti not found");
+            if(PolyBullet == null)
+                Debug.LogError("PolyBullet not found");
         }
         
-        public void GainSkillPoint()
+        public void GainSkillPoint(int amount)
         {
-            skillPoints++;
+            //shouldn't ever give negative skill points
+            if(amount < 0) return; 
+
+            skillPoints += amount;
+            Debug.Log(amount + " of skill point gained from killing Enemy. Total skill points: " + skillPoints);
             OnSkillPointsChanged?.Invoke();
         }
 
@@ -120,12 +143,6 @@ namespace Code.Scripts.SkillTreeSystem
             {
                 switch (data.StatType)
                 {
-                    case StatTypes.chainLightning:
-                        ModifyStat(ref chainLightningLevel, data);
-                        break;
-                    case StatTypes.destructiveWave:
-                        ModifyStat(ref destructiveWaveLevel, data);
-                        break;
                     case StatTypes.dynamiteDash:
                         ModifyStat(ref dynamiteDashLevel, data);
                         break;
@@ -134,6 +151,9 @@ namespace Code.Scripts.SkillTreeSystem
                         break;
                     case StatTypes.shieldOfFaith:
                         ModifyStat(ref shieldOfFaithLevel, data);
+                        break;
+                    case StatTypes.russianRoulette:
+                        ModifyStat(ref russianRoulleteLevel, data);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -172,11 +192,14 @@ namespace Code.Scripts.SkillTreeSystem
             if (skill.isCowboySkill)
                 activeCowboySkills.Add(skill);
             else
-                activeWizardSkills.Add(skill);            
+                activeWizardSkills.Add(skill);   
+
+            cooldownUIController.UpdateCooldowns();         
         }
         IEnumerator ActivateGoldenGun()
         {
             playerController.aimSystem.goldenGunActive = true;
+            playerController.weapon.setDamageMultiplier(4);
             Color originalColor = playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color;
             yield return new WaitForSeconds(3f);
 
@@ -186,13 +209,96 @@ namespace Code.Scripts.SkillTreeSystem
                 yield return new WaitForSeconds(0.05f);
             }
             playerController.aimSystem.GoldenGun.GetComponent<SpriteRenderer>().color = originalColor;
+            playerController.weapon.setDamageMultiplier(4);
             playerController.aimSystem.goldenGunActive = false;
+        }
+        IEnumerator RussianRoulette()
+        {
+            SoundManager.Instance.PlaySoundFXClip(russianRouletteSpinSound, transform, 0.3f);
+            yield return new WaitForSeconds(russianRouletteSpinSound.length);
+            if(UnityEngine.Random.Range(1, 3) == 1)
+            {
+                Debug.Log("HIT RR BAD NO GOOD");
+                SoundManager.Instance.PlaySoundFXClip(russianRouletteFailSound, transform, 0.3f);
+                playerHealth.TakeDamage(1f, isRR: true);
+                //find cam script and shake it. Yes this is messy but oh well
+                 GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+
+                if (cameraObject != null)
+                {
+                    // Get the CameraShake script attached to the camera
+                    CameraFollow cameraShake = cameraObject.GetComponent<CameraFollow>();
+
+                    if (cameraShake != null)
+                    {
+                        // Call the Shake function
+                        StartCoroutine(cameraShake.Shake(0.2f, 1.5f)); // 0.2 seconds, 3 magnitude
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Main Camera not found!");
+                }
+            }
+            else
+            {
+                SoundManager.Instance.PlaySoundFXClip(russianRouletteWinSound, transform, 0.3f);
+                playerController.weapon.setDamageMultiplier(2);
+                playerHealth.isInvincible = true;
+                GameObject rrEffect = Instantiate(RussianRouletteParti, transform.position, transform.rotation);
+                rrEffect.transform.SetParent(transform);
+                yield return new WaitForSeconds(5f);
+                playerHealth.isInvincible = false;
+                Destroy(rrEffect); // Destroys the particle effect after wait finished  
+                playerController.weapon.setDamageMultiplier(1);
+            }    
+        }
+        IEnumerator slowEnemy()
+        {
+            //find list of enemies and slow them down
+            Enemy[] enemies  = FindObjectsOfType<Enemy>();
+            float[] originalSpeeds = new float[enemies.Length];
+            foreach (Enemy enemy in enemies)
+            {
+                //if enemy is not melle, slow also slow thier fire rate. Must get FireAtPlayer script attached to them
+                if(!enemy.isMelle)
+                     enemy.GetComponent<FireAtPlayer>().fireRate = 0.5f;
+                //find index of enemy and save that speed at that index so we can reset it back to normal after ability is done
+                originalSpeeds[Array.IndexOf(enemies, enemy)] = enemy.agent.speed;
+                //find nav mesh agent set speed to lower, change it back after.
+                enemy.agent.speed = 0.5f;
+                enemy.attackRate = 2; //slow down attack by a second
+            }
+            SoundManager.Instance.PlaySoundFXClip(timeSlowsound, transform, 0.3f);
+            yield return new WaitForSeconds(5); //wait some time then unslow them
+            //reset all the speeds back to normal
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                if(!enemies[i].isMelle)
+                     enemies[i].GetComponent<FireAtPlayer>().fireRate = 0.5f;
+                enemies[i].agent.speed = originalSpeeds[i];
+                enemies[i].attackRate = 1; //reset attack rate
+            }
+
+
+        }
+        void polyMorph()
+        {
+            //FirePolyBullet. Maybe add heat seeking if possible
+            SoundManager.Instance.PlaySoundFXClip(charmSound, transform, 0.3f);
+            GameObject PolyShot = Instantiate(PolyBullet, transform.position, transform.rotation);
+            PolyShot.GetComponent<Rigidbody2D>().AddForce(playerController.weapon.orbFirePoint.right * 10, ForceMode2D.Impulse);
         }
         IEnumerator shieldOfFaith()
         {
             playerController.playerHealth.isInvincible = true;
             playerController.healthBar.DrawHearts();
+            GameObject shieldEffect = Instantiate(ShieldOfFaithParti, transform.position, transform.rotation);
+            shieldEffect.transform.SetParent(transform);
+            // play sound here
+            SoundManager.Instance.PlaySoundFXClip(shieldOfFaithSound, transform, 0.3f);
             yield return new WaitForSeconds(5);
+            Destroy(shieldEffect); // Destroys the particle effect after waut finished
             playerController.playerHealth.isInvincible = false;
             playerController.healthBar.DrawHearts();
         }
@@ -200,9 +306,9 @@ namespace Code.Scripts.SkillTreeSystem
         {
             Vector2 pos = transform.position;
             Quaternion rot = transform.rotation;
-            Debug.Log("Dynamite Dash");
             Instantiate(playerController.dynamite, pos, rot);
             StartCoroutine(playerController.Dash(0.16f, 27f));
+            SoundManager.Instance.PlaySoundFXClip(dynamiteDashSound, transform, 0.3f);
             yield return new WaitForSeconds(0.5f);
             Instantiate(playerController.explosion, pos, rot);
         }
@@ -225,6 +331,7 @@ namespace Code.Scripts.SkillTreeSystem
 
             lastTimeActivated = Time.time;
 
+            Debug.Log("Skill Name: " + skillName.ToLower().Replace(" ", ""));
             // switch on the skill name and normalize it
             switch (skillName.ToLower().Replace(" ", ""))
             {
@@ -236,7 +343,16 @@ namespace Code.Scripts.SkillTreeSystem
                     StartCoroutine(ActivateGoldenGun());
                     Debug.Log("Golden Gun");
                     break;
+                case"russianroullete":
+                    StartCoroutine(RussianRoulette());
+                    Debug.Log("Russian Roulette");
+                    break;
             }
+
+            if (number == 1)
+                cooldownUIController.isCooldown1 = false;
+            else
+                cooldownUIController.isCooldown2 = false;
         }
         public void castWizardAbility(int number, ref float lastTimeActivated)
         {
@@ -255,13 +371,16 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "shieldoffaith":
-                    StartCoroutine(shieldOfFaith());
+                    //StartCoroutine(shieldOfFaith()); 
+                    polyMorph(); //remove and uncomment, delete, temporary testing
                     Debug.Log("Shield of Faith");
                     break;
-                case "destructivewave":
-                    Debug.Log("Destructive Wave");
-                    break;
             }
+
+            if (number == 1)
+                cooldownUIController.isCooldown1 = false;
+            else
+                cooldownUIController.isCooldown2 = false;
         }
     }
 }

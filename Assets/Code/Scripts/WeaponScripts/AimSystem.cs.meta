@@ -3,7 +3,13 @@ guid: d1e02fbc71a47b64f8999167dcde60bc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - swapSound: {instanceID: 0}
+  - gun: {instanceID: 0}
+  - GoldenGun: {instanceID: 0}
+  - orbParent: {instanceID: 0}
+  - orb: {instanceID: 0}
+  - swappingAnimation: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

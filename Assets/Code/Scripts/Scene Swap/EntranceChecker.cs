@@ -12,6 +12,12 @@ public class BuildingEntrance : MonoBehaviour
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if (player)
         {
+            // Hardcode going back to main menu at end of game
+            if (SceneManager.GetActiveScene().name == "Level3_Exterior")
+            {
+                SceneManager.LoadScene("Main Menu");
+            }
+
             // Load the interior scene
             if (SceneManager.GetActiveScene().name != interiorSceneName)
             {
@@ -29,7 +35,7 @@ public class BuildingEntrance : MonoBehaviour
 
     private void LoadTownScene()
     {
-        string townSceneName = "Level1_Town_Exterior"; // Replace with your town scene name
+        string townSceneName = "Level1_Town_Exterior";
 
         // Set the appropriate spawn point tag based on the building
         if (interiorSceneName == "Level1_Saloon_Interior")

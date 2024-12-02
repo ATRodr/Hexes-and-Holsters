@@ -13,13 +13,18 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb; 
     public AimSystem aimSystem;
+
+    //Dynamite dash stuff
     public GameObject dynamite;
     public GameObject explosion;
+
     public PlayerHealth playerHealth;
     public HealthBar healthBar;
     public Weapon weapon;
     Vector2 moveDirection;
-    private PlayerSkillManager skillManager;
+    
+    //public so that enemy can access it to add skill points on death
+    public PlayerSkillManager skillManager;
 
     [Header("Dash Settings")]  // This is the attribute causing the error
     [SerializeField] float dashSpeed = 15f;
@@ -37,6 +42,15 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //for some reason it's not 1 to begin with so this needs to be here
+        weapon.setDamageMultiplier(1);
+        //Get the dynamite and explosion prefabs from resources
+        dynamite = Resources.Load<GameObject>("Dynamite");
+        explosion = Resources.Load<GameObject>("Explosion");
+        if(dynamite == null)
+            Debug.LogError("Dynamite not found");
+        if(explosion == null)
+            Debug.LogError("Explosion not found");
         skillManager = GetComponent<PlayerSkillManager>();
         healthBar = GameObject.FindObjectOfType<HealthBar>();
         playerHealth = GetComponent<PlayerHealth>();
@@ -66,7 +80,7 @@ public class PlayerController : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical"); 
 
         //normal bullet
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) && aimSystem.canShoot){
             weapon.Fire();
         } 
         
@@ -111,8 +125,8 @@ public class PlayerController : MonoBehaviour
     }
     private void ToggleSkillTree()
     {
+        aimSystem.canShoot = isPaused;
         isPaused = !isPaused;
-
         // Show or hide the root element
         root.visible = isPaused;
         
@@ -128,12 +142,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public IEnumerator Dash(float duration,float speed){
+        aimSystem.canShoot = false;
         canDash = false;
         isDash = true;
         rb.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
         
         yield return new WaitForSeconds(duration);
         isDash = false;
+        aimSystem.canShoot = true;
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
     }
