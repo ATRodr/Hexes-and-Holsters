@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] private AudioClip goldenGunSound, bulletFired, fireBoltFired;
     private bool isCowboy;
     private AimSystem aimSystem;
 
@@ -40,18 +41,21 @@ public class Weapon : MonoBehaviour
                 bulletPrefab.GetComponent<SpriteRenderer>().color = Color.yellow;
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+                SoundManager.Instance.PlaySoundFXClip(goldenGunSound, transform, 0.3f);
             }
             else
             {
                 bulletPrefab.GetComponent<SpriteRenderer>().color = Color.red;
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+                SoundManager.Instance.PlaySoundFXClip(bulletFired, transform, 0.3f);
             }
         }
         else
         {
             bullet = Instantiate(fireBoltPrefab, orbFirePoint.position, orbFirePoint.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(orbFirePoint.right * fireForce, ForceMode2D.Impulse);
+            SoundManager.Instance.PlaySoundFXClip(fireBoltFired, transform, 0.3f);
         }
         Destroy(bullet, 5f);
     }

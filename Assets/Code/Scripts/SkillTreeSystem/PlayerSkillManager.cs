@@ -59,6 +59,7 @@ namespace Code.Scripts.SkillTreeSystem
     public class PlayerSkillManager : MonoBehaviour
     {
         // Start is called before the first frame update
+        [SerializeField] private AudioClip dynamiteDashSound, russianRouletteSpinSound, russianRouletteWinSound, russianRouletteFailSound, shieldOfFaithSound, charmSound, timeSlowsound;
         private GameObject ShieldOfFaithParti;
         private GameObject RussianRouletteParti;
         private GameObject PolyBullet;
@@ -203,9 +204,12 @@ namespace Code.Scripts.SkillTreeSystem
         }
         IEnumerator RussianRoulette()
         {
+            SoundManager.Instance.PlaySoundFXClip(russianRouletteSpinSound, transform, 0.3f);
+            yield return new WaitForSeconds(russianRouletteSpinSound.length);
             if(UnityEngine.Random.Range(1, 3) == 1)
             {
                 Debug.Log("HIT RR BAD NO GOOD");
+                SoundManager.Instance.PlaySoundFXClip(russianRouletteFailSound, transform, 0.3f);
                 playerHealth.TakeDamage(1f);
                 //find cam script and shake it. Yes this is messy but oh well
                  GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
@@ -228,6 +232,7 @@ namespace Code.Scripts.SkillTreeSystem
             }
             else
             {
+                SoundManager.Instance.PlaySoundFXClip(russianRouletteWinSound, transform, 0.3f);
                 playerController.weapon.setDamageMultiplier(2);
                 playerHealth.isInvincible = true;
                 GameObject rrEffect = Instantiate(RussianRouletteParti, transform.position, transform.rotation);
@@ -241,6 +246,7 @@ namespace Code.Scripts.SkillTreeSystem
         void PolyMorph()
         {
             //FirePolyBullet. Maybe add heat seeking if possible
+            SoundManager.Instance.PlaySoundFXClip(charmSound, transform, 0.3f);
             GameObject PolyShot = Instantiate(PolyBullet, transform.position, transform.rotation);
             PolyShot.GetComponent<Rigidbody2D>().AddForce(playerController.weapon.orbFirePoint.right * 10, ForceMode2D.Impulse);
         }
@@ -250,6 +256,8 @@ namespace Code.Scripts.SkillTreeSystem
             playerController.healthBar.DrawHearts();
             GameObject shieldEffect = Instantiate(ShieldOfFaithParti, transform.position, transform.rotation);
             shieldEffect.transform.SetParent(transform);
+            // play sound here
+            SoundManager.Instance.PlaySoundFXClip(shieldOfFaithSound, transform, 0.3f);
             yield return new WaitForSeconds(5);
             Destroy(shieldEffect); // Destroys the particle effect after waut finished
             playerController.playerHealth.isInvincible = false;
@@ -262,6 +270,7 @@ namespace Code.Scripts.SkillTreeSystem
             Debug.Log("Dynamite Dash");
             Instantiate(playerController.dynamite, pos, rot);
             StartCoroutine(playerController.Dash(0.16f, 27f));
+            SoundManager.Instance.PlaySoundFXClip(dynamiteDashSound, transform, 0.3f);
             yield return new WaitForSeconds(0.5f);
             Instantiate(playerController.explosion, pos, rot);
         }
