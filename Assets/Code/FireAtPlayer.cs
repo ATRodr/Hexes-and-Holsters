@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FireAtPlayer : MonoBehaviour
 {
-    [SerializeField] private float fireRate;
+    [SerializeField] public float fireRate;
     public GameObject bullet;
     public Transform bulletPos;
     public bool firingEnabled = true;

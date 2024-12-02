@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2840962989223638617}
   - component: {fileID: -5540992993270534362}
   - component: {fileID: -8181288067499704500}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: PolyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

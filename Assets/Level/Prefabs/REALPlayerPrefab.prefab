@@ -542,11 +542,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cf4c56e1af547188ab8b78bdb19391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldenGunSound: {fileID: 8300000, guid: 65c4d9b9cac5746888eced541a755804, type: 3}
+  bulletFired: {fileID: 8300000, guid: 24ad904298c0140e09d0abfa1f24d446, type: 3}
+  fireBoltFired: {fileID: 8300000, guid: 49439bfcdc1dc4daa95c4f188ca41e28, type: 3}
   bulletPrefab: {fileID: 6319299284404186939, guid: dc2c5c47fcc744c8e843129c97da6344, type: 3}
   fireBoltPrefab: {fileID: 6319299284404186939, guid: 1d90d94f4011a40d387234dd7d9ae0bd, type: 3}
   gunFirePoint: {fileID: 2996072542822455288}
   orbFirePoint: {fileID: 6793416048020114535}
   fireForce: 15
+  isPolyShot: 0
 --- !u!1 &5912388258320384121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1216,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   healthBar: {fileID: 0}
   weapon: {fileID: 7183604561621121597}
+  skillManager: {fileID: 0}
   dashSpeed: 15
   dashDuration: 0.25
   dashCoolDown: 0.4
@@ -1266,8 +1271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e02fbc71a47b64f8999167dcde60bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swapSound: {fileID: 0}
   swappingDelay: 0.5
   isCowboy: 1
+  canShoot: 1
   swapping: 0
   goldenGunActive: 0
   gun: {fileID: 5912388258320384121}
@@ -1300,6 +1307,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f4624df07464683960ac9b22dc99fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dynamiteDashSound: {fileID: 0}
+  russianRouletteSpinSound: {fileID: 0}
+  russianRouletteWinSound: {fileID: 0}
+  russianRouletteFailSound: {fileID: 0}
+  shieldOfFaithSound: {fileID: 0}
+  charmSound: {fileID: 0}
+  timeSlowsound: {fileID: 0}
 --- !u!114 &7938284189996904330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,6 +1341,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c7db9b7ad4f4a05906a4a2abef90f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerHealSound: {fileID: 0}
+  destructiveWaveSound: {fileID: 0}
+  dustStormSound: {fileID: 0}
   weapon: {fileID: 7183604561621121597}
   cowboyUltReady: 0
   wizardUltReady: 0

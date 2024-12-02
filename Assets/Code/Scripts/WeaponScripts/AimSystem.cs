@@ -12,6 +12,8 @@ public class AimSystem : MonoBehaviour
     private PlayerController controller;
     private CooldownUIController cooldownUIController;
 
+    [SerializeField] private AudioClip swapSound;
+
     [SerializeField]
     public float swappingDelay = 0.5f;
     public bool isCowboy = true;
@@ -187,6 +189,8 @@ public class AimSystem : MonoBehaviour
 
             cooldownUIController.UpdateCooldowns();
             
+            //play swap sound
+            SoundManager.Instance.PlaySoundFXClip(swapSound, transform, 0.2f);
             StartCoroutine(handleSwapAnimations(swappingAnimation));
             
             //Debug.Log(swapping);

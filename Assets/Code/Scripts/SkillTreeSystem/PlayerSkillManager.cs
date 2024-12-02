@@ -59,11 +59,13 @@ namespace Code.Scripts.SkillTreeSystem
     public class PlayerSkillManager : MonoBehaviour
     {
         private CooldownUIController cooldownUIController;
+        // Start is called before the first frame update
+        [SerializeField] private AudioClip dynamiteDashSound, russianRouletteSpinSound, russianRouletteWinSound, russianRouletteFailSound, shieldOfFaithSound, charmSound, timeSlowsound;
         private GameObject ShieldOfFaithParti;
         private GameObject RussianRouletteParti;
         private GameObject PolyBullet;
         // unlockable abilities
-        private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel;
+        private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel, slowEnemyLevel, polyMorphLevel;
         private int skillPoints;
         private LRUCache activeCowboySkills;
         private LRUCache activeWizardSkills;
@@ -73,6 +75,8 @@ namespace Code.Scripts.SkillTreeSystem
         public int GoldenGun => goldenGunLevel;
         public int ShieldOfFaith => shieldOfFaithLevel;
         public int russianRoulette => russianRoulleteLevel;
+        public int PolyMorph => polyMorphLevel;
+        public int SlowEnemy => slowEnemyLevel;
         public int SkillPoints => skillPoints;
         private PlayerHealth playerHealth;
 
@@ -95,6 +99,8 @@ namespace Code.Scripts.SkillTreeSystem
             goldenGunLevel = 0;
             shieldOfFaithLevel = 0;
             russianRoulleteLevel = 0;
+            slowEnemyLevel = 0;
+            polyMorphLevel = 0;
             Debug.Log($"PlayerSkillManager instance: {this.GetInstanceID()}");
             ShieldOfFaithParti = Resources.Load<GameObject>("ShieldOfFaithParti");
             RussianRouletteParti = Resources.Load<GameObject>("RussianRouletteParti");
@@ -208,9 +214,13 @@ namespace Code.Scripts.SkillTreeSystem
         }
         IEnumerator RussianRoulette()
         {
+            SoundManager.Instance.PlaySoundFXClip(russianRouletteSpinSound, transform, 0.3f);
+            yield return new WaitForSeconds(russianRouletteSpinSound.length);
             if(UnityEngine.Random.Range(1, 3) == 1)
             {
-                playerHealth.TakeDamage(1f);
+                Debug.Log("HIT RR BAD NO GOOD");
+                SoundManager.Instance.PlaySoundFXClip(russianRouletteFailSound, transform, 0.3f);
+                playerHealth.TakeDamage(1f, isRR: true);
                 //find cam script and shake it. Yes this is messy but oh well
                  GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
 
@@ -232,6 +242,7 @@ namespace Code.Scripts.SkillTreeSystem
             }
             else
             {
+                SoundManager.Instance.PlaySoundFXClip(russianRouletteWinSound, transform, 0.3f);
                 playerController.weapon.setDamageMultiplier(2);
                 playerHealth.isInvincible = true;
                 GameObject rrEffect = Instantiate(RussianRouletteParti, transform.position, transform.rotation);
@@ -242,9 +253,39 @@ namespace Code.Scripts.SkillTreeSystem
                 playerController.weapon.setDamageMultiplier(1);
             }    
         }
-        void PolyMorph()
+        IEnumerator slowEnemy()
+        {
+            //find list of enemies and slow them down
+            Enemy[] enemies  = FindObjectsOfType<Enemy>();
+            float[] originalSpeeds = new float[enemies.Length];
+            foreach (Enemy enemy in enemies)
+            {
+                //if enemy is not melle, slow also slow thier fire rate. Must get FireAtPlayer script attached to them
+                if(!enemy.isMelle)
+                     enemy.GetComponent<FireAtPlayer>().fireRate = 0.5f;
+                //find index of enemy and save that speed at that index so we can reset it back to normal after ability is done
+                originalSpeeds[Array.IndexOf(enemies, enemy)] = enemy.agent.speed;
+                //find nav mesh agent set speed to lower, change it back after.
+                enemy.agent.speed = 0.5f;
+                enemy.attackRate = 2; //slow down attack by a second
+            }
+            SoundManager.Instance.PlaySoundFXClip(timeSlowsound, transform, 0.3f);
+            yield return new WaitForSeconds(5); //wait some time then unslow them
+            //reset all the speeds back to normal
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                if(!enemies[i].isMelle)
+                     enemies[i].GetComponent<FireAtPlayer>().fireRate = 0.5f;
+                enemies[i].agent.speed = originalSpeeds[i];
+                enemies[i].attackRate = 1; //reset attack rate
+            }
+
+
+        }
+        void polyMorph()
         {
             //FirePolyBullet. Maybe add heat seeking if possible
+            SoundManager.Instance.PlaySoundFXClip(charmSound, transform, 0.3f);
             GameObject PolyShot = Instantiate(PolyBullet, transform.position, transform.rotation);
             PolyShot.GetComponent<Rigidbody2D>().AddForce(playerController.weapon.orbFirePoint.right * 10, ForceMode2D.Impulse);
         }
@@ -254,6 +295,8 @@ namespace Code.Scripts.SkillTreeSystem
             playerController.healthBar.DrawHearts();
             GameObject shieldEffect = Instantiate(ShieldOfFaithParti, transform.position, transform.rotation);
             shieldEffect.transform.SetParent(transform);
+            // play sound here
+            SoundManager.Instance.PlaySoundFXClip(shieldOfFaithSound, transform, 0.3f);
             yield return new WaitForSeconds(5);
             Destroy(shieldEffect); // Destroys the particle effect after waut finished
             playerController.playerHealth.isInvincible = false;
@@ -265,6 +308,7 @@ namespace Code.Scripts.SkillTreeSystem
             Quaternion rot = transform.rotation;
             Instantiate(playerController.dynamite, pos, rot);
             StartCoroutine(playerController.Dash(0.16f, 27f));
+            SoundManager.Instance.PlaySoundFXClip(dynamiteDashSound, transform, 0.3f);
             yield return new WaitForSeconds(0.5f);
             Instantiate(playerController.explosion, pos, rot);
         }
@@ -327,8 +371,8 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "shieldoffaith":
-                    StartCoroutine(shieldOfFaith()); 
-                    // PolyMorph(); //remove and uncomment, delete, temporary testing
+                    //StartCoroutine(shieldOfFaith()); 
+                    polyMorph(); //remove and uncomment, delete, temporary testing
                     Debug.Log("Shield of Faith");
                     break;
             }
