@@ -551,6 +551,7 @@ MonoBehaviour:
   orbFirePoint: {fileID: 6793416048020114535}
   fireForce: 15
   isPolyShot: 0
+  expodingBullets: 0
 --- !u!1 &5912388258320384121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e02fbc71a47b64f8999167dcde60bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swapSound: {fileID: 0}
+  swapSound: {fileID: 8300000, guid: af9206c88d8d24c95a2b24ac366afe8e, type: 3}
   swappingDelay: 0.5
   isCowboy: 1
   canShoot: 1
@@ -1307,13 +1308,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f4624df07464683960ac9b22dc99fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dynamiteDashSound: {fileID: 0}
-  russianRouletteSpinSound: {fileID: 0}
-  russianRouletteWinSound: {fileID: 0}
-  russianRouletteFailSound: {fileID: 0}
-  shieldOfFaithSound: {fileID: 0}
-  charmSound: {fileID: 0}
-  timeSlowsound: {fileID: 0}
+  dynamiteDashSound: {fileID: 8300000, guid: c1b1014b01acd4f4793789affafedd60, type: 3}
+  russianRouletteSpinSound: {fileID: 8300000, guid: 1588c493893f447b58458d26ea10e4bb, type: 3}
+  russianRouletteWinSound: {fileID: 8300000, guid: e89cdbe0efccd4b33a1b845ea4b745a8, type: 3}
+  russianRouletteFailSound: {fileID: 8300000, guid: 93f16d8d121fc4f2ebd246c685797129, type: 3}
+  shieldOfFaithSound: {fileID: 8300000, guid: b13faef53224743729593c89779fe104, type: 3}
+  charmSound: {fileID: 8300000, guid: 4bb5e747084f64f4787d27b890f62c99, type: 3}
+  timeSlowsound: {fileID: 8300000, guid: d4a7f7c43688544f2aca33541c2a1693, type: 3}
 --- !u!114 &7938284189996904330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,9 +1342,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c7db9b7ad4f4a05906a4a2abef90f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerHealSound: {fileID: 0}
-  destructiveWaveSound: {fileID: 0}
-  dustStormSound: {fileID: 0}
+  powerHealSound: {fileID: 8300000, guid: 0699de65996894964b95c4fd2c4d6824, type: 3}
+  destructiveWaveSound: {fileID: 8300000, guid: ed1fd9efe3a5640edb92e298f9e7adbf, type: 3}
+  dustStormSound: {fileID: 8300000, guid: 8c0e0d1b0a2be4facbbcd9e1c397d796, type: 3}
+  explodingBulletSound: {fileID: 8300000, guid: f2e773845890b4f72af339a8afd935f0, type: 3}
   weapon: {fileID: 7183604561621121597}
   cowboyUltReady: 0
   wizardUltReady: 0
@@ -1452,7 +1454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2909832792844064289}
-  - component: {fileID: 6143482716490485116}
+  - component: {fileID: 7776972615429117785}
   m_Layer: 7
   m_Name: orbParent
   m_TagString: Untagged
@@ -1477,7 +1479,7 @@ Transform:
   - {fileID: 6793416048020114535}
   m_Father: {fileID: 4205795363308793979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6143482716490485116
+--- !u!212 &7776972615429117785
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
