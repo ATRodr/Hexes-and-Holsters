@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFireBolt: 0
   damageMultiplier: 1
+  explodeOnImpact: 0
+  bulletPrefab: {fileID: 6319299284404186939}
 --- !u!50 &-2840962989223638617
 Rigidbody2D:
   serializedVersion: 4

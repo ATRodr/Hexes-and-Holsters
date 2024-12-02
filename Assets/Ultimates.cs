@@ -64,7 +64,8 @@ public class Ultimates : MonoBehaviour
                     switch (cowboyUlt)
                     {
                         case 1:
-                            Debug.Log("Dual Wield"); 
+                            Debug.Log("Exploding Bullets"); 
+                            StartCoroutine(ExplodingBullets());
                             break;
                         case 2:
                             Debug.Log("Gatling Gun");
@@ -156,6 +157,12 @@ public class Ultimates : MonoBehaviour
     {
         Instantiate(hadar, transform.position, transform.rotation);
         yield return new WaitForSeconds(0.25f);
+    }
+    IEnumerator ExplodingBullets()
+    {
+        weapon.expodingBullets = true;
+        yield return new WaitForSeconds(10f);
+        weapon.expodingBullets = false;
     }
     IEnumerator BullwhipSpin()
     {

@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
 
     public float fireForce = 30f;
     public bool isPolyShot = false;
+    public bool expodingBullets = false;
 
 
     private void Start()
@@ -39,14 +40,21 @@ public class Weapon : MonoBehaviour
             {
                 bulletPrefab.GetComponent<SpriteRenderer>().color = Color.yellow;
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
-                bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
+            
             }
             else
             {
                 bulletPrefab.GetComponent<SpriteRenderer>().color = Color.red;
                 bullet = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
-                bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
             }
+            if(expodingBullets)
+            {
+                bullet.GetComponent<Bullet>().explodeOnImpact = true;
+            }else
+            {
+                bullet.GetComponent<Bullet>().explodeOnImpact = false;
+            }
+            bullet.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * fireForce, ForceMode2D.Impulse);
         }
         else
         {
@@ -55,22 +63,24 @@ public class Weapon : MonoBehaviour
         }
         Destroy(bullet, 5f);
     }
-    public void FireGat(){
-        GameObject bullet1 = null;
-        GameObject bullet2 = null;
-        GameObject bullet3 = null;
+    public void FireGat()
+    {
+        // Offsets for bullet positions, relative to the gunFirePoint's local space
+        Vector3 offset1 = gunFirePoint.TransformDirection(new Vector3(-0.3f, 0.2f, 0f));
+        Vector3 offset2 = gunFirePoint.TransformDirection(new Vector3(-0.3f, -0.2f, 0f));
 
-        Vector3 offset1 = new Vector3(-0.3f, 0.2f, 0f);
-        Vector3 offset2 = new Vector3(-0.3f, -0.2f, 0f);
-        Quaternion rotationQ = new Quaternion(20, 0, 0, 0);
+        // Instantiate bullets at their respective positions
+        GameObject bullet1 = Instantiate(bulletPrefab, gunFirePoint.position + offset1, gunFirePoint.rotation);
+        GameObject bullet2 = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
+        GameObject bullet3 = Instantiate(bulletPrefab, gunFirePoint.position + offset2, gunFirePoint.rotation);
 
-        bullet1 = Instantiate(bulletPrefab, gunFirePoint.position + offset1, gunFirePoint.rotation);
-        bullet2 = Instantiate(bulletPrefab, gunFirePoint.position, gunFirePoint.rotation);
-        bullet3 = Instantiate(bulletPrefab, gunFirePoint.position + offset2, gunFirePoint.rotation);
+        // Calculate the firing direction
+        Vector2 fireDirection = gunFirePoint.right.normalized; // Ensure the direction is normalized
 
-        bullet1.GetComponent<Rigidbody2D>().AddForce((gunFirePoint.right + offset1) * 5, ForceMode2D.Impulse);
-        bullet2.GetComponent<Rigidbody2D>().AddForce(gunFirePoint.right * 5, ForceMode2D.Impulse);
-        bullet3.GetComponent<Rigidbody2D>().AddForce((gunFirePoint.right + offset2) * 5 + offset2, ForceMode2D.Impulse);
+        // Apply force to bullets
+        bullet1.GetComponent<Rigidbody2D>().AddForce((fireDirection + (Vector2)offset1).normalized * fireForce, ForceMode2D.Impulse);
+        bullet2.GetComponent<Rigidbody2D>().AddForce(fireDirection * fireForce, ForceMode2D.Impulse);
+        bullet3.GetComponent<Rigidbody2D>().AddForce((fireDirection + (Vector2)offset2).normalized * fireForce, ForceMode2D.Impulse);
     }
     public void setDamageMultiplier(int damageMultiplier){
         Debug.Log("Setting damage multiplier to: " + damageMultiplier);
