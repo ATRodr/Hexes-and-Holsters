@@ -214,7 +214,7 @@ namespace Code.Scripts.SkillTreeSystem
             {
                 Debug.Log("HIT RR BAD NO GOOD");
                 SoundManager.Instance.PlaySoundFXClip(russianRouletteFailSound, transform, 0.3f);
-                playerHealth.TakeDamage(1f);
+                playerHealth.TakeDamage(1f, isRR: true);
                 //find cam script and shake it. Yes this is messy but oh well
                  GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
 
@@ -260,6 +260,7 @@ namespace Code.Scripts.SkillTreeSystem
                 enemy.agent.speed = 1;
                 enemy.attackRate = 2; //slow down attack by a second
             }
+            SoundManager.Instance.PlaySoundFXClip(timeSlowsound, transform, 0.3f);
             yield return new WaitForSeconds(5); //wait some time then unslow them
             //reset all the speeds back to normal
             for (int i = 0; i < enemies.Length; i++)

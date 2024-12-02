@@ -7,7 +7,7 @@ using UnityEngine;
 public class Ultimates : MonoBehaviour
 {
     private AimSystem aimSystem;
-    [SerializeField] private AudioClip powerHealSound, destructiveWaveSound, dustStormSound;
+    [SerializeField] private AudioClip powerHealSound, destructiveWaveSound, dustStormSound, explodingBulletSound;
     [SerializeField]
     private Weapon weapon;
     private GameObject wave;
@@ -135,14 +135,14 @@ public class Ultimates : MonoBehaviour
         if(Random.Range(1, 3) == 1)
             playerHealth.maxHealth += 1f;
         playerHealth.health = playerHealth.maxHealth;
-        playerHealth.TakeDamage(0f);                  //this sucks but we must call it to update hearts.
-        SoundManager.Instance.PlaySoundFXClip(powerHealSound, transform, 0.3f);
+        playerHealth.TakeDamage(0f, isRR: true);                  //this sucks but we must call it to update hearts.
+        SoundManager.Instance.PlaySoundFXClip(powerHealSound, transform, 0.1f);
         yield return new WaitForSeconds(0.1f);
     }
     IEnumerator DestructiveWave()
         {
             Instantiate(wave, transform.position, transform.rotation);
-            SoundManager.Instance.PlaySoundFXClip(destructiveWaveSound, transform, 0.3f);
+            SoundManager.Instance.PlaySoundFXClip(destructiveWaveSound, transform, 0.1f);
             yield return new WaitForSeconds(0.1f);
         }
     IEnumerator GatlingGun()
@@ -165,6 +165,7 @@ public class Ultimates : MonoBehaviour
         GameObject spin = Instantiate(bwSpin, transform.position, transform.rotation);
         spin.transform.SetParent(transform);
         playerHealth.isInvincible = true;
+        SoundManager.Instance.PlaySoundFXClip(dustStormSound, transform, 0.08f);
         yield return new WaitForSeconds(10f);
         Destroy(spin);
         playerHealth.isInvincible = false;

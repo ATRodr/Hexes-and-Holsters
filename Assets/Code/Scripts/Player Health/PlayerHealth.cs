@@ -21,19 +21,23 @@ public class PlayerHealth : MonoBehaviour
         playerDeathSound = Resources.Load<AudioClip>("Die");
     }
 
-    public void TakeDamage(float amt){
+    public void TakeDamage(float amt, bool isRR=false){
         if(isInvincible){
             return;
         }
         health -= amt;
-        if (aimSystem.isCowboy)
+        if (!isRR)
         {
-            SoundManager.Instance.PlaySoundFXClip(cowboyHurtSound, transform, 0.3f);
+            if (aimSystem.isCowboy)
+            {
+                SoundManager.Instance.PlaySoundFXClip(cowboyHurtSound, transform, 0.3f);
+            }
+            else
+            {
+                SoundManager.Instance.PlaySoundFXClip(wizardHurtSound, transform, 0.3f);
+            }
         }
-        else
-        {
-            SoundManager.Instance.PlaySoundFXClip(wizardHurtSound, transform, 0.3f);
-        }
+
         OnPlayerDamaged?.Invoke();
 
         if(health <= 0){

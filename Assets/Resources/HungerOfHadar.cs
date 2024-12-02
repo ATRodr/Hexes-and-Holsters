@@ -34,7 +34,7 @@ public class HungerOfHadar : MonoBehaviour
         {
             // get audio clip from folder
             AudioClip hadarSound = Resources.Load<AudioClip>("Hadar");
-            SoundManager.Instance.PlaySoundFXClip(hadarSound, transform, 0.3f);
+            SoundManager.Instance.PlaySoundFXClip(hadarSound, transform, 0.08f);
             StartCoroutine(castHungerOfHadar());
         }
     }
