@@ -7,6 +7,7 @@ using UnityEngine;
 public class Ultimates : MonoBehaviour
 {
     private AimSystem aimSystem;
+    [SerializeField] private AudioClip powerHealSound, destructiveWaveSound, dustStormSound, explodingBulletSound;
     [SerializeField]
     private Weapon weapon;
     private GameObject wave;
@@ -64,7 +65,8 @@ public class Ultimates : MonoBehaviour
                     switch (cowboyUlt)
                     {
                         case 1:
-                            Debug.Log("Dual Wield"); 
+                            Debug.Log("Exploding Bullets"); 
+                            StartCoroutine(ExplodingBullets());
                             break;
                         case 2:
                             Debug.Log("Gatling Gun");
@@ -110,7 +112,7 @@ public class Ultimates : MonoBehaviour
     {
         // roll ult
 
-        // random number between 1 and 20
+        // random number between 1 and 3
         int roll = Random.Range(1, 4);
 
         if (aimSystem.isCowboy)
@@ -134,12 +136,14 @@ public class Ultimates : MonoBehaviour
         if(Random.Range(1, 3) == 1)
             playerHealth.maxHealth += 1f;
         playerHealth.health = playerHealth.maxHealth;
-        playerHealth.TakeDamage(0f);                  //this sucks but we must call it to update hearts.
+        playerHealth.TakeDamage(0f, isRR: true);                  //this sucks but we must call it to update hearts.
+        SoundManager.Instance.PlaySoundFXClip(powerHealSound, transform, 0.1f);
         yield return new WaitForSeconds(0.1f);
     }
     IEnumerator DestructiveWave()
         {
             Instantiate(wave, transform.position, transform.rotation);
+            SoundManager.Instance.PlaySoundFXClip(destructiveWaveSound, transform, 0.1f);
             yield return new WaitForSeconds(0.1f);
         }
     IEnumerator GatlingGun()
@@ -157,11 +161,19 @@ public class Ultimates : MonoBehaviour
         Instantiate(hadar, transform.position, transform.rotation);
         yield return new WaitForSeconds(0.25f);
     }
+    IEnumerator ExplodingBullets()
+    {
+        weapon.expodingBullets = true;
+        SoundManager.Instance.PlaySoundFXClip(explodingBulletSound, transform, 0.1f);
+        yield return new WaitForSeconds(10f);
+        weapon.expodingBullets = false;
+    }
     IEnumerator BullwhipSpin()
     {
         GameObject spin = Instantiate(bwSpin, transform.position, transform.rotation);
         spin.transform.SetParent(transform);
         playerHealth.isInvincible = true;
+        SoundManager.Instance.PlaySoundFXClip(dustStormSound, transform, 0.08f);
         yield return new WaitForSeconds(10f);
         Destroy(spin);
         playerHealth.isInvincible = false;
