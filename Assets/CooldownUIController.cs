@@ -119,7 +119,7 @@ public class CooldownUIController : MonoBehaviour
                 UpdateUltimate(rolledWhileCowboy:aimSystem.isCowboy);
                 return;
             }
-            else if (ultimates.cowboyUltReady || ultimates.wizardUltReady)
+            else if ((ultimates.cowboyUltReady && aimSystem.isCowboy) || (ultimates.wizardUltReady && !aimSystem.isCowboy))
             {
                 // fire cowboy ult
                 return;
@@ -186,11 +186,13 @@ public class CooldownUIController : MonoBehaviour
         if (ultimates.cowboyUltReady && aimSystem.isCowboy)
         {
             ultimate.sprite = cowboyUltIcons[ultimates.cowboyUlt-1];
+            ultimateBW.sprite = cowboyUltIcons[ultimates.cowboyUlt-1];
             return;
         }
         if (ultimates.wizardUltReady && !aimSystem.isCowboy)
         {
             ultimate.sprite = wizardUltIcons[ultimates.wizardUlt-1];
+            ultimateBW.sprite = wizardUltIcons[ultimates.wizardUlt-1];
             return;
         }
         if (fromSwap)
