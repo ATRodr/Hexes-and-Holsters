@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5924125078186613502}
   - component: {fileID: -6633895780030944552}
   - component: {fileID: 3673777071739579375}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BullWhipParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47b53e2e6f94954b85f12770f0ea4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePerSecond: 1
 --- !u!1 &3054114629735422833
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +86,7 @@ GameObject:
   - component: {fileID: 152178848159189370}
   - component: {fileID: 8709387971483888049}
   - component: {fileID: 6633276120515879710}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BullwhipParti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
