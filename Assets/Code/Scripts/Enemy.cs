@@ -140,6 +140,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageAmt){
         health -= damageAmt;
         if(health <= 0){
+            // This should be uncommented in final version
             //MarkAsKilled();
             Destroy(gameObject);
         }
