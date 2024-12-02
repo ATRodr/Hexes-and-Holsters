@@ -7,20 +7,21 @@ using UnityEngine;
 public class Ultimates : MonoBehaviour
 {
     private AimSystem aimSystem;
+    private CooldownUIController cooldownUIController;
     [SerializeField] private AudioClip powerHealSound, destructiveWaveSound, dustStormSound, explodingBulletSound;
     [SerializeField]
     private Weapon weapon;
     private GameObject wave;
     private GameObject hadar;
     private GameObject bwSpin;
-    private int cowboyUlt;
-    private int wizardUlt;
-    private float cowboyUltCooldown;
-    private float wizardUltCooldown;
-    public const float COWBOY_COOLDOWN = 3f;
-    public const float WIZARD_COOLDOWN = 3f;
+    public int cowboyUlt;
+    public int wizardUlt;
+    public float cowboyUltCooldown;
+    public float wizardUltCooldown;
+    [SerializeField] public float COWBOY_COOLDOWN = 3f, WIZARD_COOLDOWN = 3f, rollTime = 1.5f;
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
+    public bool rolledWhileCowboy = false;
 
     private PlayerHealth playerHealth;
 
@@ -28,6 +29,7 @@ public class Ultimates : MonoBehaviour
     {
         playerHealth = GetComponent<PlayerHealth>();
         aimSystem = GetComponent<AimSystem>();
+        cooldownUIController = GameObject.Find("AbilityCooldowns").GetComponent<CooldownUIController>();
         cowboyUltCooldown = COWBOY_COOLDOWN;
         wizardUltCooldown = WIZARD_COOLDOWN;
         GameObject.FindObjectOfType<Weapon>();
@@ -77,6 +79,7 @@ public class Ultimates : MonoBehaviour
                             StartCoroutine(BullwhipSpin());
                             break;
                     }
+                    cowboyUltCooldown = COWBOY_COOLDOWN;
                     cowboyUltReady = false;
                 }
                 else
@@ -96,6 +99,7 @@ public class Ultimates : MonoBehaviour
                             StartCoroutine(HungerOfHadar());
                             break;
                     }
+                    wizardUltCooldown = WIZARD_COOLDOWN;
                     wizardUltReady = false;
                 }
             }
@@ -103,30 +107,35 @@ public class Ultimates : MonoBehaviour
             else if ((aimSystem.isCowboy && cowboyUltCooldown <= 0) || (!aimSystem.isCowboy && wizardUltCooldown <= 0))
             {
                 // roll ult
-                roll();
+                StartCoroutine(roll());
             }
         }
     }
 
-    private void roll()
+    IEnumerator roll()
     {
         // roll ult
 
         // random number between 1 and 3
         int roll = Random.Range(1, 4);
 
-        if (aimSystem.isCowboy)
+        rolledWhileCowboy = aimSystem.isCowboy;
+
+        // wait for roll time
+        yield return new WaitForSeconds(rollTime);
+
+        if (rolledWhileCowboy)
         {
             cowboyUltReady = true;
-            cowboyUltCooldown = COWBOY_COOLDOWN;
             cowboyUlt = roll;
+            cooldownUIController.UpdateUltimate(roll);
             Debug.Log("Cowboy Ult: " + cowboyUlt);
         }
         else
         {
             wizardUltReady = true;
-            wizardUltCooldown = WIZARD_COOLDOWN;
             wizardUlt = roll;
+            cooldownUIController.UpdateUltimate(roll);
             Debug.Log("Wizard Ult: " + wizardUlt);
         }
     }

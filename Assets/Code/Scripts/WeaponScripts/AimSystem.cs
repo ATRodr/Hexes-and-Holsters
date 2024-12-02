@@ -188,6 +188,7 @@ public class AimSystem : MonoBehaviour
             isCowboy = !isCowboy;
 
             cooldownUIController.UpdateCooldowns();
+            cooldownUIController.UpdateUltimate(fromSwap: true);
             
             //play swap sound
             SoundManager.Instance.PlaySoundFXClip(swapSound, transform, 0.2f);
