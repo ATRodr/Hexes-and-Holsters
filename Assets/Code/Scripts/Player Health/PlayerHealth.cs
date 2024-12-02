@@ -44,7 +44,21 @@ public class PlayerHealth : MonoBehaviour
             health = 0;
             SoundManager.Instance.PlaySoundFXClip(playerDeathSound, transform, 0.3f);
             // Debug.Log("You Ded");
+            // Adding play death state code
+
+            PlayerDied();
+
+
+            // idk where this is getting used outside of this script
             OnPlayerDeath?.Invoke();
         }
     }
+
+    private void PlayerDied()
+    {
+        PlayerDeathManager.instance.GameOver();
+        // turn off player
+        gameObject.SetActive(false);
+    }
+
 }
