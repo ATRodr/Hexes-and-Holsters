@@ -254,10 +254,13 @@ namespace Code.Scripts.SkillTreeSystem
             float[] originalSpeeds = new float[enemies.Length];
             foreach (Enemy enemy in enemies)
             {
+                //if enemy is not melle, slow also slow thier fire rate. Must get FireAtPlayer script attached to them
+                if(!enemy.isMelle)
+                     enemy.GetComponent<FireAtPlayer>().fireRate = 0.5f;
                 //find index of enemy and save that speed at that index so we can reset it back to normal after ability is done
                 originalSpeeds[Array.IndexOf(enemies, enemy)] = enemy.agent.speed;
                 //find nav mesh agent set speed to lower, change it back after.
-                enemy.agent.speed = 1;
+                enemy.agent.speed = 0.5f;
                 enemy.attackRate = 2; //slow down attack by a second
             }
             SoundManager.Instance.PlaySoundFXClip(timeSlowsound, transform, 0.3f);
@@ -265,7 +268,9 @@ namespace Code.Scripts.SkillTreeSystem
             //reset all the speeds back to normal
             for (int i = 0; i < enemies.Length; i++)
             {
-                enemies[i].agent.speed = 5;
+                if(!enemies[i].isMelle)
+                     enemies[i].GetComponent<FireAtPlayer>().fireRate = 0.5f;
+                enemies[i].agent.speed = originalSpeeds[i];
                 enemies[i].attackRate = 1; //reset attack rate
             }
 

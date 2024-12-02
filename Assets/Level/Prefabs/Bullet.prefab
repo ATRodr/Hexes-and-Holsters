@@ -102,7 +102,9 @@ MonoBehaviour:
   correctBulletHitSound: {fileID: 8300000, guid: 39775b2873f334e60aba5e16f832d3c1, type: 3}
   incorrectBulletHitSound: {fileID: 8300000, guid: c6a82fc8941964022a6627318cb1c431, type: 3}
   isFireBolt: 0
-  damageMultiplier: 4
+  damageMultiplier: 1
+  explodeOnImpact: 0
+  bulletPrefab: {fileID: 6319299284404186939}
 --- !u!50 &-2840962989223638617
 Rigidbody2D:
   serializedVersion: 4
