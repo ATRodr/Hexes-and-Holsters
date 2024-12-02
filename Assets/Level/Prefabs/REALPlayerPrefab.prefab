@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cf4c56e1af547188ab8b78bdb19391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldenGunSound: {fileID: 8300000, guid: 9b5e36192d6c54df3a23610576ecacc2, type: 3}
+  goldenGunSound: {fileID: 8300000, guid: 65c4d9b9cac5746888eced541a755804, type: 3}
   bulletFired: {fileID: 8300000, guid: 24ad904298c0140e09d0abfa1f24d446, type: 3}
   fireBoltFired: {fileID: 8300000, guid: 49439bfcdc1dc4daa95c4f188ca41e28, type: 3}
   bulletPrefab: {fileID: 6319299284404186939, guid: dc2c5c47fcc744c8e843129c97da6344, type: 3}
@@ -1341,6 +1341,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c7db9b7ad4f4a05906a4a2abef90f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerHealSound: {fileID: 0}
+  destructiveWaveSound: {fileID: 0}
+  dustStormSound: {fileID: 0}
   weapon: {fileID: 7183604561621121597}
   cowboyUltReady: 0
   wizardUltReady: 0

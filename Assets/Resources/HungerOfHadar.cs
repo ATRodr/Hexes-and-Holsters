@@ -1,11 +1,10 @@
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class HungerOfHadar : MonoBehaviour
 {
-
-
     bool hasCasted = false;
 
     //damage per second cause its easier to understand for the setting of the damage
@@ -33,6 +32,9 @@ public class HungerOfHadar : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            // get audio clip from folder
+            AudioClip hadarSound = Resources.Load<AudioClip>("Hadar");
+            SoundManager.Instance.PlaySoundFXClip(hadarSound, transform, 0.3f);
             StartCoroutine(castHungerOfHadar());
         }
     }
@@ -46,7 +48,7 @@ public class HungerOfHadar : MonoBehaviour
     IEnumerator castHungerOfHadar()
     {
         hasCasted = true;
-
+        // play sound
         //turn off area of effect indicator
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 

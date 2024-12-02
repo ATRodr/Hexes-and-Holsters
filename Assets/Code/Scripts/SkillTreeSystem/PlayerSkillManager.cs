@@ -329,8 +329,8 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "shieldoffaith":
-                    //StartCoroutine(shieldOfFaith()); 
-                    PolyMorph(); //remove and uncomment, delete, temporary testing
+                    StartCoroutine(shieldOfFaith()); 
+                    // PolyMorph(); //remove and uncomment, delete, temporary testing
                     Debug.Log("Shield of Faith");
                     break;
             }
