@@ -10,8 +10,8 @@ public class PlayerDeathManager : MonoBehaviour
         if (PlayerDeathManager.instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-
         else
         {
             Destroy(gameObject);
