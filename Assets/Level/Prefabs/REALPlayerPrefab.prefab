@@ -1327,8 +1327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5389fe39046d30745a28b82007110301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 8
-  maxHealth: 8
+  health: 12
+  maxHealth: 12
   isInvincible: 0
 --- !u!114 &2917228067347405668
 MonoBehaviour:
@@ -1347,8 +1347,17 @@ MonoBehaviour:
   dustStormSound: {fileID: 8300000, guid: 8c0e0d1b0a2be4facbbcd9e1c397d796, type: 3}
   explodingBulletSound: {fileID: 8300000, guid: f2e773845890b4f72af339a8afd935f0, type: 3}
   weapon: {fileID: 7183604561621121597}
+  cowboyUlt: 0
+  wizardUlt: 0
+  cowboyUltCooldown: 0
+  wizardUltCooldown: 0
+  COWBOY_COOLDOWN: 15
+  WIZARD_COOLDOWN: 15
+  rollTime: 1.5
   cowboyUltReady: 0
   wizardUltReady: 0
+  rolledWhileCowboy: 0
+  canSwap: 1
 --- !u!114 &-5117658767388862903
 MonoBehaviour:
   m_ObjectHideFlags: 0

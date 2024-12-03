@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private AimSystem aimSystem;
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
-    public float health, maxHealth;
+    [SerializeField]public float health, maxHealth;
     public bool isInvincible = false;
 
     private void Start()
