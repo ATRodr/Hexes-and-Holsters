@@ -22,6 +22,7 @@ public class Ultimates : MonoBehaviour
     public bool cowboyUltReady = false;
     public bool wizardUltReady = false;
     public bool rolledWhileCowboy = false;
+    public bool canSwap = true;
 
     private PlayerHealth playerHealth;
 
@@ -121,8 +122,10 @@ public class Ultimates : MonoBehaviour
 
         rolledWhileCowboy = aimSystem.isCowboy;
 
+        canSwap = false;
         // wait for roll time
         yield return new WaitForSeconds(rollTime);
+        canSwap = true;
 
         if (rolledWhileCowboy)
         {
