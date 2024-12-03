@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;  
 using UnityEngine;
 using System;
 
@@ -44,7 +45,10 @@ public class PlayerHealth : MonoBehaviour
             health = 0;
             SoundManager.Instance.PlaySoundFXClip(playerDeathSound, transform, 0.3f);
             // Debug.Log("You Ded");
-            OnPlayerDeath?.Invoke();
+            SceneManager.LoadScene("Main Menu");
+            Destroy(GameObject.Find("REALPlayerPrefab"));
+            Destroy(GameObject.Find("UI and Health"));
+            Destroy(GameObject.Find("Music"));
         }
     }
 }
