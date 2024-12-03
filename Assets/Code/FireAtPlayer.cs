@@ -12,7 +12,7 @@ public class FireAtPlayer : MonoBehaviour
 
     private float timer;
     private GameObject player;
-    private bool hasLOS = false;
+    public bool hasLOS = false;
     private int PlayerLayer; //not hardcoded for Wizard ult so we can switch which enemies the enemy shoots.
     private int EnemyLayer; //needed in future to implement wizard ult(enemy shot should witch layers and shoot other enemies)
     private int ForegroundLayer;

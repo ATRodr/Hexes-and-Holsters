@@ -7,6 +7,7 @@ public class EnemyBulletScript : MonoBehaviour
     public bool isGrillos = false;
     private Rigidbody2D rb;
     public float force = 20f;
+    public float lifetime = 2f;
     public bool shootAtPlayer = true; // Determines if the bullet should track the player
 
     void Start()
@@ -22,7 +23,7 @@ public class EnemyBulletScript : MonoBehaviour
             }
         }
         
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, lifetime);
     }
 
     void FireAtPlayer()
