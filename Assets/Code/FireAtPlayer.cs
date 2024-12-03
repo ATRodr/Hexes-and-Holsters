@@ -60,7 +60,7 @@ public class FireAtPlayer : MonoBehaviour
             }
         } 
     }
-
+    
     void shoot()
     {
         //should shoot at player if Boolean(shootAtPlayer) in EnemyBulletScript is true. Else, shoot at closest enemy.
