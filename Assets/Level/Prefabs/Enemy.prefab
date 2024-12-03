@@ -107,7 +107,7 @@ NavMeshAgent:
   m_AngularSpeed: 12
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
@@ -134,6 +134,8 @@ MonoBehaviour:
   attackRate: 2
   isMelle: 1
   isMagic: 1
+  uniqueID: 
+  isTamed: 0
   agent: {fileID: 0}
 --- !u!61 &8332872196143967389
 BoxCollider2D:
@@ -188,7 +190,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227934475121093548}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -223,6 +225,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   bulletPos: {fileID: 0}
   firingEnabled: 1
+  isTamed: 0
 --- !u!58 &1040560514669731037
 CircleCollider2D:
   m_ObjectHideFlags: 0
