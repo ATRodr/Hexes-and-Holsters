@@ -105,6 +105,7 @@ public class Enemy : MonoBehaviour
         
         if(collision.gameObject.CompareTag("Player") && Time.time > nextAttack)
         {
+            Physics2D.IgnoreCollision(collision.otherCollider, collision.collider);
             nextAttack = Time.time + attackRate;
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
         }
