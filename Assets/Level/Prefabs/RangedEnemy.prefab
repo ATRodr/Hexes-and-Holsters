@@ -82,7 +82,7 @@ MonoBehaviour:
   maxHealth: 6
   attackRate: 2
   isMelle: 0
-  isMagic: 0
+  isMagic: 1
   uniqueID: 
   isTamed: 0
   agent: {fileID: 0}
@@ -147,6 +147,7 @@ MonoBehaviour:
   bullet: {fileID: 6756061119310239216, guid: db5d6e746abef4d7d9f6427aff4d260b, type: 3}
   bulletPos: {fileID: 7492757393861873714}
   firingEnabled: 1
+  hasLOS: 0
   isTamed: 0
 --- !u!50 &6858572624129638260
 Rigidbody2D:
@@ -209,7 +210,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.028121948, y: -0.04783249}
   serializedVersion: 2
-  m_Radius: 20.137913
+  m_Radius: 12.13791
 --- !u!212 &7709921079397155530
 SpriteRenderer:
   m_ObjectHideFlags: 0

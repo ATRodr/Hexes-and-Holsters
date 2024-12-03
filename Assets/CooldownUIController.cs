@@ -50,10 +50,10 @@ public class CooldownUIController : MonoBehaviour
         abilityImage1.fillAmount = 0;
         abilityImage2.fillAmount = 0;
         ultimateImage.fillAmount = 0;
-        ability1.sprite = null;
-        ability1BW.sprite = null;
-        ability2.sprite = null;
-        ability2BW.sprite = null;
+        ability1.sprite = black;
+        ability1BW.sprite = black;
+        ability2.sprite = black;
+        ability2BW.sprite = black;
         ultimate.sprite = diceIcons[0];
         ultimateBW.sprite = diceIcons[0];
         cooldown1 = 0;
