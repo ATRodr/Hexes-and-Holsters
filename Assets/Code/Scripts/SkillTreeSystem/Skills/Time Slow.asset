@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9883c07e2afa543b2a3f48095272bd, type: 3}
-  m_Name: Russian Roullete
+  m_Name: Time Slow
   m_EditorClassIdentifier: 
   UpgradeData:
-  - StatType: 0
+  - StatType: 5
     SkillIncreaseAmount: 1
     IsPercentage: 0
   IsAbility: 1
-  isCowboySkill: 1
-  SkillName: Russian Roullete
-  SkillDescription: Roll the dice...
-  SkillIcon: {fileID: 1309208923, guid: 342e5a0c64f5d0747bb77cfeb844c5ea, type: 3}
+  isCowboySkill: 0
+  SkillName: Time Slow
+  SkillDescription: Slow down time for your enemies
+  SkillIcon: {fileID: 1561296451, guid: 342e5a0c64f5d0747bb77cfeb844c5ea, type: 3}
   SkillPrerequisites:
-  - {fileID: 11400000, guid: 9707c7b092994462fb879dd79eca911a, type: 2}
+  - {fileID: 11400000, guid: 4c4e026bb69524c0d99777ce5ef56889, type: 2}
   SkillTier: 2
   Cost: 5
-  CoolDown: 5
+  CoolDown: 10

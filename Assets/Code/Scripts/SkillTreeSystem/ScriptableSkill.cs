@@ -36,6 +36,8 @@ namespace Code.Scripts.SkillTreeSystem
         russianRoulette,
         dynamiteDash, 
         goldenGun,
-        shieldOfFaith
+        shieldOfFaith,
+        polyMorph,
+        slowEnemy
     }
 }

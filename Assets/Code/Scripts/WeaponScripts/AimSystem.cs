@@ -11,6 +11,7 @@ public class AimSystem : MonoBehaviour
     // need player controller to know if game is paused
     private PlayerController controller;
     private CooldownUIController cooldownUIController;
+    private Ultimates ultimates;
 
     [SerializeField] private AudioClip swapSound;
 
@@ -58,6 +59,7 @@ public class AimSystem : MonoBehaviour
     void Start()
     {
         controller = GetComponent<PlayerController>();
+        ultimates = GetComponent<Ultimates>();
         cooldownUIController = GameObject.Find("AbilityCooldowns").GetComponent<CooldownUIController>();
         GoldenGun = GameObject.Find("GoldenGun");
         //start as cowboy and assign sprites
@@ -178,7 +180,7 @@ public class AimSystem : MonoBehaviour
             }
         }
         
-        if((Time.time >= (swappingDelay + lastSwapTime)) && Input.GetKeyDown(KeyCode.LeftShift))
+        if((Time.time >= (swappingDelay + lastSwapTime)) && Input.GetKeyDown(KeyCode.LeftShift) && ultimates.canSwap)
         {
             canShoot = false;
             //protects from mid swap updates

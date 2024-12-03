@@ -3,6 +3,8 @@
     <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.29); flex-direction: row;">
         <ui:VisualElement name="StatPanel" class="SkillPanel" style="justify-content: center;">
             <ui:Label tabindex="-1" text="Abilities" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AbilitiesHeader" class="HeaderLabel" />
+            <ui:Label tabindex="-1" text="Charm Person - Glumby" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CharmPerson" class="StatLabel" />
+            <ui:Label tabindex="-1" text="Time Slow - Glumby" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TimeSlow" class="StatLabel" />
             <ui:Label tabindex="-1" text="Shield of Faith - Glumby" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ShieldOfFaith" class="StatLabel" />
             <ui:Label tabindex="-1" text="Dynamite Dash - Glumby" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DynamiteDash" class="StatLabel" />
             <ui:Label tabindex="-1" text="Golden Gun - Glumby" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GoldenGun" class="StatLabel" />

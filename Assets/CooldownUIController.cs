@@ -9,6 +9,7 @@ public class CooldownUIController : MonoBehaviour
     private PlayerSkillManager playerSkillManager;
     private AimSystem aimSystem;
     private Ultimates ultimates;
+    private Sprite black;
     private Image ability1BW;
     private Image ability2BW;
     private Image ultimateBW;
@@ -45,6 +46,7 @@ public class CooldownUIController : MonoBehaviour
         ability1BW = GameObject.Find("Ability1BW").GetComponent<Image>();
         ability2BW = GameObject.Find("Ability2BW").GetComponent<Image>();
         ultimateBW = GameObject.Find("UltimateBW").GetComponent<Image>();
+        black = Resources.Load<Sprite>("black");
         abilityImage1.fillAmount = 0;
         abilityImage2.fillAmount = 0;
         ultimateImage.fillAmount = 0;
@@ -163,8 +165,8 @@ public class CooldownUIController : MonoBehaviour
         }
         else
         {
-            ability1.sprite = null;
-            ability1BW.sprite = null;
+            ability1.sprite = black;
+            ability1BW.sprite = black;
             cooldown1 = 0;
         }
 
@@ -176,8 +178,8 @@ public class CooldownUIController : MonoBehaviour
         }
         else
         {
-            ability2.sprite = null;
-            ability2BW.sprite = null;
+            ability2.sprite = black;
+            ability2BW.sprite = black;
             cooldown2 = 0;
         }
     }

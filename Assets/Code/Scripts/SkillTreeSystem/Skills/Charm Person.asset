@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9883c07e2afa543b2a3f48095272bd, type: 3}
-  m_Name: Golden Gun
+  m_Name: Charm Person
   m_EditorClassIdentifier: 
   UpgradeData:
-  - StatType: 2
+  - StatType: 4
     SkillIncreaseAmount: 1
     IsPercentage: 0
   IsAbility: 1
-  isCowboySkill: 1
-  SkillName: Golden Gun
-  SkillDescription: Cash is king, deal 2x damage.
-  SkillIcon: {fileID: -2086245782, guid: 342e5a0c64f5d0747bb77cfeb844c5ea, type: 3}
-  SkillPrerequisites:
-  - {fileID: 11400000, guid: 9707c7b092994462fb879dd79eca911a, type: 2}
-  - {fileID: 11400000, guid: 4effb223f9a554a8fa6941fde15d0bdf, type: 2}
-  SkillTier: 3
-  Cost: 5
-  CoolDown: 15
+  isCowboySkill: 0
+  SkillName: Charm Person
+  SkillDescription: Turn your enemies against each other
+  SkillIcon: {fileID: 21300000, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
+  SkillPrerequisites: []
+  SkillTier: 1
+  Cost: 1
+  CoolDown: 5
