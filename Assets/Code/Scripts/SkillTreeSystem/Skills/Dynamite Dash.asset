@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Dynamite Dash
   m_EditorClassIdentifier: 
   UpgradeData:
-  - StatType: 2
+  - StatType: 1
     SkillIncreaseAmount: 1
     IsPercentage: 0
   IsAbility: 1
   isCowboySkill: 1
   SkillName: Dynamite Dash
-  SkillDescription: dy dashhh
+  SkillDescription: Leave your enemies charred.
   SkillIcon: {fileID: 260459481, guid: 342e5a0c64f5d0747bb77cfeb844c5ea, type: 3}
   SkillPrerequisites: []
   SkillTier: 1
-  Cost: 5
-  CoolDown: 1
+  Cost: 1
+  CoolDown: 5

@@ -25,4 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9707c7b092994462fb879dd79eca911a, type: 2}
   SkillTier: 2
   Cost: 5
-  CoolDown: 5
+  CoolDown: 15

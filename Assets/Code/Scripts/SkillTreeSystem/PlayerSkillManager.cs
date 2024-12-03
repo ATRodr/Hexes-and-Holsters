@@ -65,7 +65,7 @@ namespace Code.Scripts.SkillTreeSystem
         private GameObject RussianRouletteParti;
         private GameObject PolyBullet;
         // unlockable abilities
-        private int dynamiteDashLevel, goldenGunLevel, shieldOfFaithLevel, russianRoulleteLevel, slowEnemyLevel, polyMorphLevel;
+        private int dynamiteDashLevel, goldenGunLevel,russianRoulleteLevel, shieldOfFaithLevel, slowEnemyLevel, polyMorphLevel;
         private int skillPoints;
         private LRUCache activeCowboySkills;
         private LRUCache activeWizardSkills;
@@ -73,8 +73,8 @@ namespace Code.Scripts.SkillTreeSystem
         public LRUCache ActiveWizardSkills => activeWizardSkills;        
         public int DynamiteDash => dynamiteDashLevel;
         public int GoldenGun => goldenGunLevel;
-        public int ShieldOfFaith => shieldOfFaithLevel;
         public int russianRoulette => russianRoulleteLevel;
+        public int ShieldOfFaith => shieldOfFaithLevel;
         public int PolyMorph => polyMorphLevel;
         public int SlowEnemy => slowEnemyLevel;
         public int SkillPoints => skillPoints;
@@ -154,6 +154,12 @@ namespace Code.Scripts.SkillTreeSystem
                         break;
                     case StatTypes.russianRoulette:
                         ModifyStat(ref russianRoulleteLevel, data);
+                        break;
+                    case StatTypes.slowEnemy:
+                        ModifyStat(ref slowEnemyLevel, data);
+                        break;
+                    case StatTypes.polyMorph:
+                        ModifyStat(ref polyMorphLevel, data);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -371,9 +377,16 @@ namespace Code.Scripts.SkillTreeSystem
             switch (skillName.ToLower().Replace(" ", ""))
             {
                 case "shieldoffaith":
-                    //StartCoroutine(shieldOfFaith()); 
-                    polyMorph(); //remove and uncomment, delete, temporary testing
+                    StartCoroutine(shieldOfFaith()); 
                     Debug.Log("Shield of Faith");
+                    break;
+                case "timeslow":
+                    StartCoroutine(slowEnemy());
+                    Debug.Log("Time Slow");
+                    break;
+                case "charmperson":
+                    polyMorph();
+                    Debug.Log("Charm Person");
                     break;
             }
 
